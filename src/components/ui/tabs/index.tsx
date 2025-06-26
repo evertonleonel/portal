@@ -1,5 +1,3 @@
-'use client';
-
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import * as React from 'react';
 
@@ -14,7 +12,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      'bg-muted text-muted-foreground inline-flex h-10 items-center justify-center rounded-md p-1',
+      'bg-baixada-gray-blue-400 text-baixada-dark-blue-500 rounded-4xl inline-flex items-center justify-center gap-4 px-[21.5px] py-[9.5px]',
       className
     )}
     {...props}
@@ -29,7 +27,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'ring-offset-background focus-visible:ring-ring data-[state=active]:bg-background data-[state=active]:text-foreground inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm',
+      'ring-offset-baixada-blue-100 focus-visible:ring-baixada-blue-200 data-[state=active]:bg-baixada-dark-blue-500 rounded-4xl text-normal inline-flex h-10 items-center justify-center whitespace-nowrap px-4 py-1.5 font-normal transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-white',
       className
     )}
     {...props}
@@ -44,7 +42,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'ring-offset-background focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+      'ring-offset-baixada-blue-100 focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
       className
     )}
     {...props}
