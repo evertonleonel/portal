@@ -1,5 +1,5 @@
 type Props = React.SVGProps<SVGSVGElement>;
-export const SearchIcon = (props: Props) => {
+export const InputSearchIcon = (props: Props) => {
   return (
     <svg
       {...props}

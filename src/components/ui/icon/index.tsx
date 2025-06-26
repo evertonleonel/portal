@@ -1,13 +1,21 @@
 import React from 'react';
 
-import { BellIcon } from '@/assets/icons/bell';
-import { ErrorIcon } from '@/assets/icons/error';
-import { SearchIcon } from '@/assets/icons/search';
+import { ExpandeHorizontalArrowIcon } from '@/assets/icons/arrow/expande-horizontal-arrow';
+import { ErrorIcon } from '@/assets/icons/design/error';
+import { MicrosoftIcon } from '@/assets/icons/design/microsoft.';
+import { SucessIcon } from '@/assets/icons/design/sucess';
+import { xIcon } from '@/assets/icons/design/x';
+import { InputSearchIcon } from '@/assets/icons/search/input-search';
+import { BellIcon } from '@/assets/icons/tools/bell';
 
 const icons = {
-  search: SearchIcon,
-  bell: BellIcon,
+  expandeHorizontalArrow: ExpandeHorizontalArrowIcon,
   error: ErrorIcon,
+  microsoft: MicrosoftIcon,
+  sucess: SucessIcon,
+  x: xIcon,
+  inputSearch: InputSearchIcon,
+  bell: BellIcon,
 };
 
 type IconsName = keyof typeof icons;
