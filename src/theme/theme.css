@@ -1,5 +1,15 @@
 @import 'tailwindcss';
 
+:root {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 @theme {
   /* --- PALETA LIGHT ---*/
 
@@ -66,6 +76,7 @@
   /* Cinza azulado */
   --color-baixada-gray-blue-50: #d0d5dd;
   --color-baixada-gray-blue-300: #d0d5dd;
+  --color-baixada-gray-blue-400: #f2f3ff; /*Cor inventada, pois não existe no design system*/
   --color-baixada-gray-blue-700: #344054;
 
   --color-baixada-gray-red-50: #dadada; /*Cor inventada, pois não existe no design system*/
@@ -113,6 +124,9 @@
   --color-baixada-warning-900: #7a4806;
   --color-baixada-warning-950: #553205;
 
+  /*Switch*/
+  --color-baixada-switch-checked: #1570ef;
+
   /* Shadows */
   --shadow-baixada-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
   --shadow-baixada-card: 0 82px 40px -14px rgba(100, 100, 100, 0.08);
@@ -122,19 +136,4 @@
 
   /* Gradients */
   --gradient-blue-to-dark-blue: linear-gradient(to bottom, rgba(0, 39, 135, 1), rgba(0, 10, 33, 1));
-}
-
-/* Classes utilitárias para gradients */
-.bg-gradient-blue-to-dark {
-  background: var(--gradient-blue-to-dark-blue);
-}
-
-:root {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
 }

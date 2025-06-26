@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+@layer components {
+  .modal-header-baixada {
+    padding-top: 15px !important;
+    padding-bottom: 13px !important;
+    padding-left: 30px !important;
+    padding-right: 36px !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    background-color: var(--color-baixada-light-blue-500) !important;
+  }
+
+  .modal-content-baixada {
+    padding: 0 !important;
+  }
+
+  .modal-footer-baixada {
+    padding-left: 30px !important;
+    padding-right: 36px !important;
+    padding-top: 30px !important;
+    padding-bottom: 20px !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+  }
+
+  .px-modal-baixada {
+    padding-left: 30px;
+    padding-right: 36px;
+  }
+
+  .py-modal-baixada {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .py-modal-footer-baixada {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .modal-content-baixada {
+      max-width: 96% !important;
+    }
+  }
+}
