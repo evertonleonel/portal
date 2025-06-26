@@ -1,0 +1,140 @@
+@import 'tailwindcss';
+
+@theme {
+  /* --- PALETA LIGHT ---*/
+
+  /*Principal*/
+
+  --color-baixada-white: #f7f8f9;
+  --color-baixada-slate: #eeeeee;
+
+  /* Azul principal */
+  --color-baixada-blue-50: #43b0fe;
+  --color-baixada-blue-100: #22a2fe;
+  --color-baixada-blue-200: #0195fe;
+  --color-baixada-blue-300: #0181de;
+  --color-baixada-blue-400: #006ebd;
+  --color-baixada-blue-500: #005b9c;
+  --color-baixada-blue-600: #00487c;
+  --color-baixada-blue-700: #00355b;
+  --color-baixada-blue-800: #002b4a;
+  --color-baixada-blue-900: #002139;
+  --color-baixada-blue-950: #001727;
+
+  /* Azul escuro */
+  --color-baixada-dark-blue-50: #185aff;
+  --color-baixada-dark-blue-100: #0047fa;
+  --color-baixada-dark-blue-200: #003fde;
+  --color-baixada-dark-blue-300: #0037c1;
+  --color-baixada-dark-blue-400: #002fa4;
+  --color-baixada-dark-blue-500: #002787;
+  --color-baixada-dark-blue-600: #001e6b;
+  --color-baixada-dark-blue-700: #00164e;
+  --color-baixada-dark-blue-800: #000e31;
+  --color-baixada-dark-blue-900: #000c28;
+  --color-baixada-dark-blue-950: #000a1f;
+
+  /* Azul claro */
+  --color-baixada-light-blue-50: #bfd3ea;
+  --color-baixada-light-blue-100: #9ebbdd;
+  --color-baixada-light-blue-200: #7ea3cf;
+  --color-baixada-light-blue-300: #5f8bc0;
+  --color-baixada-light-blue-400: #4674ab;
+  --color-baixada-light-blue-500: #3b5e88;
+  --color-baixada-light-blue-600: #33526a;
+  --color-baixada-light-blue-700: #29424e;
+  --color-baixada-light-blue-800: #1d2f34;
+  --color-baixada-light-blue-900: #101a1b;
+  --color-baixada-light-blue-950: #020303;
+
+  /* Neutros */
+  --color-baixada-neutral-50: #f7f8f9;
+  --color-baixada-neutral-100: #dde1e5;
+  --color-baixada-neutral-200: #c5cacf;
+  --color-baixada-neutral-300: #aeb3b8;
+  --color-baixada-neutral-400: #989ca0;
+  --color-baixada-neutral-500: #838587;
+  --color-baixada-neutral-600: #6d6e6f;
+  --color-baixada-neutral-700: #565758;
+  --color-baixada-neutral-800: #404040;
+  --color-baixada-neutral-900: #292929;
+  --color-baixada-neutral-950: #121212;
+
+  /* Cinza */
+  --color-baixada-gray-900: #101828;
+
+  /* Cinza azulado */
+  --color-baixada-gray-blue-50: #d0d5dd;
+  --color-baixada-gray-blue-300: #d0d5dd;
+  --color-baixada-gray-blue-700: #344054;
+
+  --color-baixada-gray-red-50: #dadada; /*Cor inventada, pois não existe no design system*/
+
+  /* Cinza azulado */
+  --color-baixada-neutral-blue-50: #e9eaff;
+  --color-baixada-neutral-blue-300: #b1b6f0; /*Cor inventada, pois não existe no design system*/
+
+  /* Feedback - Sucesso */
+  --color-baixada-success-50: #79ffd3;
+  --color-baixada-success-100: #53ffc6;
+  --color-baixada-success-200: #2cffba;
+  --color-baixada-success-300: #06ffad;
+  --color-baixada-success-400: #00df95;
+  --color-baixada-success-500: #00b87c;
+  --color-baixada-success-600: #009262;
+  --color-baixada-success-700: #00764d;
+  --color-baixada-success-800: #005a3a;
+  --color-baixada-success-900: #003d27;
+  --color-baixada-success-950: #002114;
+
+  /* Feedback - Erro */
+  --color-baixada-error-50: #fde7e6;
+  --color-baixada-error-100: #f9bfbc;
+  --color-baixada-error-200: #f49893;
+  --color-baixada-error-300: #ef726a;
+  --color-baixada-error-400: #e94d42;
+  --color-baixada-error-500: #e02b1d;
+  --color-baixada-error-600: #b5251a;
+  --color-baixada-error-700: #8c1e16;
+  --color-baixada-error-800: #631611;
+  --color-baixada-error-900: #3b0e0b;
+  --color-baixada-error-950: #140504;
+
+  /* Feedback - Alerta */
+  --color-baixada-warning-50: #ffeed5;
+  --color-baixada-warning-100: #ffdfb0;
+  --color-baixada-warning-200: #ffd08a;
+  --color-baixada-warning-300: #ffc165;
+  --color-baixada-warning-400: #ffb240;
+  --color-baixada-warning-500: #fda11c;
+  --color-baixada-warning-600: #ee8d04;
+  --color-baixada-warning-700: #c77606;
+  --color-baixada-warning-800: #a05f06;
+  --color-baixada-warning-900: #7a4806;
+  --color-baixada-warning-950: #553205;
+
+  /* Shadows */
+  --shadow-baixada-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-baixada-card: 0 82px 40px -14px rgba(100, 100, 100, 0.08);
+
+  /* Ring */
+  --color-ring: var(--color-baixada-blue-200);
+
+  /* Gradients */
+  --gradient-blue-to-dark-blue: linear-gradient(to bottom, rgba(0, 39, 135, 1), rgba(0, 10, 33, 1));
+}
+
+/* Classes utilitárias para gradients */
+.bg-gradient-blue-to-dark {
+  background: var(--gradient-blue-to-dark-blue);
+}
+
+:root {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
