@@ -1,8 +1,8 @@
 import { type ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { useAuth } from '@/context/AuthContext';
-import { AcessDeniedPage } from '@/pages/acess-dained';
+import { useAuth } from '@/context/auth-context';
+import { AcessDeniedPage } from '@/pages/acess-dained/page';
 
 interface PermissionRouteProps {
   children: ReactNode;

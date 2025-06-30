@@ -1,5 +1,5 @@
 type Props = React.SVGProps<SVGSVGElement>;
-export const ErrorIcon = (props: Props) => {
+export const NotificationErrorIcon = (props: Props) => {
   return (
     <svg
       {...props}

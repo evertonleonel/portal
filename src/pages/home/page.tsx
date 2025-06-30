@@ -1,8 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 
-import { BackgroundImage, BackgroundImageRoot } from '@/components/ui/background-image';
+import { BackgroundImage, BackgroundWrapper } from '@/components/ui/background-image';
 import { Button } from '@/components/ui/button';
-import { useAuth } from '@/context/AuthContext';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useAuth } from '@/context/auth-context';
 
 export default function Home() {
   const { user, logout, hasPermission } = useAuth();
@@ -15,13 +27,13 @@ export default function Home() {
 
   return (
     <div className="grid h-full items-center justify-center gap-4">
-      <BackgroundImageRoot className="bottom-0 right-0 top-[-2.563rem] max-sm:left-0">
+      <BackgroundWrapper className="bottom-0 right-0 top-[-2.563rem] max-sm:left-0">
         <BackgroundImage
           src="images/logos/logo-portal-baixada-sigla-cinza.svg"
           alt="Logo do portal Baixada"
           className="object-cover"
         />
-      </BackgroundImageRoot>
+      </BackgroundWrapper>
       <div className="grid items-center justify-center gap-4">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-gray-900">Home</h1>
@@ -55,6 +67,25 @@ export default function Home() {
             </Button>
           )}
         </div>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger>OPEN DROPDOWN</DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>SubTrigger</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuItem>Subscription</DropdownMenuItem>
+            <DropdownMenuCheckboxItem />
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <div className="mx-auto mt-8">
           <Button variant={'destructive'} onClick={handleLogout}>

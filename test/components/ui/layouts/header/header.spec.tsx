@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import { Header } from '../../../../../src/components/ui/layouts/header';
+import { Header } from '../../../../../src/components/ui/header';
 
 describe('Header Component', () => {
   it('deve renderizar o componente Header corretamente', () => {

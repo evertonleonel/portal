@@ -4,7 +4,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { enableMSW } from './_msw';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/auth-context';
 import { MainRoutes } from './routes/main';
 
 enableMSW().then(() => {

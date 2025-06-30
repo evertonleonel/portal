@@ -17,8 +17,10 @@
 
   --color-baixada-white: #f7f8f9;
   --color-baixada-slate: #eeeeee;
+  --color-baixada-slate-50: #f7f8f9; /*Cor inventada, pois não existe no design system*/
 
-  /* Azul principal */
+  --color-baixada-white-blue: #e3f3ff /*Cor inventada, pois não existe no design system*/;
+
   --color-baixada-blue-50: #43b0fe;
   --color-baixada-blue-100: #22a2fe;
   --color-baixada-blue-200: #0195fe;
@@ -58,6 +60,7 @@
   --color-baixada-light-blue-950: #020303;
 
   /* Neutros */
+
   --color-baixada-neutral-50: #f7f8f9;
   --color-baixada-neutral-100: #dde1e5;
   --color-baixada-neutral-200: #c5cacf;
@@ -130,6 +133,7 @@
   /* Shadows */
   --shadow-baixada-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
   --shadow-baixada-card: 0 82px 40px -14px rgba(100, 100, 100, 0.08);
+  --shadow-popover: 4px 4px 12px 0 rgba(4, 29, 84, 0.3);
 
   /* Ring */
   --color-ring: var(--color-baixada-blue-200);

@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 
 import type { RouteConfig } from '..';
-const SignIn = lazy(() => import('@/pages/auth/signin'));
+const SignIn = lazy(() => import('@/pages/auth/signin/page'));
 
 export const PublicRoutes: RouteConfig[] = [
   {

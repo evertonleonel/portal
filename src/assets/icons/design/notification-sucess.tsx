@@ -1,5 +1,5 @@
 type Props = React.SVGProps<SVGSVGElement>;
-export const SucessIcon = (props: Props) => {
+export const NotificationSucessIcon = (props: Props) => {
   return (
     <svg
       {...props}

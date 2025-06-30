@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { BackgroundImage, BackgroundImageRoot } from '@/components/ui/background-image';
+import { BackgroundImage, BackgroundWrapper } from '@/components/ui/background-image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context/auth-context';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -43,9 +43,9 @@ export default function SignIn() {
 
   return (
     <main className="relative grid h-full min-h-screen place-content-center p-4">
-      <BackgroundImageRoot className="inset-0">
+      <BackgroundWrapper className="inset-0">
         <BackgroundImage src="images/background.svg" alt="Imagem de login: trilhos de trem" className="object-cover" />
-      </BackgroundImageRoot>
+      </BackgroundWrapper>
       {/* Container centralizado para o formulário */}
       <div className="flex-1">
         <Card className="lg:w-lg mx-auto w-full max-w-lg p-10">

@@ -2,9 +2,9 @@ import { lazy } from 'react';
 
 import type { RouteConfig } from '..';
 
-const HomePage = lazy(() => import('@/pages/home'));
-const AdminPage = lazy(() => import('@/pages/admin'));
-const ClientPage = lazy(() => import('@/pages/client'));
+const HomePage = lazy(() => import('@/pages/home/page'));
+const AdminPage = lazy(() => import('@/pages/admin/page'));
+const ClientPage = lazy(() => import('@/pages/client/page'));
 
 export const PrivateRoutes: RouteConfig[] = [
   {

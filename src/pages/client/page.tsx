@@ -1,5 +1,5 @@
-import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/context/auth-context';
 
 export default function ClientPage() {
   const { user, logout } = useAuth();
