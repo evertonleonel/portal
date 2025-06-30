@@ -34,7 +34,8 @@ export default function Home() {
           className="object-cover"
         />
       </BackgroundWrapper>
-      <div className="grid items-center justify-center gap-4">
+
+      <div className="bg-foreground grid items-center justify-center gap-4">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-gray-900">Home</h1>
           <p className="mt-8 text-gray-600">Bem-vindo, {user?.name}!</p>
