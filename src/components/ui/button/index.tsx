@@ -5,12 +5,12 @@ import * as React from 'react';
 import { cn } from '@/utils/lib/tailwind-merge';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-base font-medium ring-offset-baixada-blue-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-base font-medium  transition-colors focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-baixada-error-500/40 aria-invalid:border-baixada-error-500',
   {
     variants: {
       variant: {
         default: 'bg-baixada-dark-blue-500  text-baixada-white hover:bg-baixada-dark-blue-700',
-        destructive: 'bg-baixada-error-500  text-baixada-white hover:bg-baixada-error-700',
+        ba: 'bg-baixada-error-500  text-baixada-white hover:bg-baixada-error-700',
         secondary: 'bg-baixada-neutral-blue-50 text-baixada-secondary hover:bg-baixada-neutral-blue-300',
         ghost: 'hover:bg-baixada-white hover:text-baixada-primary',
         link: 'text-baixada-dark-blue-500 underline-offset-4 hover:underline',

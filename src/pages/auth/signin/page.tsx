@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { BackgroundImage, BackgroundWrapper } from '@/components/ui/background-image';
@@ -7,6 +8,9 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/context/auth-context';
+
+import { LoginForm } from './_components/form/login';
+import { RegisterForm } from './_components/form/register';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -41,6 +45,8 @@ export default function SignIn() {
     setPassword('123456');
   };
 
+  const formRegister = useForm();
+
   return (
     <main className="relative grid h-full min-h-screen place-content-center p-4">
       <BackgroundWrapper className="inset-0">
@@ -53,20 +59,33 @@ export default function SignIn() {
             <picture className="max-w-[242px]">
               <img src="/images/logos/logo-portal-baixada.svg" alt="Logo Portal" />
             </picture>
-            <div className="mb-6 mt-8">
-              <p className="text-center font-normal text-black">Bem vindo(a)!</p>
-              <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
-                Faça login ou solicite seu cadastro
-              </p>
-            </div>
           </CardHeader>
           <Tabs defaultValue="account" className="mx-auto w-full">
+            <TabsContent value="login">
+              <div className="mb-6 mt-8">
+                <p className="text-center font-normal text-black">Bem vindo(a)!</p>
+                <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                  Faça login ou solicite seu cadastro
+                </p>
+              </div>
+            </TabsContent>
+            <TabsContent value="cadastro">
+              <div className="mb-6 mt-8">
+                <p className="text-center font-normal text-black">Solicite seu cadastro</p>
+                <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                  Preencha as informações abaixo para solicitar seu cadastro no Portal
+                </p>
+              </div>
+            </TabsContent>
             <TabsList className="mx-auto flex w-full max-w-[351px]">
               <TabsTrigger value="account" className="w-full">
                 Account
               </TabsTrigger>
-              <TabsTrigger value="password" className="w-full">
-                Password
+              <TabsTrigger value="login" className="w-full">
+                Login
+              </TabsTrigger>
+              <TabsTrigger value="cadastro" className="w-full">
+                Cadastro
               </TabsTrigger>
             </TabsList>
             <TabsContent value="account">
@@ -145,7 +164,16 @@ export default function SignIn() {
                 </form>
               </CardContent>
             </TabsContent>
-            <TabsContent value="password">Change your password here.</TabsContent>
+            <TabsContent value="login">
+              <FormProvider {...formRegister}>
+                <LoginForm />
+              </FormProvider>
+            </TabsContent>
+            <TabsContent value="cadastro">
+              <FormProvider {...formRegister}>
+                <RegisterForm />
+              </FormProvider>
+            </TabsContent>
           </Tabs>
           <CardFooter className="mt-12 flex items-center justify-center gap-6">
             <picture className="">

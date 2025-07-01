@@ -1,15 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-:root {
-  box-sizing: border-box;
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
 
 @theme {
   /* --- PALETA LIGHT ---*/
@@ -141,4 +133,21 @@
 
   /* Gradients */
   --gradient-blue-to-dark-blue: linear-gradient(to bottom, rgba(0, 39, 135, 1), rgba(0, 10, 33, 1));
+}
+
+
+@ theme inline {
+  --color-ring: var(--ring);
+}
+
+:root {
+  box-sizing: border-box;
+
+  --ring: var(--color-baixada-blue-200);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }

@@ -15,7 +15,7 @@ const icons = {
   bell: BellIcon,
   chevronArrow: ChevronArrowIcon,
   'notification-error': NotificationErrorIcon,
-  'notification-sucess': NotificationSucessIcon,
+  'notification-success': NotificationSucessIcon,
   'notification-default': NotificationDefaultIcon,
   expandeHorizontalArrow: ExpandeHorizontalArrowIcon,
   inputSearch: InputSearchIcon,

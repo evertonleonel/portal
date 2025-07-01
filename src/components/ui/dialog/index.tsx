@@ -51,7 +51,7 @@ DialogContent.displayName = DialogPrimitive.Content.displayName;
 const DialogHeader = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn('flex items-center justify-between text-center sm:text-left', className)} {...props}>
     {children}
-    <DialogPrimitive.Close className="focus:ring-ring data-[state=open]:text-baixada-blue-700 bg-baixada-light-blue-500 ring-offset-baixada-blue-200 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-white">
+    <DialogPrimitive.Close className="data-[state=open]:text-baixada-blue-700 bg-baixada-light-blue-500 focus-visible:border-ring focus-visible:ring-ring/50 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus-visible:ring-[3px] disabled:pointer-events-none data-[state=open]:bg-white">
       <Icon name="x" className="h-6 w-6" />
       <span className="sr-only">Fechar</span>
     </DialogPrimitive.Close>
