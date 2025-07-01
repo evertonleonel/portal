@@ -1,5 +1,4 @@
 import { AppSidebar } from '@/components/ux/app-sidebar';
-import { MOBILE_BREAKPOINT } from '@/hooks/use-mobile';
 
 import { Footer } from '../../footer';
 import { Header } from '../../header';
@@ -12,7 +11,7 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         <AppSidebar />
         <div className="relative flex flex-1 flex-col">
           <Header>
-            <SidebarTrigger className={`top-14 min-[${MOBILE_BREAKPOINT}px]:hidden`} />
+            <SidebarTrigger className={`top-14 min-[480px]:hidden`} />
           </Header>
           <main className="relative flex-1 px-2 sm:p-4 md:p-6 lg:px-10 lg:py-8">{children}</main>
           <Footer />

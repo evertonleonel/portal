@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useIsDesktop } from '@/hooks/use-desktop/inedx';
-import { MOBILE_BREAKPOINT, useIsMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { useIsTablet } from '@/hooks/use-tablet';
 import { cn } from '@/utils/lib/tailwind-merge';
 
@@ -21,7 +21,7 @@ const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = '16rem';
 const SIDEBAR_WIDTH_MOBILE = '18rem';
-const SIDEBAR_WIDTH_ICON = '3rem';
+const SIDEBAR_WIDTH_ICON = '4.5rem';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 
 type SidebarContextProps = {
@@ -278,7 +278,7 @@ function SidebarTrigger({ className, onClick, ...props }: React.ComponentProps<t
       variant="outline"
       size="icon"
       className={cn(
-        `group-data-[collapsible=icon]:top-13 top-18 right-[-14px] size-7 cursor-pointer bg-white min-[${MOBILE_BREAKPOINT}px]:absolute`,
+        `group-data-[collapsible=icon]:top-13 top-18 right-[-14px] size-7 cursor-pointer bg-white min-[480px]:absolute`,
         className
       )}
       onClick={event => {
@@ -474,7 +474,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<'li'>) {
     <li
       data-slot="sidebar-menu-item"
       data-sidebar="menu-item"
-      className={cn('group/menu-item relative', className)}
+      className={cn('group/menu-item relative group-data-[collapsible=icon]:mx-auto', className)}
       {...props}
     />
   );

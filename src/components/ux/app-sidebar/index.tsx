@@ -1,3 +1,4 @@
+import { Icon, type IconsName } from '@/components/ui/icon';
 import {
   Sidebar,
   SidebarContent,
@@ -10,7 +11,6 @@ import {
   SidebarMenuItem,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { MOBILE_BREAKPOINT } from '@/hooks/use-mobile';
 
 // Menu items.
 const items = [
@@ -22,22 +22,22 @@ const items = [
   {
     title: 'Inbox',
     url: '#',
-    icon: 'move-arrow',
+    icon: 'notification-sucess',
   },
   {
     title: 'Calendar',
     url: '#',
-    icon: 'chevron-arrow',
+    icon: 'chevronArrow',
   },
   {
     title: 'Search',
     url: '#',
-    icon: 'input-search',
+    icon: 'inputSearch',
   },
   {
     title: 'Settings',
     url: '#',
-    icon: 'input-search',
+    icon: 'microsoft',
   },
 ];
 
@@ -47,7 +47,7 @@ export function AppSidebar() {
       <SidebarHeader>
         <p>test</p>
       </SidebarHeader>
-      <SidebarTrigger className={`max-[${MOBILE_BREAKPOINT}px]:hidden z-100`} />
+      <SidebarTrigger className="max-w-[480px]:hidden z-100" />
       <SidebarContent>
         <SidebarGroup>
           {/* <SidebarGroupLabel>Application</SidebarGroupLabel> */}
@@ -57,7 +57,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <item.icon />
+                      <Icon name={item.icon as IconsName} />
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>

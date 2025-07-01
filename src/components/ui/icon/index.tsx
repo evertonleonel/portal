@@ -24,7 +24,7 @@ const icons = {
   x: xIcon,
 };
 
-type IconsName = keyof typeof icons;
+export type IconsName = keyof typeof icons;
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: IconsName;
