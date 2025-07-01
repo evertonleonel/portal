@@ -5,10 +5,7 @@ import { cn } from '@/utils/lib/tailwind-merge';
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      'text-baixada-gray-900 border-baixada-neutral-400 shadow-baixada-card rounded-lg border bg-white',
-      className
-    )}
+    className={cn('bg-card text-accent border-card-border shadow-baixada-card rounded-lg border', className)}
     {...props}
   />
 ));
@@ -30,7 +27,7 @@ CardTitle.displayName = 'CardTitle';
 
 const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn('text-baixada-gray-500 text-sm', className)} {...props} />
+    <p ref={ref} className={cn('text-accent-foreground text-sm', className)} {...props} />
   )
 );
 CardDescription.displayName = 'CardDescription';

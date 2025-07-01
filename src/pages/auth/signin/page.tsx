@@ -63,12 +63,13 @@ export default function SignIn() {
           <Tabs defaultValue="account" className="mx-auto w-full">
             <TabsList className="mx-auto flex w-full max-w-[351px]">
               <TabsTrigger value="account" className="w-full">
-                Account
+                My Account
               </TabsTrigger>
               <TabsTrigger value="password" className="w-full">
                 Password
               </TabsTrigger>
             </TabsList>
+
             <TabsContent value="account">
               <CardContent className="p-0">
                 <div className="rounded-lg border bg-gray-50 p-4">
@@ -137,11 +138,9 @@ export default function SignIn() {
                     </div>
                   )}
 
-                  <div className="w-full">
-                    <Button className="w-full" type="submit" disabled={isLoading}>
-                      {isLoading ? 'Entrando...' : 'Continuar Login'}
-                    </Button>
-                  </div>
+                  <Button className="w-full" type="submit" disabled={isLoading}>
+                    {isLoading ? 'Entrando...' : 'Continuar Login'}
+                  </Button>
                 </form>
               </CardContent>
             </TabsContent>

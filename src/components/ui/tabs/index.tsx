@@ -12,7 +12,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      'bg-baixada-gray-blue-400 text-baixada-dark-blue-500 rounded-4xl inline-flex items-center justify-center gap-4 px-[21.5px] py-[9.5px]',
+      'bg-tabs-background text-primary rounded-4xl inline-flex items-center justify-center gap-4 px-[21.5px] py-[9.5px]',
       className
     )}
     {...props}
@@ -27,7 +27,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'ring-offset-baixada-blue-100 focus-visible:ring-baixada-blue-200 data-[state=active]:bg-baixada-dark-blue-500 rounded-4xl text-normal inline-flex h-10 items-center justify-center whitespace-nowrap px-4 py-1.5 font-normal transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-white',
+      "data-[state=active]:bg-primary data-[state=active]: focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-foreground rounded-4xl data-[state=active]:text-background text-normal h-6.5 inline-flex flex-1 cursor-pointer items-center justify-center whitespace-nowrap border border-transparent px-4 py-1.5 font-normal transition-[color,box-shadow] focus-visible:outline-1 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
       className
     )}
     {...props}
@@ -42,7 +42,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'ring-offset-baixada-blue-100 focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+      'focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
       className
     )}
     {...props}

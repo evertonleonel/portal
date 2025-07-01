@@ -1,3 +1,4 @@
+import 'tailwindcss';
 import './theme.css';
 import './components.css';
-import 'tailwindcss';
+import './design-system.css';

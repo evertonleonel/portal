@@ -1,6 +1,9 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
-:root {
+@custom-variant dark (&:is(.dark *));
+
+: root {
   box-sizing: border-box;
 }
 
@@ -11,11 +14,10 @@
 }
 
 @theme {
-  /* --- PALETA LIGHT ---*/
-
   /*Principal*/
 
-  --color-baixada-white: #f7f8f9;
+  --color-baixada-white: #ffffff;
+  --color-baixada-white-50: #f7f8f9;
   --color-baixada-slate: #eeeeee;
   --color-baixada-slate-50: #f7f8f9; /*Cor inventada, pois não existe no design system*/
 
