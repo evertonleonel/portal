@@ -44,7 +44,7 @@ export const RegisterForm = () => {
             </FormItem>
           )}
         />
-        <div className="grid gap-4 md:grid-cols-[0.5fr_1fr]">
+        <div className="grid gap-4 md:grid-cols-[176px_1fr]">
           <FormField
             control={formRegister.control}
             name="empresa"
@@ -55,8 +55,8 @@ export const RegisterForm = () => {
                 </FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Selecione o tipo de usuário" />
+                    <SelectTrigger className="w-full md:max-w-[176px]">
+                      <SelectValue placeholder="Selecione" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -79,7 +79,7 @@ export const RegisterForm = () => {
                   Cargo <span className="text-baixada-error-500">*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="Digite seu e-mail corporativo" {...field} />
+                  <Input placeholder="Digite seu e-mail corporativo" {...field} className="w-full" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
