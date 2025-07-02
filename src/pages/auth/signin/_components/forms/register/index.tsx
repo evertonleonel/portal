@@ -49,7 +49,7 @@ export const RegisterForm = () => {
             control={formRegister.control}
             name="empresa"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full self-start">
                 <FormLabel className="flex gap-0">
                   Empresa <span className="text-baixada-error-500">*</span>
                 </FormLabel>
@@ -74,7 +74,7 @@ export const RegisterForm = () => {
             control={formRegister.control}
             name="cargo"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="self-start">
                 <FormLabel className="flex gap-0">
                   Cargo <span className="text-baixada-error-500">*</span>
                 </FormLabel>

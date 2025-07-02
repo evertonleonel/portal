@@ -4,14 +4,26 @@
 import { BackgroundImage, BackgroundWrapper } from '@/components/ui/background-image';
 // import { Button } from '@/components/ui/button';
 import { Card, CardFooter, CardHeader } from '@/components/ui/card';
+import { ShowContent } from '@/components/ui/show-content';
 // import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/utils/lib/tailwind-merge';
 
 // import { useAuth } from '@/context/auth-context';
 import { LoginForm } from './_components/forms/login';
 import { RegisterForm } from './_components/forms/register';
+import { ReturnForm } from './_components/forms/return';
+import { SigninProvider, useSigninContext } from './context';
 
 export default function SignIn() {
+  return (
+    <SigninProvider>
+      <SignInContent />
+    </SigninProvider>
+  );
+}
+
+function SignInContent() {
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
   // const [error, setError] = useState('');
@@ -44,48 +56,56 @@ export default function SignIn() {
   //   setPassword('123456');
   // };
 
+  const { viewTabState } = useSigninContext();
+
+  console.log(viewTabState, 'viewTabState');
   return (
     <main className="relative grid h-full min-h-screen place-content-center p-4">
       <BackgroundWrapper className="inset-0">
         <BackgroundImage src="images/background.svg" alt="Imagem de login: trilhos de trem" className="object-cover" />
       </BackgroundWrapper>
-      {/* Container centralizado para o formulário */}
       <div className="flex-1">
         <Card className="lg:w-lg mx-auto w-full max-w-lg p-10">
-          <CardHeader className="flex items-center p-0">
+          <CardHeader className={cn('flex items-center p-0', viewTabState.sucess && 'mt-4')}>
             <picture className="max-w-[242px]">
               <img src="/images/logos/logo-portal-baixada.svg" alt="Logo Portal" />
             </picture>
           </CardHeader>
-          <Tabs defaultValue="login" className="mx-auto w-full">
-            <TabsContent value="login">
-              <div className="mb-6 mt-8">
-                <p className="text-center font-normal text-black">Bem vindo(a)!</p>
-                <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
-                  Faça login ou solicite seu cadastro
-                </p>
-              </div>
-            </TabsContent>
-            <TabsContent value="cadastro">
-              <div className="mb-6 mt-8">
-                <p className="text-center font-normal text-black">Solicite seu cadastro</p>
-                <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
-                  Preencha as informações abaixo para solicitar seu cadastro no Portal
-                </p>
-              </div>
-            </TabsContent>
-            <TabsList className="mx-auto flex w-full max-w-[351px]">
-              {/* <TabsTrigger value="account" className="w-full">
+
+          <ShowContent condition={viewTabState.sucess}>
+            <ReturnForm />
+          </ShowContent>
+
+          <ShowContent condition={!viewTabState.sucess}>
+            <Tabs defaultValue="login" className="mx-auto w-full">
+              <TabsContent value="login">
+                <div className="mb-6 mt-8">
+                  <p className="text-center font-normal text-black">Bem vindo(a)!</p>
+                  <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                    Faça login ou solicite seu cadastro
+                  </p>
+                </div>
+              </TabsContent>
+              <TabsContent value="cadastro">
+                <div className="mb-6 mt-8">
+                  <p className="text-center font-normal text-black">Solicite seu cadastro</p>
+                  <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                    Preencha as informações abaixo para solicitar seu cadastro no Portal
+                  </p>
+                </div>
+              </TabsContent>
+              <TabsList className="mx-auto flex w-full max-w-[351px]">
+                {/* <TabsTrigger value="account" className="w-full">
                 Account
               </TabsTrigger> */}
-              <TabsTrigger value="login" className="w-full">
-                Login
-              </TabsTrigger>
-              <TabsTrigger value="cadastro" className="w-full">
-                Cadastro
-              </TabsTrigger>
-            </TabsList>
-            {/* <TabsContent value="account">
+                <TabsTrigger value="login" className="w-full">
+                  Login
+                </TabsTrigger>
+                <TabsTrigger value="cadastro" className="w-full">
+                  Cadastro
+                </TabsTrigger>
+              </TabsList>
+              {/* <TabsContent value="account">
               <CardContent className="p-0">
                 <div className="rounded-lg border bg-gray-50 p-4">
                   <h3 className="mb-2 text-sm font-semibold text-gray-900">Usuários de Teste:</h3>
@@ -115,7 +135,7 @@ export default function SignIn() {
                 </div>
 
                 {/* Formulário */}
-            {/* <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+              {/* <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   <div className="space-y-4 rounded-md shadow-sm">
                     <div>
                       <label htmlFor="email" className="sr-only">
@@ -161,24 +181,26 @@ export default function SignIn() {
                 </form>
               </CardContent>
             </TabsContent> */}
-            <TabsContent value="login">
-              <LoginForm />
-            </TabsContent>
-            <TabsContent value="cadastro">
-              <RegisterForm />
-            </TabsContent>
-          </Tabs>
+              <TabsContent value="login">
+                <LoginForm />
+              </TabsContent>
+              <TabsContent value="cadastro">
+                <RegisterForm />
+              </TabsContent>
+            </Tabs>
+          </ShowContent>
+
           <CardFooter className="mt-12 flex items-center justify-center gap-6">
-            <picture className="">
+            <picture>
               <img src="/images/logos/logo-mrs.svg" alt="Logo MRS" />
             </picture>
-            <picture className="">
+            <picture>
               <img src="/images/logos/logo-fips.svg" alt="Logo FIPS" />
             </picture>
-            <picture className="">
+            <picture>
               <img src="/images/logos/logo-rumo.svg" alt="Logo RUMO" />
             </picture>
-            <picture className="">
+            <picture>
               <img src="/images/logos/logo-vli.svg" alt="Logo VLI" />
             </picture>
           </CardFooter>

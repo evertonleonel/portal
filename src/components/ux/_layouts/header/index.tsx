@@ -1,5 +1,5 @@
-import { Button } from '../button';
-import { Icon } from '../icon';
+import { Button } from '@/components/ui/button';
+import { Icon } from '@/components/ui/icon';
 
 export const Header = ({ children }: { children?: React.ReactNode }) => {
   return (

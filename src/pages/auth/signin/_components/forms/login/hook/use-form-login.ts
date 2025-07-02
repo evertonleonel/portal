@@ -4,9 +4,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 export const registerLogin = z.object({
-  email: z.string().email({
-    message: 'Por favor entre com um e-mail válido',
-  }),
+  email: z.string().nonempty('O campo E-mail é obrigatório').email('Digite um email válido'),
 });
 
 export type LoginInputs = z.infer<typeof registerLogin>;

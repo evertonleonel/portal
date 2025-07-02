@@ -1,6 +1,6 @@
-import { Footer } from '@/components/ui/footer';
 import { Header } from '@/components/ui/header';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { Footer } from '@/components/ux/_layouts/footer';
 import { AppSidebar } from '@/components/ux/app-sidebar';
 
 export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
