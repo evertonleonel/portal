@@ -19,7 +19,7 @@ const items = [
   {
     title: 'Home',
     url: '#',
-    icon: 'x',
+    icon: 'chevronRightArrow',
   },
   {
     title: 'Inbox',
@@ -34,7 +34,7 @@ const items = [
   {
     title: 'Search',
     url: '#',
-    icon: 'inputSearch',
+    icon: 'chevronLeftArrow',
   },
   {
     title: 'Settings',

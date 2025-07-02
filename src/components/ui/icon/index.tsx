@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ChevronDownArrowIcon } from '@/assets/icons/arrow/chevron-down-arrow';
+import { ChevronLeftArrowIcon } from '@/assets/icons/arrow/chevron-left-arrow';
 import { ChevronRightArrowIcon } from '@/assets/icons/arrow/chevron-right-arrrow';
 import { ChevronUpArrowIcon } from '@/assets/icons/arrow/chevron-up-arrow';
 import { ExpandeHorizontalArrowIcon } from '@/assets/icons/arrow/expande-horizontal-arrow';
@@ -17,6 +18,7 @@ import { BellIcon } from '@/assets/icons/tools/bell';
 const icons = {
   bell: BellIcon,
   check: CheckIcon,
+  chevronLeftArrow: ChevronLeftArrowIcon,
   chevronUpArrow: ChevronUpArrowIcon,
   chevronDownArrow: ChevronDownArrowIcon,
   chevronRightArrow: ChevronRightArrowIcon,
