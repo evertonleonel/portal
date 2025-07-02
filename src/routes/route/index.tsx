@@ -1,8 +1,8 @@
 import { type ComponentType } from 'react';
 
-import { PermissionRoute } from '@/guard/permission-route';
-import { ProtectedRoute } from '@/guard/protected-route';
-import { PublicRoute } from '@/guard/public-route';
+import { PermissionRoute } from '@/routes/guards/permission-route';
+import { ProtectedRoute } from '@/routes/guards/protected-route';
+import { PublicRoute } from '@/routes/guards/public-route';
 
 import { PrivateRoutes } from './private';
 import { PublicRoutes } from './public';

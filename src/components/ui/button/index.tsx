@@ -16,6 +16,7 @@ const buttonVariants = cva(
         link: 'text-baixada-dark-blue-500 underline-offset-4 hover:underline',
         outline:
           'border-[1px] border-baixada-gray-blue-300 text-baixada-gray-blue-700  hover:bg-baixada-slate shadow-baixada-xs',
+        destructive: 'bg-baixada-error-500  text-baixada-white hover:bg-baixada-error-700',
       },
       size: {
         default: 'h-12 px-4 py-2',

@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { AuthLayout } from '@/components/ui/_layouts/auth';
+import { AuthLayout } from '@/components/ux/_layouts/auth-layout';
 import { useAuth } from '@/context/auth-context';
 
 interface ProtectedRouteProps {

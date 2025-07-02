@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { ChevronArrowIcon } from '@/assets/icons/arrow/chevron-arrrow';
+import { ChevronDownArrowIcon } from '@/assets/icons/arrow/chevron-down-arrow';
+import { ChevronRightArrowIcon } from '@/assets/icons/arrow/chevron-right-arrrow';
+import { ChevronUpArrowIcon } from '@/assets/icons/arrow/chevron-up-arrow';
 import { ExpandeHorizontalArrowIcon } from '@/assets/icons/arrow/expande-horizontal-arrow';
 import { MoveArrowIcon } from '@/assets/icons/arrow/move-arrow';
 import { MicrosoftIcon } from '@/assets/icons/design/microsoft.';
@@ -8,12 +10,16 @@ import { NotificationDefaultIcon } from '@/assets/icons/design/nofitication-defa
 import { NotificationErrorIcon } from '@/assets/icons/design/notification-error';
 import { NotificationSucessIcon } from '@/assets/icons/design/notification-sucess';
 import { xIcon } from '@/assets/icons/design/x';
+import { CheckIcon } from '@/assets/icons/essentional/check';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
 import { BellIcon } from '@/assets/icons/tools/bell';
 
 const icons = {
   bell: BellIcon,
-  chevronArrow: ChevronArrowIcon,
+  check: CheckIcon,
+  chevronUpArrow: ChevronUpArrowIcon,
+  chevronDownArrow: ChevronDownArrowIcon,
+  chevronRightArrow: ChevronRightArrowIcon,
   'notification-error': NotificationErrorIcon,
   'notification-success': NotificationSucessIcon,
   'notification-default': NotificationDefaultIcon,

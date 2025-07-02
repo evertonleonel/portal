@@ -1,51 +1,48 @@
-import { useState } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
 
+// import { useLocation, useNavigate } from 'react-router-dom';
 import { BackgroundImage, BackgroundWrapper } from '@/components/ui/background-image';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+// import { Button } from '@/components/ui/button';
+import { Card, CardFooter, CardHeader } from '@/components/ui/card';
+// import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useAuth } from '@/context/auth-context';
 
-import { LoginForm } from './_components/form/login';
-import { RegisterForm } from './_components/form/register';
+// import { useAuth } from '@/context/auth-context';
+import { LoginForm } from './_components/forms/login';
+import { RegisterForm } from './_components/forms/register';
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const { login, isLoading } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [error, setError] = useState('');
+  // const { login, isLoading } = useAuth();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
-  const from = location.state?.from?.pathname || '/home';
+  // const from = location.state?.from?.pathname || '/home';
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setError('');
 
-    if (!email || !password) {
-      setError('Por favor, preencha todos os campos');
-      return;
-    }
+  //   if (!email || !password) {
+  //     setError('Por favor, preencha todos os campos');
+  //     return;
+  //   }
 
-    const success = await login(email, password);
+  //   const success = await login(email, password);
 
-    if (success) {
-      navigate(from, { replace: true });
-    } else {
-      setError('Credenciais inválidas');
-    }
-  };
+  //   if (success) {
+  //     navigate(from, { replace: true });
+  //   } else {
+  //     setError('Credenciais inválidas');
+  //   }
+  // };
 
-  const handleTestLogin = (testEmail: string) => {
-    setEmail(testEmail);
-    setPassword('123456');
-  };
-
-  const formRegister = useForm();
+  // const handleTestLogin = (testEmail: string) => {
+  //   setEmail(testEmail);
+  //   setPassword('123456');
+  // };
 
   return (
     <main className="relative grid h-full min-h-screen place-content-center p-4">
@@ -60,7 +57,7 @@ export default function SignIn() {
               <img src="/images/logos/logo-portal-baixada.svg" alt="Logo Portal" />
             </picture>
           </CardHeader>
-          <Tabs defaultValue="account" className="mx-auto w-full">
+          <Tabs defaultValue="login" className="mx-auto w-full">
             <TabsContent value="login">
               <div className="mb-6 mt-8">
                 <p className="text-center font-normal text-black">Bem vindo(a)!</p>
@@ -78,9 +75,9 @@ export default function SignIn() {
               </div>
             </TabsContent>
             <TabsList className="mx-auto flex w-full max-w-[351px]">
-              <TabsTrigger value="account" className="w-full">
+              {/* <TabsTrigger value="account" className="w-full">
                 Account
-              </TabsTrigger>
+              </TabsTrigger> */}
               <TabsTrigger value="login" className="w-full">
                 Login
               </TabsTrigger>
@@ -88,7 +85,7 @@ export default function SignIn() {
                 Cadastro
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="account">
+            {/* <TabsContent value="account">
               <CardContent className="p-0">
                 <div className="rounded-lg border bg-gray-50 p-4">
                   <h3 className="mb-2 text-sm font-semibold text-gray-900">Usuários de Teste:</h3>
@@ -118,7 +115,7 @@ export default function SignIn() {
                 </div>
 
                 {/* Formulário */}
-                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            {/* <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   <div className="space-y-4 rounded-md shadow-sm">
                     <div>
                       <label htmlFor="email" className="sr-only">
@@ -163,16 +160,12 @@ export default function SignIn() {
                   </div>
                 </form>
               </CardContent>
-            </TabsContent>
+            </TabsContent> */}
             <TabsContent value="login">
-              <FormProvider {...formRegister}>
-                <LoginForm />
-              </FormProvider>
+              <LoginForm />
             </TabsContent>
             <TabsContent value="cadastro">
-              <FormProvider {...formRegister}>
-                <RegisterForm />
-              </FormProvider>
+              <RegisterForm />
             </TabsContent>
           </Tabs>
           <CardFooter className="mt-12 flex items-center justify-center gap-6">

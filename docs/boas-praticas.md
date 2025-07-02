@@ -7,7 +7,7 @@ src/
 │ ├── layouts/ # Layouts para estruturar páginas (ex: AuthLayout)
 │ │ └── auth/
 │ │ └── index.tsx # Exportação do componente
-│ ├── ui/ # Componentes base, sem estado (apenas apresentação)
+│ ├── ui/ # Componentes base, pouco estado (apenas apresentação)
 │ │ └── button/
 │ │ └── index.tsx # Exportação do componente
 │ ├── card/ # Exemplos de compound components
@@ -22,11 +22,13 @@ src/
 │ │ └── page.tsx # Página Login
 │ └── ...
 ├── context/ lógica de contexto global / reutilizável
-├── guard/ Componentes para permissões de visualização de rotas e conteúdos
 ├── routes/ Rotas públicas e privadas
+│ ├── main/ mapei as rotas
+│ ├── route/ cria os elementos de rota
+│ └── guard/ Componentes para permissões de visualização de rotas e conteúdos
 ├── services/ # APIs, clientes HTTP, lógica de negócio externa
-├── theme/ # Arquivos globais de CSS/SCSS ou Tailwind config
-├── utils/ # Funções utilitárias, helpers
+├── theme/ # Arquivos globais de CSS / Tailwind config
+├── utils/ # Funções utilitárias, helpers e etc
 └── main.tsx # Componente raiz da aplicação
 
 ## Como criar páginas
@@ -105,7 +107,7 @@ const ConsistentComponentDesign = () => {
 - **Sempre** desestruture as propriedades dos componentes e páginas;
 - **Páginas** ficam dentro da pasta `pages/` em subpastas com o arquivo principal chamado `page.tsx`.
 - **Componentes** ficam em `components/`, organizados em pastas próprias, exportados via `index.tsx`.
-- _Componentes UI_ - ficam em `components/ui/`. focados em apresentação, não possuem estado; devem preferencialmente usar o padrão compound component para máxima reutilização.
+- _Componentes UI_ - ficam em `components/ui/`. focados em apresentação, possuem pouco estado ou nenhum; devem preferencialmente usar o padrão compound component para máxima reutilização.
 - _Componentes UX_ ficam em `components/ux/`. possuem estado e lógica de experiência do usuário;
 - **Layouts** ficam em `/components/_layouts/`. definem a estrutura persistente das páginas.
 - **Hooks** customizados ficam em `hooks/`.
