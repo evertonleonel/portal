@@ -11,6 +11,8 @@ import {
   SidebarMenuItem,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/utils/lib/tailwind-merge';
 
 // Menu items.
 const items = [
@@ -22,12 +24,12 @@ const items = [
   {
     title: 'Inbox',
     url: '#',
-    icon: 'notification-sucess',
+    icon: 'chevronDownArrow',
   },
   {
     title: 'Calendar',
     url: '#',
-    icon: 'chevronArrow',
+    icon: 'chevronUpArrow',
   },
   {
     title: 'Search',
@@ -42,12 +44,13 @@ const items = [
 ];
 
 export function AppSidebar() {
+  const isMobile = useIsMobile();
   return (
     <Sidebar collapsible="icon" className="relative">
       <SidebarHeader>
         <p>test</p>
       </SidebarHeader>
-      <SidebarTrigger className="max-w-[480px]:hidden z-100" />
+      <SidebarTrigger className={cn('z-100', isMobile && 'hidden')} />
       <SidebarContent>
         <SidebarGroup>
           {/* <SidebarGroupLabel>Application</SidebarGroupLabel> */}
@@ -57,9 +60,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
-                      <div className="h-10 w-10">
-                        <Icon name={item.icon as IconsName} />
-                      </div>
+                      <Icon name={item.icon as IconsName} className="size-5" />
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
