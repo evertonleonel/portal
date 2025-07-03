@@ -7,7 +7,6 @@ import { Card, CardFooter, CardHeader } from '@/components/ui/card';
 import { ShowContent } from '@/components/ui/show-content';
 // import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { cn } from '@/utils/lib/tailwind-merge';
 
 // import { useAuth } from '@/context/auth-context';
 import { LoginForm } from './_components/forms/login';
@@ -64,19 +63,15 @@ function SignInContent() {
       <BackgroundWrapper className="inset-0">
         <BackgroundImage src="images/background.svg" alt="Imagem de login: trilhos de trem" className="object-cover" />
       </BackgroundWrapper>
-      <div className="flex-1">
-        <Card className="lg:w-lg mx-auto w-full max-w-lg p-10">
-          <CardHeader className={cn('flex items-center p-0', viewTabState.sucess && 'mt-4')}>
-            <picture className="max-w-[242px]">
-              <img src="/images/logos/logo-portal-baixada.svg" alt="Logo Portal" />
-            </picture>
-          </CardHeader>
+      <ShowContent condition={!viewTabState.sucess}>
+        <div className="flex-1">
+          <Card className="lg:w-lg mx-auto w-full max-w-lg p-10">
+            <CardHeader className="flex items-center p-0">
+              <picture className="max-w-[242px]">
+                <img src="/images/logos/logo-portal-baixada.svg" alt="Logo Portal" />
+              </picture>
+            </CardHeader>
 
-          <ShowContent condition={viewTabState.sucess}>
-            <ReturnForm />
-          </ShowContent>
-
-          <ShowContent condition={!viewTabState.sucess}>
             <Tabs defaultValue="login" className="mx-auto w-full">
               <TabsContent value="login">
                 <div className="mb-6 mt-8">
@@ -188,24 +183,27 @@ function SignInContent() {
                 <RegisterForm />
               </TabsContent>
             </Tabs>
-          </ShowContent>
 
-          <CardFooter className="mt-12 flex items-center justify-center gap-6">
-            <picture>
-              <img src="/images/logos/logo-mrs.svg" alt="Logo MRS" />
-            </picture>
-            <picture>
-              <img src="/images/logos/logo-fips.svg" alt="Logo FIPS" />
-            </picture>
-            <picture>
-              <img src="/images/logos/logo-rumo.svg" alt="Logo RUMO" />
-            </picture>
-            <picture>
-              <img src="/images/logos/logo-vli.svg" alt="Logo VLI" />
-            </picture>
-          </CardFooter>
-        </Card>
-      </div>
+            <CardFooter className="mt-12 flex items-center justify-center gap-6">
+              <picture>
+                <img src="/images/logos/logo-mrs.svg" alt="Logo MRS" />
+              </picture>
+              <picture>
+                <img src="/images/logos/logo-fips.svg" alt="Logo FIPS" />
+              </picture>
+              <picture>
+                <img src="/images/logos/logo-rumo.svg" alt="Logo RUMO" />
+              </picture>
+              <picture>
+                <img src="/images/logos/logo-vli.svg" alt="Logo VLI" />
+              </picture>
+            </CardFooter>
+          </Card>
+        </div>
+      </ShowContent>
+      <ShowContent condition={viewTabState.sucess}>
+        <ReturnForm />
+      </ShowContent>
     </main>
   );
 }
