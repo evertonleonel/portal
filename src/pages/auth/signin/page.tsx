@@ -7,6 +7,8 @@ import { Card, CardFooter, CardHeader } from '@/components/ui/card';
 import { ShowContent } from '@/components/ui/show-content';
 // import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useIsSmallScreen } from '@/hooks/use-small-screen';
+import { cn } from '@/utils/lib/tailwind-merge';
 
 // import { useAuth } from '@/context/auth-context';
 import { LoginForm } from './_components/forms/login';
@@ -56,6 +58,7 @@ function SignInContent() {
   // };
 
   const { viewTabState } = useSigninContext();
+  const isSmallScreen = useIsSmallScreen();
 
   console.log(viewTabState, 'viewTabState');
   return (
@@ -65,7 +68,7 @@ function SignInContent() {
       </BackgroundWrapper>
       <ShowContent condition={!viewTabState.sucess}>
         <div className="flex-1">
-          <Card className="lg:w-lg mx-auto w-full max-w-lg p-10">
+          <Card className={cn('lg:w-lg mx-auto w-full max-w-lg p-10', isSmallScreen && 'py-8')}>
             <CardHeader className="flex items-center p-0">
               <picture className="max-w-[242px]">
                 <img src="/images/logos/logo-portal-baixada.svg" alt="Logo Portal" />
@@ -184,7 +187,7 @@ function SignInContent() {
               </TabsContent>
             </Tabs>
 
-            <CardFooter className="mt-12 flex items-center justify-center gap-6">
+            <CardFooter className={cn('mt-12 flex items-center justify-center gap-6', isSmallScreen && 'mt-4')}>
               <picture>
                 <img src="/images/logos/logo-mrs.svg" alt="Logo MRS" />
               </picture>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const SMALL_SCREEN_HEIGHT = 720; // Altura mínima para evitar scroll em 1024x600
+const SMALL_SCREEN_HEIGHT = 700; // Altura mínima para evitar scroll em 1024x600
 
 export function useIsSmallScreen() {
   const [isSmallScreen, setIsSmallScreen] = useState<boolean | undefined>(undefined);

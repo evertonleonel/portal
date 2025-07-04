@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 export const registerLogin = z.object({
-  email: z.string().nonempty('O campo E-mail é obrigatório').email('Digite um email válido'),
+  email: z.string().nonempty('O campo E-mail é obrigatório').email('Digite um e-mail válido'),
 });
 
 export type LoginInputs = z.infer<typeof registerLogin>;
 
 export const useFormLogin = () => {
-  const [error, setError] = useState({ error: '', warning: '' });
+  const [statusMessage, setStatusMessage] = useState({ error: '', warning: '' });
   const [isPending] = useTransition();
 
   const formLogin = useForm<LoginInputs>({
@@ -20,13 +20,13 @@ export const useFormLogin = () => {
 
   const onSubmit = (data: LoginInputs) => {
     console.log(data, 'data');
-    setError({ error: '', warning: '' });
+    setStatusMessage({ error: '', warning: '' });
   };
 
   return {
     formLogin,
     onSubmit,
-    error,
+    statusMessage,
     isPending,
   };
 };

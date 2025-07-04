@@ -6,7 +6,7 @@ export const AcessDeniedPage = ({ requiredRoles }: { requiredRoles: string[] }) 
   const { user } = useAuth();
   return (
     <div className="mx-auto flex h-full w-full max-w-md flex-1 flex-col items-center justify-center gap-4 p-8 text-center">
-      <Icon name="notification-error" />
+      <Icon name="notificationError" />
       <h2 className="mb-2 text-2xl font-bold text-gray-900">Acesso Negado</h2>
       <p className="mb-4 text-gray-600">Você não tem permissão para acessar esta página.</p>
       <div className="mb-4 text-sm text-gray-500">
