@@ -49,6 +49,7 @@
   --color-tooltip: var(--tooltip); /*-baixada-*/
   --color-tabs: var(--tabs); /*-baixada-*/
   --color-switch: var(--switch); /*-baixada-*/
+  --color-surface: var(--surface) /*-baixada-*/;
 }
 
 :root {
@@ -99,6 +100,7 @@
   --tooltip: var(--color-baixada-gray-500); /*-baixada-*/
   --tabs: var(--color-baixada-gray-blue-400); /*-baixada-*/
   --switch: var(--color-baixada-switch); /*-baixada-*/
+  --surface: var(--color-baixada-neutral-600); /*-baixada-*/
 }
 
 .dark {

@@ -6,12 +6,7 @@ import {
   BackgroundWrapper,
 } from '@/components/ui/background-image';
 // import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { ShowContent } from '@/components/ui/show-content';
 // import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -22,6 +17,7 @@ import { cn } from '@/utils/lib/tailwind-merge';
 import { LoginForm } from './_components/forms/login';
 import { RegisterForm } from './_components/forms/register';
 import { ReturnForm } from './_components/forms/return';
+import { LogoFooter } from './_components/logo-footer';
 import { SigninProvider, useSigninContext } from './context';
 
 export default function SignIn() {
@@ -92,11 +88,11 @@ function SignInContent() {
             <CardContent className="px-8 lg:px-10">
               <Tabs defaultValue="login" className="mx-auto">
                 <TabsContent value="login">
-                  <div className="mb-6 mt-8">
+                  <div className="mb-6 mt-2">
                     <p className="text-center font-normal text-black">
                       Bem vindo(a)!
                     </p>
-                    <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                    <p className="text-surface mt-2 text-center text-sm font-normal">
                       Faça login ou solicite seu cadastro
                     </p>
                   </div>
@@ -106,7 +102,7 @@ function SignInContent() {
                     <p className="text-center font-normal text-black">
                       Solicite seu cadastro
                     </p>
-                    <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                    <p className="text-surface mt-2 text-center text-sm font-normal">
                       Preencha as informações abaixo para solicitar seu cadastro
                       no Portal
                     </p>
@@ -201,32 +197,16 @@ function SignInContent() {
             </TabsContent> */}
                 <TabsContent value="login">
                   <LoginForm />
+                  <LogoFooter
+                    classname={`mt-[46px] mb-[42px] ${isSmallScreen && 'my-4'}`}
+                  />
                 </TabsContent>
                 <TabsContent value="cadastro">
                   <RegisterForm />
+                  <LogoFooter classname="mt-[46px] mb-[6px]" />
                 </TabsContent>
               </Tabs>
             </CardContent>
-
-            <CardFooter
-              className={cn(
-                'mt-12 flex items-center justify-center gap-6 px-8 lg:px-10',
-                isSmallScreen && 'mt-4'
-              )}
-            >
-              <picture>
-                <img src="/images/logos/logo-mrs.svg" alt="Logo MRS" />
-              </picture>
-              <picture>
-                <img src="/images/logos/logo-fips.svg" alt="Logo FIPS" />
-              </picture>
-              <picture>
-                <img src="/images/logos/logo-rumo.svg" alt="Logo RUMO" />
-              </picture>
-              <picture>
-                <img src="/images/logos/logo-vli.svg" alt="Logo VLI" />
-              </picture>
-            </CardFooter>
           </Card>
         </div>
       </ShowContent>

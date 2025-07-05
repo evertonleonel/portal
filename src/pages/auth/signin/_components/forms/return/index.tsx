@@ -10,6 +10,7 @@ import { useIsSmallScreen } from '@/hooks/use-small-screen';
 import { cn } from '@/utils/lib/tailwind-merge';
 
 import { useSigninContext } from '../../../context';
+import { LogoFooter } from '../../logo-footer';
 
 export const ReturnForm = () => {
   const { handleUpdateViewForm } = useSigninContext();
@@ -19,7 +20,7 @@ export const ReturnForm = () => {
     <div className="flex-1">
       <Card
         className={cn(
-          'lg:w-lg mx-auto w-full max-w-lg p-6 md:p-8 lg:p-10',
+          'mx-auto w-full max-w-[572px] p-6 md:p-8 lg:p-10',
           isSmallScreen && 'py-2 md:py-6 lg:py-6'
         )}
       >
@@ -48,14 +49,13 @@ export const ReturnForm = () => {
               <p className="text-baixada-dark-blue-950 text-base">
                 Solicitação enviada!
               </p>
-              <div className="text-baixada-neutral-600 grid text-sm font-normal">
+              <div className="text-surface grid text-sm font-normal">
                 <p>
-                  {' '}
                   Sua solicitação de cadastro no Portal da Baixada foi enviado.
                 </p>
                 <p>
                   Após aprovação {''}
-                  <strong className="text-baixada-neutral-600">
+                  <strong className="text-surface">
                     você receberá um e-mail de confirmação.
                   </strong>
                 </p>
@@ -72,18 +72,7 @@ export const ReturnForm = () => {
               Voltar para o login
             </Button>
             <CardFooter className="flex items-center justify-center gap-6">
-              <picture>
-                <img src="/images/logos/logo-mrs.svg" alt="Logo MRS" />
-              </picture>
-              <picture>
-                <img src="/images/logos/logo-fips.svg" alt="Logo FIPS" />
-              </picture>
-              <picture>
-                <img src="/images/logos/logo-rumo.svg" alt="Logo RUMO" />
-              </picture>
-              <picture>
-                <img src="/images/logos/logo-vli.svg" alt="Logo VLI" />
-              </picture>
+              <LogoFooter />
             </CardFooter>
           </div>
         </div>
