@@ -1,5 +1,12 @@
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
 import { cn } from '@/utils/lib/tailwind-merge';
@@ -17,17 +24,28 @@ export const LoginForm = () => {
       >
         {statusMessage.error && (
           <FormMessage className="text-center font-semibold">
-            <span>Prezado usuário, seu e-mail não está autorizado para acesso.</span>
-            <span>Solicite seu cadastro no sistema na aba acima “Cadastro”.</span>
+            <span>
+              Prezado usuário, seu e-mail não está autorizado para acesso.
+            </span>
+            <span>
+              Solicite seu cadastro no sistema na aba acima “Cadastro”.
+            </span>
           </FormMessage>
         )}
         {statusMessage.warning && (
           <FormMessage className="text-baixada-warning-600 text-center font-semibold">
-            <span> Prezado usuário, seu e-mail já foi cadastrado e está em processo de aprovação.</span>
-            <span> Por favor, aguarde a confirmação por e-mail para acessar o sistema.</span>
+            <span>
+              {' '}
+              Prezado usuário, seu e-mail já foi cadastrado e está em processo
+              de aprovação.
+            </span>
+            <span>
+              {' '}
+              Por favor, aguarde a confirmação por e-mail para acessar o
+              sistema.
+            </span>
           </FormMessage>
         )}
-
         <FormField
           control={formLogin.control}
           name="email"
@@ -41,8 +59,22 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
+        <div className="flex flex-col gap-2">
+          <Button disabled={isPending} variant={'outline'}>
+            Outline
+          </Button>
+          <Button disabled={isPending} variant={'secondary'}>
+            Secondary
+          </Button>
+          <Button disabled={isPending} variant={'ghost'}>
+            GHOTST
+          </Button>
+        </div>
 
-        <Button className={cn('mt-4', isSmallScreen && 'mt-2')} disabled={isPending}>
+        <Button
+          className={cn('mt-4', isSmallScreen && 'mt-2')}
+          disabled={isPending}
+        >
           Continuar login
         </Button>
       </form>

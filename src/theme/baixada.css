@@ -1,7 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
-
-
 
 @theme {
   /* --- PALETA LIGHT ---*/
@@ -12,8 +9,7 @@
   --color-baixada-slate: #eeeeee;
   --color-baixada-slate-50: #f7f8f9; /*Cor inventada, pois não existe no design system*/
 
-  --color-baixada-white-blue: #e3f3ff /*Cor inventada, pois não existe no design system*/;
-  
+  --color-baixada-white-blue: #e3f3ff; /*Cor inventada, pois não existe no design system*/
 
   --color-baixada-blue-50: #43b0fe;
   --color-baixada-blue-100: #22a2fe;
@@ -41,7 +37,7 @@
   --color-baixada-dark-blue-950: #000a1f;
 
   /* Azul claro */
-  --color-baixada-light-blue:#EFF8FF;  /*Cor inventada, pois não existe no design system*/
+  --color-baixada-light-blue: #eff8ff; /*Cor inventada, pois não existe no design system*/
   --color-baixada-light-blue-50: #bfd3ea;
   --color-baixada-light-blue-100: #9ebbdd;
   --color-baixada-light-blue-200: #7ea3cf;
@@ -76,7 +72,6 @@
   --color-baixada-gray-blue-300: #d0d5dd;
   --color-baixada-gray-blue-400: #f2f3ff; /*Cor inventada, pois não existe no design system*/
   --color-baixada-gray-blue-700: #344054;
-
 
   --color-baixada-gray-red-50: #dadada; /*Cor inventada, pois não existe no design system*/
 
@@ -135,22 +130,9 @@
   --color-ring: var(--color-baixada-blue-200);
 
   /* Gradients */
-  --gradient-blue-to-dark-blue: linear-gradient(to bottom, rgba(0, 39, 135, 1), rgba(0, 10, 33, 1));
-}
-
-
-@ theme inline {
-  --color-ring: var(--ring);
-}
-
-:root {
-  box-sizing: border-box;
-
-  --ring: var(--color-baixada-blue-200);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+  --gradient-blue-to-dark-blue: linear-gradient(
+    to bottom,
+    rgba(0, 39, 135, 1),
+    rgba(0, 10, 33, 1)
+  );
 }
