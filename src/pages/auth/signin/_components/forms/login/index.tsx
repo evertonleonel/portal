@@ -10,11 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Switch } from '@/components/ui/switch';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
 import { cn } from '@/utils/lib/tailwind-merge';
 
@@ -66,25 +62,10 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-        <div className="flex flex-col gap-2">
-          <Tooltip>
-            <TooltipTrigger>Hover</TooltipTrigger>
-            <TooltipContent>
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
-          <Button disabled={isPending} variant={'outline'}>
-            Outline
-          </Button>
-          <Button disabled={isPending} variant={'secondary'}>
-            Secondary
-          </Button>
-          <Button disabled={isPending} variant={'ghost'}>
-            GHOTST
-          </Button>
-        </div>
+
         <Skeleton className="size-10" />
         <Separator className="h-2" />
+        <Switch />
 
         <Button
           className={cn('mt-4', isSmallScreen && 'mt-2')}

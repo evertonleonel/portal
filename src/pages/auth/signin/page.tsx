@@ -1,7 +1,10 @@
 // import { useState } from 'react';
 
 // import { useLocation, useNavigate } from 'react-router-dom';
-import { BackgroundImage, BackgroundWrapper } from '@/components/ui/background-image';
+import {
+  BackgroundImage,
+  BackgroundWrapper,
+} from '@/components/ui/background-image';
 // import { Button } from '@/components/ui/button';
 import { Card, CardFooter, CardHeader } from '@/components/ui/card';
 import { ShowContent } from '@/components/ui/show-content';
@@ -64,21 +67,35 @@ function SignInContent() {
   return (
     <main className="relative grid h-full min-h-screen place-content-center p-4">
       <BackgroundWrapper className="inset-0">
-        <BackgroundImage src="images/background.svg" alt="Imagem de login: trilhos de trem" className="object-cover" />
+        <BackgroundImage
+          src="images/background.svg"
+          alt="Imagem de login: trilhos de trem"
+          className="object-cover"
+        />
       </BackgroundWrapper>
       <ShowContent condition={!viewTabState.sucess}>
         <div className="flex-1">
-          <Card className={cn('lg:w-lg mx-auto w-full max-w-lg p-10', isSmallScreen && 'py-8')}>
+          <Card
+            className={cn(
+              'lg:w-lg mx-auto w-full max-w-lg p-10',
+              isSmallScreen && 'py-8'
+            )}
+          >
             <CardHeader className="flex items-center p-0">
               <picture className="max-w-[242px]">
-                <img src="/images/logos/logo-portal-baixada.svg" alt="Logo Portal" />
+                <img
+                  src="/images/logos/logo-portal-baixada.svg"
+                  alt="Logo Portal"
+                />
               </picture>
             </CardHeader>
 
             <Tabs defaultValue="login" className="mx-auto w-full">
               <TabsContent value="login">
                 <div className="mb-6 mt-8">
-                  <p className="text-center font-normal text-black">Bem vindo(a)!</p>
+                  <p className="text-center font-normal text-black">
+                    Bem vindo(a)!
+                  </p>
                   <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
                     Faça login ou solicite seu cadastro
                   </p>
@@ -86,9 +103,12 @@ function SignInContent() {
               </TabsContent>
               <TabsContent value="cadastro">
                 <div className="mb-6 mt-8">
-                  <p className="text-center font-normal text-black">Solicite seu cadastro</p>
+                  <p className="text-center font-normal text-black">
+                    Solicite seu cadastro
+                  </p>
                   <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
-                    Preencha as informações abaixo para solicitar seu cadastro no Portal
+                    Preencha as informações abaixo para solicitar seu cadastro
+                    no Portal
                   </p>
                 </div>
               </TabsContent>
@@ -96,10 +116,10 @@ function SignInContent() {
                 {/* <TabsTrigger value="account" className="w-full">
                 Account
               </TabsTrigger> */}
-                <TabsTrigger value="login" className="w-full">
+                <TabsTrigger value="login" className="h-10 w-full">
                   Login
                 </TabsTrigger>
-                <TabsTrigger value="cadastro" className="w-full">
+                <TabsTrigger value="cadastro" className="h-10 w-full">
                   Cadastro
                 </TabsTrigger>
               </TabsList>
@@ -187,7 +207,12 @@ function SignInContent() {
               </TabsContent>
             </Tabs>
 
-            <CardFooter className={cn('mt-12 flex items-center justify-center gap-6', isSmallScreen && 'mt-4')}>
+            <CardFooter
+              className={cn(
+                'mt-12 flex items-center justify-center gap-6',
+                isSmallScreen && 'mt-4'
+              )}
+            >
               <picture>
                 <img src="/images/logos/logo-mrs.svg" alt="Logo MRS" />
               </picture>

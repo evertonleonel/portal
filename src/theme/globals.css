@@ -44,8 +44,9 @@
   --color-secondary-hover: var(--secondary-hover); /*-baixada-*/
   --color-destructive-hover: var(--destructive-hover); /*-baixada-*/
   --color-separator: var(--separator); /*-baixada-*/
-  --color-tooltip: var(--tooltip);
-  --color-tabs: var(--tabs);
+  --color-tooltip: var(--tooltip); /*-baixada-*/
+  --color-tabs: var(--tabs); /*-baixada-*/
+  --color-switch: var(--switch); /*-baixada-*/
 }
 
 :root {
@@ -87,12 +88,13 @@
   --font-mono: Roboto Mono, monospace;
   --tracking-normal: 0em;
 
-  --primary-hover: var(--color-baixada-dark-blue-700);
-  --secondary-hover: var(--color-baixada-neutral-blue-300);
-  --destructive-hover: var(--color-baixada-error-700);
-  --separator: var(--color-baixada-gray-blue-200);
-  --tooltip: var(--color-baixada-gray-500);
-  --tabs: var(--color-baixada-gray-blue-400);
+  --primary-hover: var(--color-baixada-dark-blue-700); /*-baixada-*/
+  --secondary-hover: var(--color-baixada-neutral-blue-300); /*-baixada-*/
+  --destructive-hover: var(--color-baixada-error-700); /*-baixada-*/
+  --separator: var(--color-baixada-gray-blue-200); /*-baixada-*/
+  --tooltip: var(--color-baixada-gray-500); /*-baixada-*/
+  --tabs: var(--color-baixada-gray-blue-400); /*-baixada-*/
+  --switch: var(--color-baixada-switch); /*-baixada-*/
 }
 
 .dark {
