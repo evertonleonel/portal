@@ -6,7 +6,12 @@ import {
   BackgroundWrapper,
 } from '@/components/ui/background-image';
 // import { Button } from '@/components/ui/button';
-import { Card, CardFooter, CardHeader } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from '@/components/ui/card';
 import { ShowContent } from '@/components/ui/show-content';
 // import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -75,55 +80,50 @@ function SignInContent() {
       </BackgroundWrapper>
       <ShowContent condition={!viewTabState.sucess}>
         <div className="flex-1">
-          <Card
-            className={cn(
-              'lg:w-lg mx-auto w-full max-w-lg p-10',
-              isSmallScreen && 'py-8'
-            )}
-          >
-            <CardHeader className="flex items-center p-0">
-              <picture className="max-w-[242px]">
+          <Card className={cn('lg:w-[572px]', isSmallScreen && 'py-8')}>
+            <CardHeader className="flex items-center justify-center px-8 lg:px-10">
+              <picture className="max-w-sm[242px]">
                 <img
                   src="/images/logos/logo-portal-baixada.svg"
                   alt="Logo Portal"
                 />
               </picture>
             </CardHeader>
-
-            <Tabs defaultValue="login" className="mx-auto w-full">
-              <TabsContent value="login">
-                <div className="mb-6 mt-8">
-                  <p className="text-center font-normal text-black">
-                    Bem vindo(a)!
-                  </p>
-                  <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
-                    Faça login ou solicite seu cadastro
-                  </p>
-                </div>
-              </TabsContent>
-              <TabsContent value="cadastro">
-                <div className="mb-6 mt-8">
-                  <p className="text-center font-normal text-black">
-                    Solicite seu cadastro
-                  </p>
-                  <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
-                    Preencha as informações abaixo para solicitar seu cadastro
-                    no Portal
-                  </p>
-                </div>
-              </TabsContent>
-              <TabsList className="mx-auto flex w-full max-w-[351px]">
-                {/* <TabsTrigger value="account" className="w-full">
+            <CardContent className="px-8 lg:px-10">
+              <Tabs defaultValue="login" className="mx-auto">
+                <TabsContent value="login">
+                  <div className="mb-6 mt-8">
+                    <p className="text-center font-normal text-black">
+                      Bem vindo(a)!
+                    </p>
+                    <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                      Faça login ou solicite seu cadastro
+                    </p>
+                  </div>
+                </TabsContent>
+                <TabsContent value="cadastro">
+                  <div className="mb-6 mt-8">
+                    <p className="text-center font-normal text-black">
+                      Solicite seu cadastro
+                    </p>
+                    <p className="text-baixada-neutral-600 mt-2 text-center text-sm font-normal">
+                      Preencha as informações abaixo para solicitar seu cadastro
+                      no Portal
+                    </p>
+                  </div>
+                </TabsContent>
+                <TabsList className="max-w-sm[351px] mx-auto flex w-full">
+                  {/* <TabsTrigger value="account" className="w-full">
                 Account
               </TabsTrigger> */}
-                <TabsTrigger value="login" className="h-10 w-full">
-                  Login
-                </TabsTrigger>
-                <TabsTrigger value="cadastro" className="h-10 w-full">
-                  Cadastro
-                </TabsTrigger>
-              </TabsList>
-              {/* <TabsContent value="account">
+                  <TabsTrigger value="login" className="h-10 w-full">
+                    Login
+                  </TabsTrigger>
+                  <TabsTrigger value="cadastro" className="h-10 w-full">
+                    Cadastro
+                  </TabsTrigger>
+                </TabsList>
+                {/* <TabsContent value="account">
               <CardContent className="p-0">
                 <div className="rounded-lg border bg-gray-50 p-4">
                   <h3 className="mb-2 text-sm font-semibold text-gray-900">Usuários de Teste:</h3>
@@ -153,7 +153,7 @@ function SignInContent() {
                 </div>
 
                 {/* Formulário */}
-              {/* <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                {/* <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   <div className="space-y-4 rounded-md shadow-sm">
                     <div>
                       <label htmlFor="email" className="sr-only">
@@ -199,17 +199,18 @@ function SignInContent() {
                 </form>
               </CardContent>
             </TabsContent> */}
-              <TabsContent value="login">
-                <LoginForm />
-              </TabsContent>
-              <TabsContent value="cadastro">
-                <RegisterForm />
-              </TabsContent>
-            </Tabs>
+                <TabsContent value="login">
+                  <LoginForm />
+                </TabsContent>
+                <TabsContent value="cadastro">
+                  <RegisterForm />
+                </TabsContent>
+              </Tabs>
+            </CardContent>
 
             <CardFooter
               className={cn(
-                'mt-12 flex items-center justify-center gap-6',
+                'mt-12 flex items-center justify-center gap-6 px-8 lg:px-10',
                 isSmallScreen && 'mt-4'
               )}
             >

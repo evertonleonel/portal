@@ -8,9 +8,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Switch } from '@/components/ui/switch';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
 import { cn } from '@/utils/lib/tailwind-merge';
 
@@ -22,11 +19,11 @@ export const LoginForm = () => {
   return (
     <Form {...formLogin}>
       <form
-        className={cn('mt-[46px] grid gap-4', isSmallScreen && 'mt-4')}
+        className={cn('mt-[46px] grid w-full gap-4', isSmallScreen && 'mt-4')}
         onSubmit={(...args) => void formLogin.handleSubmit(onSubmit)(...args)}
       >
         {statusMessage.error && (
-          <FormMessage className="text-center font-semibold">
+          <FormMessage className="grid text-center">
             <span>
               Prezado usuário, seu e-mail não está autorizado para acesso.
             </span>
@@ -36,14 +33,12 @@ export const LoginForm = () => {
           </FormMessage>
         )}
         {statusMessage.warning && (
-          <FormMessage className="text-baixada-warning-600 text-center font-semibold">
+          <FormMessage className="text-warning grid text-center">
             <span>
-              {' '}
               Prezado usuário, seu e-mail já foi cadastrado e está em processo
               de aprovação.
             </span>
             <span>
-              {' '}
               Por favor, aguarde a confirmação por e-mail para acessar o
               sistema.
             </span>
@@ -62,10 +57,6 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-
-        <Skeleton className="size-10" />
-        <Separator className="h-2" />
-        <Switch />
 
         <Button
           className={cn('mt-4', isSmallScreen && 'mt-2')}

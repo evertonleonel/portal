@@ -6,7 +6,7 @@
 [x] COLLAPSABLE
 [ ] DIALOG
 [x] DROPDOWN-MENU
-[ ] FORM
+[x] FORM
 [x] INPUT
 [x] LABEL
 [x] SELECT
@@ -14,6 +14,6 @@
 [ ] SHEET
 [ ] SIDEBAR
 [x] SKELETON
-[ ] SWITCH
+[x] SWITCH
 [x] TABS
 [x] TOOLTIP

@@ -1,7 +1,20 @@
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 import { useFormRegister } from './hook/use-form-register';
 
@@ -9,7 +22,12 @@ export const RegisterForm = () => {
   const { isPending, formRegister, onSubmit } = useFormRegister();
   return (
     <Form {...formRegister}>
-      <form className="mt-[21px] grid gap-4" onSubmit={(...args) => void formRegister.handleSubmit(onSubmit)(...args)}>
+      <form
+        className="mt-[21px] grid w-full gap-4"
+        onSubmit={(...args) =>
+          void formRegister.handleSubmit(onSubmit)(...args)
+        }
+      >
         <p className="text-baixada-dark-blue-950 text-[10px]">
           <span className="text-baixada-error-500">*</span> Campos obrigatórios
         </p>
@@ -35,7 +53,8 @@ export const RegisterForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="flex gap-0">
-                E-mail corporativo <span className="text-baixada-error-500">*</span>
+                E-mail corporativo{' '}
+                <span className="text-baixada-error-500">*</span>
               </FormLabel>
               <FormControl>
                 <Input placeholder="Digite seu e-mail corporativo" {...field} />
@@ -53,7 +72,10 @@ export const RegisterForm = () => {
                 <FormLabel className="flex gap-0">
                   Empresa <span className="text-baixada-error-500">*</span>
                 </FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <FormControl>
                     <SelectTrigger className="w-full md:max-w-[176px]">
                       <SelectValue placeholder="Selecione" />
@@ -79,7 +101,11 @@ export const RegisterForm = () => {
                   Cargo <span className="text-baixada-error-500">*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="Digite seu e-mail corporativo" {...field} className="w-full" />
+                  <Input
+                    placeholder="Digite seu e-mail corporativo"
+                    {...field}
+                    className="w-full"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

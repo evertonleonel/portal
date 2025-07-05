@@ -43,6 +43,8 @@
   --color-primary-hover: var(--primary-hover); /*-baixada-*/
   --color-secondary-hover: var(--secondary-hover); /*-baixada-*/
   --color-destructive-hover: var(--destructive-hover); /*-baixada-*/
+  --color-warning: var(--warning);
+  --color-warning-hover: var(--warning-hover); /*-baixada-*/
   --color-separator: var(--separator); /*-baixada-*/
   --color-tooltip: var(--tooltip); /*-baixada-*/
   --color-tabs: var(--tabs); /*-baixada-*/
@@ -91,6 +93,8 @@
   --primary-hover: var(--color-baixada-dark-blue-700); /*-baixada-*/
   --secondary-hover: var(--color-baixada-neutral-blue-300); /*-baixada-*/
   --destructive-hover: var(--color-baixada-error-700); /*-baixada-*/
+  --warning: var(--color-baixada-warning-600); /*-baixada-*/
+  --warning-hover: var(--color-baixada-warning-700); /*-baixada-*/
   --separator: var(--color-baixada-gray-blue-200); /*-baixada-*/
   --tooltip: var(--color-baixada-gray-500); /*-baixada-*/
   --tabs: var(--color-baixada-gray-blue-400); /*-baixada-*/
