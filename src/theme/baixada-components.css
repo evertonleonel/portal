@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @layer components {
+  /* modal */
   .modal-header-baixada {
     padding-top: 15px !important;
     padding-bottom: 13px !important;
@@ -43,5 +44,16 @@
     .modal-content-baixada {
       max-width: 96% !important;
     }
+  }
+}
+
+@layer components {
+  /* Skeleton */
+  .bg-skeleton {
+    background-image: linear-gradient(
+      to right,
+      #ffffff,
+      var(--color-baixada-gray-blue-200)
+    );
   }
 }

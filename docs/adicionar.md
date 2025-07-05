@@ -1,2 +1,18 @@
-[] FONTS
-[] Altererar rings
+[X] FONTS
+[X] Altererar rings
+
+[x] BUTTON
+[ ] CARD
+[ ] DIALOG
+[ ] DROPDOWN-MENU
+[ ] FORM
+[X] INPUT
+[X] LABEL
+[X] SELECT
+[X] SEPARATOR
+[ ] SHEET
+[ ] SIDEBAR
+[X] SKELETON
+[ ] SWITCH
+[ ] TABS
+[x] TOOLTIP

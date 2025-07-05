@@ -1,15 +1,12 @@
 @import 'tailwindcss';
 
 @theme {
-  /* --- PALETA LIGHT ---*/
-
   /*Principal*/
-
   --color-baixada-white: #f7f8f9;
   --color-baixada-slate: #eeeeee;
-  --color-baixada-slate-50: #f7f8f9; /*Cor inventada, pois não existe no design system*/
+  --color-baixada-slate-50: #f7f8f9; /*Cor usada no protótipo, não listada no design system*/
 
-  --color-baixada-white-blue: #e3f3ff; /*Cor inventada, pois não existe no design system*/
+  --color-baixada-white-blue: #e3f3ff; /*Cor usada no protótipo, não listada no design system*/
 
   --color-baixada-blue-50: #43b0fe;
   --color-baixada-blue-100: #22a2fe;
@@ -37,7 +34,7 @@
   --color-baixada-dark-blue-950: #000a1f;
 
   /* Azul claro */
-  --color-baixada-light-blue: #eff8ff; /*Cor inventada, pois não existe no design system*/
+  --color-baixada-light-blue: #eff8ff; /*Cor usada no protótipo, não listada no design system*/
   --color-baixada-light-blue-50: #bfd3ea;
   --color-baixada-light-blue-100: #9ebbdd;
   --color-baixada-light-blue-200: #7ea3cf;
@@ -65,19 +62,22 @@
   --color-baixada-neutral-950: #121212;
 
   /* Cinza */
+  --color-baixada-gray-500: #333333; /*Cor usada no protótipo, não listada no design system*/
   --color-baixada-gray-900: #101828;
 
   /* Cinza azulado */
   --color-baixada-gray-blue-50: #d0d5dd;
+  --color-baixada-gray-blue-100: #f2f2f2; /*Cor usada no protótipo, não listada no design system*/
+  --color-baixada-gray-blue-200: #eaecf0; /*Cor usada no protótipo, não listada no design system*/
   --color-baixada-gray-blue-300: #d0d5dd;
-  --color-baixada-gray-blue-400: #f2f3ff; /*Cor inventada, pois não existe no design system*/
+  --color-baixada-gray-blue-400: #f2f3ff; /*Cor usada no protótipo, não listada no design system*/
   --color-baixada-gray-blue-700: #344054;
 
-  --color-baixada-gray-red-50: #dadada; /*Cor inventada, pois não existe no design system*/
+  --color-baixada-gray-red-50: #dadada; /*Cor usada no protótipo, não listada no design system*/
 
   /* Cinza azulado */
   --color-baixada-neutral-blue-50: #e9eaff;
-  --color-baixada-neutral-blue-300: #b1b6f0; /*Cor inventada, pois não existe no design system*/
+  --color-baixada-neutral-blue-300: #b1b6f0; /*Cor usada no protótipo, não listada no design system*/
 
   /* Feedback - Sucesso */
   --color-baixada-success-50: #79ffd3;
@@ -125,9 +125,6 @@
   --shadow-baixada-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
   --shadow-baixada-card: 0 82px 40px -14px rgba(100, 100, 100, 0.08);
   --shadow-popover: 4px 4px 12px 0 rgba(4, 29, 84, 0.3);
-
-  /* Ring */
-  --color-ring: var(--color-baixada-blue-200);
 
   /* Gradients */
   --gradient-blue-to-dark-blue: linear-gradient(

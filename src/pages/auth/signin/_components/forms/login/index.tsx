@@ -8,6 +8,13 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Separator } from '@/components/ui/separator';
+import { Skeleton } from '@/components/ui/skeleton';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
 import { cn } from '@/utils/lib/tailwind-merge';
 
@@ -51,7 +58,7 @@ export const LoginForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>E-mail</FormLabel>
+              <FormLabel>E-mail corporativo</FormLabel>
               <FormControl>
                 <Input placeholder="Digite seu e-mail corporativo" {...field} />
               </FormControl>
@@ -60,6 +67,12 @@ export const LoginForm = () => {
           )}
         />
         <div className="flex flex-col gap-2">
+          <Tooltip>
+            <TooltipTrigger>Hover</TooltipTrigger>
+            <TooltipContent>
+              <p>Add to library</p>
+            </TooltipContent>
+          </Tooltip>
           <Button disabled={isPending} variant={'outline'}>
             Outline
           </Button>
@@ -70,6 +83,8 @@ export const LoginForm = () => {
             GHOTST
           </Button>
         </div>
+        <Skeleton className="size-10" />
+        <Separator className="h-2" />
 
         <Button
           className={cn('mt-4', isSmallScreen && 'mt-2')}
