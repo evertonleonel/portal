@@ -45,6 +45,7 @@
   --color-destructive-hover: var(--destructive-hover); /*-baixada-*/
   --color-separator: var(--separator); /*-baixada-*/
   --color-tooltip: var(--tooltip);
+  --color-tabs: var(--tabs);
 }
 
 :root {
@@ -91,6 +92,7 @@
   --destructive-hover: var(--color-baixada-error-700);
   --separator: var(--color-baixada-gray-blue-200);
   --tooltip: var(--color-baixada-gray-500);
+  --tabs: var(--color-baixada-gray-blue-400);
 }
 
 .dark {

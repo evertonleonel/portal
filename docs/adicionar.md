@@ -2,17 +2,18 @@
 [X] Altererar rings
 
 [x] BUTTON
-[ ] CARD
+[x] CARD
+[x] COLLAPSABLE
 [ ] DIALOG
 [ ] DROPDOWN-MENU
 [ ] FORM
-[X] INPUT
-[X] LABEL
-[X] SELECT
-[X] SEPARATOR
+[x] INPUT
+[x] LABEL
+[x] SELECT
+[x] SEPARATOR
 [ ] SHEET
 [ ] SIDEBAR
-[X] SKELETON
+[x] SKELETON
 [ ] SWITCH
-[ ] TABS
+[x] TABS
 [x] TOOLTIP
