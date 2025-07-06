@@ -17,6 +17,7 @@ import { Separator } from '@/components/ui/separator';
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
@@ -140,7 +141,7 @@ export function AppSidebar() {
       <Separator className="mx-4 mb-4 opacity-10" />
 
       <SidebarTrigger className={cn('z-100', isMobile && 'hidden')} />
-      <SidebarContent className="bg-sidebar-baixada">
+      <SidebarContent className="bg-sidebar-baixada px-4">
         <SidebarGroup>
           <SidebarGroupContent>
             {state === 'collapsed' && (
@@ -162,7 +163,10 @@ export function AppSidebar() {
                               </TooltipTrigger>
                             </SidebarMenuButton>
                           </DropdownMenuTrigger>
-                          <TooltipContent side="right">
+                          <TooltipContent
+                            side="right"
+                            className={cn(isMobile && 'hidden')}
+                          >
                             <p>{item.title}</p>
                           </TooltipContent>
                         </Tooltip>
@@ -194,7 +198,10 @@ export function AppSidebar() {
                             </a>
                           </SidebarMenuButton>
                         </TooltipTrigger>
-                        <TooltipContent side="right">
+                        <TooltipContent
+                          side="right"
+                          className={cn(isMobile && 'hidden')}
+                        >
                           <p>{item.title}</p>
                         </TooltipContent>
                       </Tooltip>
@@ -267,6 +274,11 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter className="bg-sidebar-baixada-footer gap-4 px-4 pb-6">
+        <Separator className="opacity-10" />
+        aa
+      </SidebarFooter>
     </Sidebar>
   );
 }
