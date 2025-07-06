@@ -122,9 +122,20 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon" className="shadow-baixada-popover relative">
       <SidebarHeader
-        className={cn('px-4 py-6', state === 'collapsed' && 'pb-3')}
+        className={cn(
+          'flex-row gap-2 px-4 py-6',
+          state === 'collapsed' && 'pb-3'
+        )}
       >
         <BackgroundImage src={logoSrc} className="max-h-10" />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <SidebarTrigger className={cn('z-100', isMobile && 'block')} />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Fechar barra lateral</p>
+          </TooltipContent>
+        </Tooltip>
       </SidebarHeader>
       <Separator className="mx-4 mb-4 opacity-10" />
 

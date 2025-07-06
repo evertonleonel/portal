@@ -310,7 +310,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <Icon name="expandeHorizontalArrow" />
+      <Icon name="expandeHorizontalArrow" className="mx-auto" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
