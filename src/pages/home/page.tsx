@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 
-import { BackgroundImage, BackgroundWrapper } from '@/components/ui/background-image';
+import {
+  BackgroundImage,
+  BackgroundWrapper,
+} from '@/components/ui/background-image';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -35,12 +38,14 @@ export default function Home() {
         />
       </BackgroundWrapper>
 
-      <div className="bg-foreground grid items-center justify-center gap-4">
+      <Card className="bg-background grid items-center justify-center gap-4">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-gray-900">Home</h1>
           <p className="mt-8 text-gray-600">Bem-vindo, {user?.name}!</p>
           <p className="text-sm text-gray-500">{user?.email}</p>
-          <p className="mt-2 text-xs text-gray-400">Permissões: {user?.roles.join(', ')}</p>
+          <p className="mt-2 text-xs text-gray-400">
+            Permissões: {user?.roles.join(', ')}
+          </p>
         </div>
 
         <div className="mb-8 grid w-full max-w-md grid-cols-1 gap-4 md:grid-cols-2">
@@ -84,7 +89,6 @@ export default function Home() {
             <DropdownMenuItem>Billing</DropdownMenuItem>
             <DropdownMenuItem>Team</DropdownMenuItem>
             <DropdownMenuItem>Subscription</DropdownMenuItem>
-            <DropdownMenuCheckboxItem />
           </DropdownMenuContent>
         </DropdownMenu>
 
@@ -93,7 +97,7 @@ export default function Home() {
             Sair
           </Button>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

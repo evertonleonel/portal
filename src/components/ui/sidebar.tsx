@@ -1,6 +1,7 @@
+// shadcn/ui
+
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { PanelLeftIcon } from 'lucide-react';
 import * as React from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -20,14 +21,18 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useIsDesktop } from '@/hooks/use-desktop/inedx';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useIsTablet } from '@/hooks/use-tablet';
 import { cn } from '@/lib/utils';
+
+import { Icon } from './icon';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = '16rem';
 const SIDEBAR_WIDTH_MOBILE = '18rem';
-const SIDEBAR_WIDTH_ICON = '3rem';
+const SIDEBAR_WIDTH_ICON = '4.5rem';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 
 type SidebarContextProps = {
@@ -65,7 +70,11 @@ function SidebarProvider({
   onOpenChange?: (open: boolean) => void;
 }) {
   const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
+  const isDesktop = useIsDesktop();
   const [openMobile, setOpenMobile] = React.useState(false);
+  const [hasEnteredDesktop, setHasEnteredDesktop] = React.useState(false);
+  const [hasEnteredTablet, setHasEnteredTablet] = React.useState(false);
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
@@ -106,6 +115,26 @@ function SidebarProvider({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [toggleSidebar]);
+
+  // Force collapsed state only when first entering tablet mode (480px-768px)
+  React.useEffect(() => {
+    if (isTablet && !hasEnteredTablet) {
+      setOpen(false);
+      setHasEnteredTablet(true);
+    } else if (!isTablet) {
+      setHasEnteredTablet(false);
+    }
+  }, [isTablet, hasEnteredTablet, setOpen]);
+
+  // Force expanded state only when first entering desktop mode (1024px+)
+  React.useEffect(() => {
+    if (isDesktop && !hasEnteredDesktop) {
+      setOpen(true);
+      setHasEnteredDesktop(true);
+    } else if (!isDesktop) {
+      setHasEnteredDesktop(false);
+    }
+  }, [isDesktop, hasEnteredDesktop, setOpen]);
 
   // We add a state so that we can do data-state="expanded" or "collapsed".
   // This makes it easier to style the sidebar with Tailwind classes.
@@ -161,9 +190,14 @@ function Sidebar({
   variant?: 'sidebar' | 'floating' | 'inset';
   collapsible?: 'offcanvas' | 'icon' | 'none';
 }) {
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
+  const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
+  const { state, openMobile, setOpenMobile } = useSidebar();
 
-  if (collapsible === 'none') {
+  // Force icon mode in tablet mode (480px-768px) but allow expansion
+  const effectiveCollapsible = isTablet ? 'icon' : collapsible;
+
+  if (effectiveCollapsible === 'none') {
     return (
       <div
         data-slot="sidebar"
@@ -178,6 +212,7 @@ function Sidebar({
     );
   }
 
+  // Use Sheet only for true mobile (480px and below)
   if (isMobile) {
     return (
       <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
@@ -203,11 +238,12 @@ function Sidebar({
     );
   }
 
+  // For tablet and desktop (481px+), use normal sidebar
   return (
     <div
-      className="text-sidebar-foreground group peer hidden md:block"
+      className="text-sidebar-foreground group peer hidden min-[481px]:block"
       data-state={state}
-      data-collapsible={state === 'collapsed' ? collapsible : ''}
+      data-collapsible={state === 'collapsed' ? effectiveCollapsible : ''}
       data-variant={variant}
       data-side={side}
       data-slot="sidebar"
@@ -227,7 +263,7 @@ function Sidebar({
       <div
         data-slot="sidebar-container"
         className={cn(
-          'w-(--sidebar-width) fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width] duration-200 ease-linear md:flex',
+          'w-(--sidebar-width) fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width] duration-200 ease-linear min-[481px]:flex',
           side === 'left'
             ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
             : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
@@ -262,16 +298,19 @@ function SidebarTrigger({
     <Button
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
-      variant="ghost"
+      variant="outline"
       size="icon"
-      className={cn('size-7', className)}
+      className={cn(
+        `top-18 right-[-14px] size-7 cursor-pointer bg-white group-data-[collapsible=icon]:top-14 min-[480px]:absolute`,
+        className
+      )}
       onClick={event => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
-      <PanelLeftIcon />
+      <Icon name="expandeHorizontalArrow" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
@@ -289,7 +328,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<'button'>) {
       onClick={toggleSidebar}
       title="Toggle Sidebar"
       className={cn(
-        'hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex',
+        'hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear min-[481px]:flex',
         'in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize',
         '[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize',
         'hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full',
@@ -308,7 +347,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<'main'>) {
       data-slot="sidebar-inset"
       className={cn(
         'bg-background relative flex w-full flex-1 flex-col',
-        'md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm',
+        'min-[481px]:peer-data-[variant=inset]:m-2 min-[481px]:peer-data-[variant=inset]:ml-0 min-[481px]:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 min-[481px]:peer-data-[variant=inset]:rounded-xl min-[481px]:peer-data-[variant=inset]:shadow-sm',
         className
       )}
       {...props}
@@ -465,7 +504,10 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<'li'>) {
     <li
       data-slot="sidebar-menu-item"
       data-sidebar="menu-item"
-      className={cn('group/menu-item relative', className)}
+      className={cn(
+        'group/menu-item relative group-data-[state=collapsed]:self-center',
+        className
+      )}
       {...props}
     />
   );

@@ -1,4 +1,6 @@
+import { BackgroundImage } from '@/components/ui/background-image';
 import { Icon, type IconsName } from '@/components/ui/icon';
+import { Separator } from '@/components/ui/separator';
 import {
   Sidebar,
   SidebarContent,
@@ -10,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
+  useSidebar,
 } from '@/components/ui/sidebar';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/utils/lib/tailwind-merge';
@@ -45,20 +48,31 @@ const items = [
 
 export function AppSidebar() {
   const isMobile = useIsMobile();
+  const { state } = useSidebar();
+
+  // Determina qual logo usar baseado no estado da sidebar
+  const logoSrc =
+    state === 'collapsed' && !isMobile
+      ? 'images/logos/logo-portal-baixada-sigla-branco.svg'
+      : 'images/logos/logo-portal-baixada-branca.svg';
+
   return (
-    <Sidebar collapsible="icon" className="relative">
-      <SidebarHeader>
-        <p>test</p>
+    <Sidebar collapsible="icon" className="shadow-baixada-popover relative">
+      <SidebarHeader
+        className={cn('px-4 py-6', state === 'collapsed' && 'pb-3')}
+      >
+        <BackgroundImage src={logoSrc} className="max-h-10" />
       </SidebarHeader>
+      <Separator className="mx-4 mb-4 opacity-10" />
+
       <SidebarTrigger className={cn('z-100', isMobile && 'hidden')} />
-      <SidebarContent>
+      <SidebarContent className="bg-sidebar-baixada">
         <SidebarGroup>
-          {/* <SidebarGroupLabel>Application</SidebarGroupLabel> */}
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map(item => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="h-10">
                     <a href={item.url}>
                       <Icon name={item.icon as IconsName} className="size-5" />
                       <span>{item.title}</span>

@@ -13,7 +13,9 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           <Header>
             <SidebarTrigger className={`top-14 min-[480px]:hidden`} />
           </Header>
-          <main className="relative flex-1 px-2 sm:p-4 md:p-6 lg:px-10 lg:py-8">{children}</main>
+          <main className="relative flex-1 px-2 sm:p-4 md:p-6 lg:px-10 lg:py-8">
+            {children}
+          </main>
           <Footer />
         </div>
       </SidebarProvider>
