@@ -12,8 +12,8 @@ export const RegisterUserModal = () => {
   return (
     <Dialog open={true}>
       <DialogTrigger>Open</DialogTrigger>
-      <DialogContent className="modal-content-baixada">
-        <DialogHeader className="modal-header-baixada">
+      <DialogContent className="modal-content-baixada border-none">
+        <DialogHeader className="modal-header-baixada text-left">
           <DialogTitle className="text-white">Title?</DialogTitle>
         </DialogHeader>
         <DialogDescription className="px-modal-baixada">aaa</DialogDescription>
