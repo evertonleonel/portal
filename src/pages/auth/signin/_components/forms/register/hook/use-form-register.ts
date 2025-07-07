@@ -3,6 +3,7 @@ import { useEffect, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useSigninContext } from '@/pages/auth/signin/context';
+import { userRequestRegister } from '@/services/auth/signin/register';
 import { getAllEmpresa, type GetEmpresaResponse } from '@/services/empresa';
 
 import { defaultValues, type RegisterInputs, registerSchema } from '../schema';
@@ -10,7 +11,8 @@ import { defaultValues, type RegisterInputs, registerSchema } from '../schema';
 export const useFormRegister = () => {
   const [isPending] = useTransition();
   const { handleUpdateViewForm } = useSigninContext();
-  const [empresa, setEmpresa] = useState<GetEmpresaResponse[]>([]);
+  const [empresas, setEmpresas] = useState<GetEmpresaResponse[]>([]);
+  const [isLoadingEmpresas, setIsLoadingEmpresas] = useState(true);
 
   const formRegister = useForm<RegisterInputs>({
     resolver: zodResolver(registerSchema),
@@ -18,28 +20,35 @@ export const useFormRegister = () => {
   });
 
   useEffect(() => {
-    async function fetchEmpresa() {
+    async function fetchEmpresas() {
       try {
+        setIsLoadingEmpresas(true);
         const data = await getAllEmpresa();
-        setEmpresa(data);
+        setEmpresas(data);
       } catch (error) {
         console.error('Erro ao buscar empresa:', error);
+      } finally {
+        setIsLoadingEmpresas(false);
       }
     }
 
-    fetchEmpresa();
+    fetchEmpresas();
   }, []);
 
-  console.log(empresa, 'empresa');
-
-  const onSubmit = (inputs: RegisterInputs) => {
-    console.log(inputs, 'input');
-    handleUpdateViewForm({ sucess: true });
+  const onSubmit = async (inputs: RegisterInputs) => {
+    try {
+      await userRequestRegister(inputs);
+      handleUpdateViewForm({ sucess: true });
+    } catch (error) {
+      console.error('Erro ao registrar usuário:', error);
+    }
   };
 
   return {
     isPending,
     formRegister,
     onSubmit,
+    empresas,
+    isLoadingEmpresas,
   };
 };
