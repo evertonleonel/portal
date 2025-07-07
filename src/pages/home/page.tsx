@@ -17,8 +17,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import ExampleDialog from '@/components/ux/exemple-dialog';
-import { RegisterUserModal } from '@/components/ux/modals/register-user-modal';
 import { useAuth } from '@/context/auth-context';
 
 export default function Home() {
@@ -93,9 +91,6 @@ export default function Home() {
             <DropdownMenuItem>Subscription</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
-        <ExampleDialog />
-        <RegisterUserModal />
 
         <div className="mx-auto mt-8">
           <Button variant={'destructive'} onClick={handleLogout}>
