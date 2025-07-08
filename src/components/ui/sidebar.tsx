@@ -301,7 +301,7 @@ function SidebarTrigger({
       variant="outline"
       size="icon"
       className={cn(
-        `top-18 right-[-14px] size-7 cursor-pointer bg-white group-data-[collapsible=icon]:top-14 min-[480px]:absolute`,
+        `top-18 bg-background right-[-14px] size-7 cursor-pointer group-data-[collapsible=icon]:top-14 min-[480px]:absolute`,
         className
       )}
       onClick={event => {

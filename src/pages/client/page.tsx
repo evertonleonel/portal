@@ -11,9 +11,11 @@ export default function ClientPage() {
   return (
     <>
       <div className="mx-auto max-w-4xl">
-        <div className="rounded-lg bg-white p-6 shadow">
+        <div className="bg-background rounded-lg p-6 shadow">
           <div className="mb-6 border-b border-gray-200 pb-4">
-            <h1 className="text-3xl font-bold text-gray-900">Área do Cliente</h1>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Área do Cliente
+            </h1>
             <p className="mt-2 text-gray-600">Portal exclusivo para clientes</p>
           </div>
 
@@ -26,7 +28,9 @@ export default function ClientPage() {
             </div>
 
             <div className="rounded-lg bg-orange-50 p-4">
-              <h3 className="mb-2 font-semibold text-orange-900">Serviços Disponíveis</h3>
+              <h3 className="mb-2 font-semibold text-orange-900">
+                Serviços Disponíveis
+              </h3>
               <ul className="space-y-1 text-orange-800">
                 <li>• Consultar pedidos</li>
                 <li>• Suporte técnico</li>

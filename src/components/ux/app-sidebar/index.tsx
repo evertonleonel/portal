@@ -40,7 +40,27 @@ import { cn } from '@/utils/lib/tailwind-merge';
 // Menu items.
 const items = [
   {
-    title: 'Home',
+    title: 'Página inicial',
+    url: '/home',
+    icon: 'home',
+  },
+  {
+    title: 'Solicitacão Cadastro',
+    url: '/solicitacao-cadastro',
+    icon: 'profileTwoUsers',
+  },
+  {
+    title: 'Admin',
+    url: '/admin',
+    icon: 'profileTwoUsers',
+  },
+  {
+    title: 'Client',
+    url: '/client',
+    icon: 'profileTwoUsers',
+  },
+  {
+    title: 'Programacao',
     url: '#',
     icon: 'microsoft',
     subMenus: [
@@ -89,16 +109,6 @@ const items = [
         url: '/descarga',
       },
     ],
-  },
-  {
-    title: 'Search',
-    url: '#',
-    icon: 'microsoft',
-  },
-  {
-    title: 'Settings',
-    url: '#',
-    icon: 'microsoft',
   },
 ];
 
@@ -224,7 +234,7 @@ export function AppSidebar() {
                       >
                         <CollapsibleTrigger
                           asChild
-                          className="group-data-[state=open]/collapsible:text-sidebar-accent-foreground group-data-[state=open]/collapsible:bg-white"
+                          className="group-data-[state=open]/collapsible:text-sidebar-accent-foreground group-data-[state=open]/collapsible:bg-background"
                         >
                           <SidebarMenuButton asChild className="h-10">
                             <a href={item.url}>

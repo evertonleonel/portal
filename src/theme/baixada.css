@@ -2,7 +2,8 @@
 
 @theme {
   /*Principal*/
-  --color-baixada-white: #f7f8f9;
+  --color-baixada-white: #ffffff;
+  --color-baixada-white-50: #f7f8f9;
   --color-baixada-slate: #eeeeee;
   --color-baixada-slate-50: #f7f8f9; /*Cor usada no protótipo, não listada no design system*/
 

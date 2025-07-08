@@ -6,14 +6,17 @@ import { ChevronRightArrowIcon } from '@/assets/icons/arrow/chevron-right-arrrow
 import { ChevronUpArrowIcon } from '@/assets/icons/arrow/chevron-up-arrow';
 import { ExpandeHorizontalArrowIcon } from '@/assets/icons/arrow/expande-horizontal-arrow';
 import { MoveArrowIcon } from '@/assets/icons/arrow/move-arrow';
+import { HomeIcon } from '@/assets/icons/design/home';
 import { MicrosoftIcon } from '@/assets/icons/design/microsoft.';
 import { NotificationDefaultIcon } from '@/assets/icons/design/nofitication-default';
 import { NotificationErrorIcon } from '@/assets/icons/design/notification-error';
 import { NotificationSucessIcon } from '@/assets/icons/design/notification-sucess';
 import { xIcon } from '@/assets/icons/design/x';
 import { CheckIcon } from '@/assets/icons/essentional/check';
+import { DocumentCopyIcon } from '@/assets/icons/files/document-copy';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
 import { BellIcon } from '@/assets/icons/tools/bell';
+import { ProfileTwoUsersIcon } from '@/assets/icons/user/profile-two-users';
 
 const icons = {
   bell: BellIcon,
@@ -22,6 +25,8 @@ const icons = {
   chevronUpArrow: ChevronUpArrowIcon,
   chevronDownArrow: ChevronDownArrowIcon,
   chevronRightArrow: ChevronRightArrowIcon,
+  documentCopy: DocumentCopyIcon,
+  home: HomeIcon,
   notificationError: NotificationErrorIcon,
   notificationSucces: NotificationSucessIcon,
   notificationDefault: NotificationDefaultIcon,
@@ -29,6 +34,7 @@ const icons = {
   inputSearch: InputSearchIcon,
   microsoft: MicrosoftIcon,
   moveArrow: MoveArrowIcon,
+  profileTwoUsers: ProfileTwoUsersIcon,
   x: xIcon,
 };
 

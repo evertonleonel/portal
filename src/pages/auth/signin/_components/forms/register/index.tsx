@@ -29,8 +29,8 @@ export const RegisterForm = () => {
           void formRegister.handleSubmit(onSubmit)(...args)
         }
       >
-        <p className="text-baixada-dark-blue-950 text-[10px]">
-          <span className="text-baixada-error-500">*</span> Campos obrigatórios
+        <p className="text-primary-hover text-[10px]">
+          <span className="text-destructive">*</span> Campos obrigatórios
         </p>
 
         <FormField
@@ -39,7 +39,7 @@ export const RegisterForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="flex gap-0">
-                Nome <span className="text-baixada-error-500">*</span>
+                Nome <span className="text-destructive">*</span>
               </FormLabel>
               <FormControl>
                 <Input placeholder="Seu nome aqui" {...field} />
@@ -54,8 +54,7 @@ export const RegisterForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="flex gap-0">
-                E-mail corporativo{' '}
-                <span className="text-baixada-error-500">*</span>
+                E-mail corporativo <span className="text-destructive">*</span>
               </FormLabel>
               <FormControl>
                 <Input placeholder="Digite seu e-mail corporativo" {...field} />
@@ -71,7 +70,7 @@ export const RegisterForm = () => {
             render={({ field }) => (
               <FormItem className="w-full self-start">
                 <FormLabel className="flex gap-0">
-                  Empresa <span className="text-baixada-error-500">*</span>
+                  Empresa <span className="text-destructive">*</span>
                 </FormLabel>
                 <Select
                   onValueChange={value => {
@@ -96,11 +95,11 @@ export const RegisterForm = () => {
                   </FormControl>
                   <SelectContent>
                     {isLoadingEmpresas ? (
-                      <SelectItem value="" disabled>
+                      <SelectItem value="empty" disabled>
                         Carregando...
                       </SelectItem>
                     ) : empresas.length === 0 ? (
-                      <SelectItem value="" disabled>
+                      <SelectItem value="empty" disabled>
                         Nenhuma empresa encontrada
                       </SelectItem>
                     ) : (
@@ -125,7 +124,7 @@ export const RegisterForm = () => {
             render={({ field }) => (
               <FormItem className="self-start">
                 <FormLabel className="flex gap-0">
-                  Cargo <span className="text-baixada-error-500">*</span>
+                  Cargo <span className="text-destructive">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input

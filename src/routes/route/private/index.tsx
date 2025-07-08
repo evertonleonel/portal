@@ -5,6 +5,9 @@ import type { RouteConfig } from '..';
 const HomePage = lazy(() => import('@/pages/home/page'));
 const AdminPage = lazy(() => import('@/pages/admin/page'));
 const ClientPage = lazy(() => import('@/pages/client/page'));
+const UserApprovalRequests = lazy(
+  () => import('@/pages/user-approval-requests/page')
+);
 
 export const PrivateRoutes: RouteConfig[] = [
   {
@@ -23,6 +26,12 @@ export const PrivateRoutes: RouteConfig[] = [
     path: '/client',
     component: ClientPage,
     acessType: ['client', 'admin'], // Clientes e administradores
+    private: true,
+  },
+  {
+    path: '/solicitacao-cadastro',
+    component: UserApprovalRequests,
+    acessType: [],
     private: true,
   },
 ];
