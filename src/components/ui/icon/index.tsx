@@ -16,7 +16,10 @@ import { CheckIcon } from '@/assets/icons/essentional/check';
 import { DocumentCopyIcon } from '@/assets/icons/files/document-copy';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
 import { BellIcon } from '@/assets/icons/tools/bell';
+import { FilterIcon } from '@/assets/icons/tools/filter';
+import { ProfileTickUserIcon } from '@/assets/icons/user/profile-tick-user';
 import { ProfileTwoUsersIcon } from '@/assets/icons/user/profile-two-users';
+import { ProfileUserIcon } from '@/assets/icons/user/profile-user';
 
 const icons = {
   bell: BellIcon,
@@ -26,6 +29,7 @@ const icons = {
   chevronDownArrow: ChevronDownArrowIcon,
   chevronRightArrow: ChevronRightArrowIcon,
   documentCopy: DocumentCopyIcon,
+  filter: FilterIcon,
   home: HomeIcon,
   notificationError: NotificationErrorIcon,
   notificationSucces: NotificationSucessIcon,
@@ -34,7 +38,9 @@ const icons = {
   inputSearch: InputSearchIcon,
   microsoft: MicrosoftIcon,
   moveArrow: MoveArrowIcon,
+  profileUser: ProfileUserIcon,
   profileTwoUsers: ProfileTwoUsersIcon,
+  profileTickUser: ProfileTickUserIcon,
   x: xIcon,
 };
 

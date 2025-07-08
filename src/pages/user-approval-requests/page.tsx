@@ -1,4 +1,3 @@
-import { TabsTrigger } from '@radix-ui/react-tabs';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
@@ -12,8 +11,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/context/auth-context';
+
+import { TableApprovals } from './_components/table-approvals';
+import { TableRequests } from './_components/table-requests';
 
 export default function UserApprovalRequests() {
   const { logout } = useAuth();
@@ -32,17 +34,30 @@ export default function UserApprovalRequests() {
       </section>
       <section className="h-full w-full">
         <Tabs defaultValue="solicitacoes">
-          <div className="grid w-full items-center justify-between gap-2 px-2.5 lg:flex">
-            <TabsList className="flex rounded-none">
-              <TabsTrigger value="solicitacoes" className="h-10">
+          <div className="grid w-full items-center justify-between gap-4 md:flex md:border-separate md:gap-0 md:border-b">
+            <TabsList
+              variant={'ghost'}
+              className="pt-5 max-sm:border-separate max-sm:border-b"
+            >
+              <TabsTrigger
+                variant={'ghost'}
+                value="solicitacoes"
+                className="mt-auto h-14 w-full pb-0 font-semibold"
+              >
+                <Icon name="profileTickUser" className="size-6" />
                 Solicitações
               </TabsTrigger>
-              <TabsTrigger value="aprovacoes" className="h-10">
+              <TabsTrigger
+                variant={'ghost'}
+                value="aprovacoes"
+                className="mt-auto h-14 w-full pb-0 font-semibold"
+              >
+                <Icon name="profileUser" className="size-6" />
                 Aprovações
               </TabsTrigger>
             </TabsList>
-            <div className="flex items-center gap-4">
-              <div className="flex w-full max-w-40 flex-col gap-2">
+            <div className="flex w-full items-center gap-4 py-1.5">
+              <div className="ml-auto flex w-full max-w-40 flex-col gap-2">
                 <Label className="font-manrope text-xs font-normal">
                   Pesquisa por usuário
                 </Label>
@@ -59,6 +74,7 @@ export default function UserApprovalRequests() {
               </div>
               <div className="flex min-w-40 flex-col gap-2">
                 <Label className="font-manrope text-xs font-normal">
+                  <Icon name="filter" />
                   Filtrar por empresa
                 </Label>
                 <Select
@@ -81,8 +97,12 @@ export default function UserApprovalRequests() {
             </div>
           </div>
 
-          <TabsContent value="solicitacoes">tabela solicitacao</TabsContent>
-          <TabsContent value="aprovacoes">tabela aprovacao</TabsContent>
+          <TabsContent value="solicitacoes" className="pt-4.5">
+            <TableRequests />
+          </TabsContent>
+          <TabsContent value="aprovacoes" className="pt-4.5">
+            <TableApprovals />
+          </TabsContent>
         </Tabs>
         <div className="mx-auto mt-8">
           <Button variant={'destructive'} onClick={handleLogout}>
