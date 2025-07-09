@@ -1,4 +1,5 @@
 type Props = React.SVGProps<SVGSVGElement>;
+
 export const CheckIcon = (props: Props) => {
   return (
     <svg

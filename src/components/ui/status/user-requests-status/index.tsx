@@ -18,13 +18,13 @@ const BG: Record<REQUESTS_STATUS, string> = {
   NEGAR: 'bg-baixada-error-50',
 };
 
-interface StatusProps extends PropsWithChildren {
+interface StatusProps extends PropsWithChildren, React.ComponentProps<'span'> {
   status?: REQUESTS_STATUS;
   className?: string;
 }
 
 const requestVariants = cva(
-  'font-manrope w-fit rounded-xl px-3 py-1 flex gap-1',
+  'font-manrope w-fit rounded-xl px-3 py-1 flex gap-1 items-center',
   {
     variants: {
       variant: {

@@ -1,5 +1,6 @@
 import { type Column, DataTable } from '@/components/ui/data-table';
 import { DataTableSkeleton } from '@/components/ui/data-table/data-table-skeleton';
+import { Icon } from '@/components/ui/icon';
 import { UserRequestStatus } from '@/components/ui/status/user-requests-status';
 import type { USER_REQUEST_STATUS } from '@/types/_enums/user-request-status';
 type Usuario = {
@@ -53,8 +54,11 @@ export const TableRequests = () => {
     {
       header: 'Status MRS',
       accessor: 'statusMRS',
-      render: valor => (
-        <UserRequestStatus variant="neutral">{valor}</UserRequestStatus>
+      render: () => (
+        <UserRequestStatus variant="neutral">
+          <Icon name="checkCircle" />
+          Negar
+        </UserRequestStatus>
       ),
     },
     {
@@ -62,6 +66,7 @@ export const TableRequests = () => {
       accessor: 'statusFIPS',
       render: valor => (
         <UserRequestStatus status={valor as keyof typeof USER_REQUEST_STATUS}>
+          <Icon name="closeCircle" />
           {valor}
         </UserRequestStatus>
       ),
