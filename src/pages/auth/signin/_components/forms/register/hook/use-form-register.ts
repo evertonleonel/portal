@@ -20,10 +20,6 @@ export const useFormRegister = () => {
     defaultValues,
   });
 
-  console.log('ID EMPRESA:', formRegister.watch('empresa.id'));
-  console.log('NOME:', formRegister.watch('nome'));
-  console.log('cargo:', formRegister.watch('cargo'));
-
   useEffect(() => {
     async function fetchEmpresas() {
       try {
@@ -44,6 +40,7 @@ export const useFormRegister = () => {
     try {
       await userRequestRegister(inputs);
       handleUpdateViewForm({ sucess: true });
+      console.log('inputs', inputs);
     } catch (error) {
       console.error('Erro ao registrar usuário:', error);
     }

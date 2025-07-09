@@ -74,14 +74,9 @@ export const RegisterForm = () => {
                 </FormLabel>
                 <Select
                   onValueChange={value => {
-                    const empresaSelecionada = empresas.find(
-                      empresa => empresa.id.toString() === value
-                    );
-                    if (empresaSelecionada) {
-                      field.onChange(empresaSelecionada);
-                    }
+                    field.onChange({ id: value });
                   }}
-                  defaultValue={field.value.id}
+                  value={field.value.id}
                   disabled={isLoadingEmpresas}
                 >
                   <FormControl>
@@ -128,7 +123,7 @@ export const RegisterForm = () => {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Digite seu e-mail corporativo"
+                    placeholder="Digite seu cargo"
                     {...field}
                     className="w-full"
                   />

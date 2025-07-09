@@ -10,7 +10,7 @@ export const registerSchema = z.object({
     .object({
       id: z.string(),
     })
-    .refine(value => value.id == '', {
+    .refine(value => value.id !== '', {
       message: 'O campo Empresa é obrigatório',
     }),
   cargo: z.string().nonempty('O campo Cargo é obrigatório'),
