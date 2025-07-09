@@ -28,7 +28,9 @@ export function DataTable<T extends Record<string, any>>({
       <TableHeader className="bg-table border-b-0">
         <TableRow>
           {columns.map(col => (
-            <TableHead key={String(col.accessor)}>{col.header}</TableHead>
+            <TableHead className="md:px-4 lg:px-6" key={String(col.accessor)}>
+              {col.header}
+            </TableHead>
           ))}
         </TableRow>
       </TableHeader>
@@ -40,7 +42,7 @@ export function DataTable<T extends Record<string, any>>({
                 const value = row[col.accessor];
                 return (
                   <TableCell
-                    className="text-surface"
+                    className="text-surface md:px-4 lg:px-6"
                     key={String(col.accessor)}
                   >
                     {col.render
