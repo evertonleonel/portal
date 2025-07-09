@@ -20,6 +20,10 @@ export const useFormRegister = () => {
     defaultValues,
   });
 
+  console.log('ID EMPRESA:', formRegister.watch('empresa.id'));
+  console.log('NOME:', formRegister.watch('nome'));
+  console.log('cargo:', formRegister.watch('cargo'));
+
   useEffect(() => {
     async function fetchEmpresas() {
       try {

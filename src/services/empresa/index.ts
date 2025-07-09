@@ -4,7 +4,7 @@ import type {
   GetEmpresaByIdParams,
   GetEmpresaResponse,
   PatchEmpresaParams,
-  PostEmpresaParams,
+  PostEmpresaBody,
 } from '@/types/empresa';
 
 export async function getAllEmpresa() {
@@ -17,7 +17,7 @@ export async function getEmpresaById({ id }: GetEmpresaByIdParams) {
   return response.data;
 }
 
-export async function postEmpresa({ sigla, nome }: PostEmpresaParams) {
+export async function postEmpresa({ sigla, nome }: PostEmpresaBody) {
   await api.post(`/v1/empresa`, { sigla, nome });
 }
 
