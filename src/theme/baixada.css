@@ -81,6 +81,7 @@
   --color-baixada-neutral-blue-300: #b1b6f0; /*Cor usada no protótipo, não listada no design system*/
 
   /* Feedback - Sucesso */
+  --color-baixada-sucess-10: #defff4;
   --color-baixada-success-50: #79ffd3;
   --color-baixada-success-100: #53ffc6;
   --color-baixada-success-200: #2cffba;
@@ -118,6 +119,10 @@
   --color-baixada-warning-800: #a05f06;
   --color-baixada-warning-900: #7a4806;
   --color-baixada-warning-950: #553205;
+
+  /*STATUS*/
+  --color-baixada-success-lime-400: #44ae12;
+  --color-baixada-success-lime-900: #24ac021a;
 
   /*Switch*/
   --color-baixada-switch: #1570ef;

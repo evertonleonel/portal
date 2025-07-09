@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
-import { cn } from '@/utils/lib/tailwind-merge';
+import { cn } from '@/lib/utils';
 
 import { useFormLogin } from './hook/use-form-login';
 

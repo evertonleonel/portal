@@ -1,4 +1,4 @@
-import { api } from '@/utils/lib/axios';
+import { api } from '@/lib/axios';
 
 export interface GetEmpresaResponse {
   id: number;

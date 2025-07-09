@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/card';
 import { Icon } from '@/components/ui/icon';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
-import { cn } from '@/utils/lib/tailwind-merge';
+import { cn } from '@/lib/utils';
 
 import { useSigninContext } from '../../../context';
 import { LogoFooter } from '../../logo-footer';

@@ -1,0 +1,4 @@
+export enum USER_APPROVAL_STATUS {
+  APROVADO = 'APROVADO',
+  NEGADO = 'NEGADO',
+}

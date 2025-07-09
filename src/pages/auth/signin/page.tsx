@@ -12,7 +12,7 @@ import { ShowContent } from '@/components/ui/show-content';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/context/auth-context';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
-import { cn } from '@/utils/lib/tailwind-merge';
+import { cn } from '@/lib/utils';
 
 // import { useAuth } from '@/context/auth-context';
 import { LoginForm } from './_components/forms/login';

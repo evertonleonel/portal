@@ -35,7 +35,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/utils/lib/tailwind-merge';
+import { cn } from '@/lib/utils';
 
 // Menu items.
 const items = [

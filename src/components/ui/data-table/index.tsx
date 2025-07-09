@@ -10,7 +10,7 @@ import {
 export type Column<T, K extends keyof T = keyof T> = {
   header: string;
   accessor: K;
-  render?: (value: T, row: T) => React.ReactNode;
+  render?: (value: T[K], row: T) => React.ReactNode;
 };
 
 type DataTableProps<T> = {
@@ -39,7 +39,10 @@ export function DataTable<T extends Record<string, any>>({
               {columns.map(col => {
                 const value = row[col.accessor];
                 return (
-                  <TableCell key={String(col.accessor)}>
+                  <TableCell
+                    className="text-surface"
+                    key={String(col.accessor)}
+                  >
                     {col.render
                       ? col.render(value, row)
                       : (value as React.ReactNode)}

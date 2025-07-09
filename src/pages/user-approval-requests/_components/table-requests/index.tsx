@@ -1,5 +1,7 @@
 import { type Column, DataTable } from '@/components/ui/data-table';
 import { DataTableSkeleton } from '@/components/ui/data-table/data-table-skeleton';
+import { UserRequestStatus } from '@/components/ui/status/user-requests-status';
+import type { USER_REQUEST_STATUS } from '@/types/_enums/user-request-status';
 type Usuario = {
   id: number;
   nome: string;
@@ -7,8 +9,8 @@ type Usuario = {
   perfil: string;
   empresa: string;
   dataHora: string;
-  statusMRS: boolean;
-  statusFIPS: boolean;
+  statusMRS: keyof typeof USER_REQUEST_STATUS;
+  statusFIPS: keyof typeof USER_REQUEST_STATUS;
 };
 
 export const TableRequests = () => {
@@ -20,8 +22,8 @@ export const TableRequests = () => {
       perfil: 'string',
       dataHora: 'string',
       empresa: 'string',
-      statusMRS: true,
-      statusFIPS: false,
+      statusMRS: 'APROVADO',
+      statusFIPS: 'NEGAR',
     },
     {
       id: 2,
@@ -30,8 +32,8 @@ export const TableRequests = () => {
       perfil: 'string',
       dataHora: 'string',
       empresa: 'string',
-      statusMRS: false,
-      statusFIPS: false,
+      statusMRS: 'NEGAR',
+      statusFIPS: 'NEGAR',
     },
     {
       id: 3,
@@ -40,8 +42,8 @@ export const TableRequests = () => {
       perfil: 'string',
       dataHora: 'string',
       empresa: 'string',
-      statusMRS: true,
-      statusFIPS: false,
+      statusMRS: 'APROVADO',
+      statusFIPS: 'NEGAR',
     },
   ];
 
@@ -52,18 +54,16 @@ export const TableRequests = () => {
       header: 'Status MRS',
       accessor: 'statusMRS',
       render: valor => (
-        <span className={valor ? 'text-green-600' : 'text-red-600'}>
-          {valor ? 'Ativo' : 'Inativo'}
-        </span>
+        <UserRequestStatus variant="neutral">{valor}</UserRequestStatus>
       ),
     },
     {
       header: 'Status FIPS',
       accessor: 'statusFIPS',
       render: valor => (
-        <span className={valor ? 'text-green-600' : 'text-red-600'}>
-          {valor ? 'Ativo' : 'Inativo'}
-        </span>
+        <UserRequestStatus status={valor as keyof typeof USER_REQUEST_STATUS}>
+          {valor}
+        </UserRequestStatus>
       ),
     },
   ];
