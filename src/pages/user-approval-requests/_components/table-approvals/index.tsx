@@ -49,7 +49,7 @@ export const TableApprovals = () => {
       <DataTableSkeleton
         columnCount={6}
         rowCount={6}
-        cellWidths={['15%', '15%', '5%', '5%', '5%', '30%']}
+        cellWidths={['10%', '15%', '10%', '10%', '10%', '30%']}
       />
     </>
   );

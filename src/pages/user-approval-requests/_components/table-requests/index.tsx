@@ -52,7 +52,7 @@ export const TableRequests = () => {
       <DataTableSkeleton
         columnCount={9}
         rowCount={6}
-        cellWidths={['10%', '20%', '5%', '5%', '15%', '10%', '10%', '5%', '5%']}
+        cellWidths={['10%', '10%', '5%', '5%', '15%', '10%', '10%', '5%', '5%']}
       />
     </>
   );
