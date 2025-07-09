@@ -98,7 +98,7 @@ export function DataTable<TData, TValue>({
 export const TableRowSpacing = ({ colSpan = 1000 }: { colSpan?: number }) => {
   return (
     <tr aria-hidden="true">
-      <td colSpan={colSpan} className="py-2" />
+      <td colSpan={colSpan} className="py-1" />
     </tr>
   );
 };
