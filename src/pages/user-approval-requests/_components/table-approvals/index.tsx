@@ -1,5 +1,7 @@
-import { type Column, DataTable } from '@/components/ui/data-table';
-import { DataTableSkeleton } from '@/components/ui/data-table/data-table-skeleton';
+import type { ColumnDef } from '@tanstack/react-table';
+
+import { DataTable } from '@/components/ui/data-table';
+import { DataTableSkeleton } from '@/components/ui/data-table-skeleton';
 type Usuario = {
   id: number;
   nome: string;
@@ -11,7 +13,7 @@ type Usuario = {
 };
 
 export const TableApprovals = () => {
-  const usuarios: Usuario[] = [
+  const usuarios = [
     {
       id: 1,
       nome: 'João',
@@ -41,13 +43,13 @@ export const TableApprovals = () => {
     },
   ];
 
-  const colunas: Column<Usuario>[] = [
-    { header: 'Nome', accessor: 'nome' },
-    { header: 'E-mail', accessor: 'email' },
-    { header: 'Perfil', accessor: 'perfil' },
-    { header: 'Empresa', accessor: 'empresa' },
-    { header: 'Status', accessor: 'status' },
-    { header: 'Email', accessor: 'dataHora' },
+  const colunas: ColumnDef<Usuario>[] = [
+    { header: 'Nome', accessorKey: 'nome' },
+    { header: 'E-mail', accessorKey: 'email' },
+    { header: 'Perfil', accessorKey: 'perfil' },
+    { header: 'Empresa', accessorKey: 'empresa' },
+    { header: 'Status', accessorKey: 'status' },
+    { header: 'Email', accessorKey: 'dataHora' },
   ];
 
   return (

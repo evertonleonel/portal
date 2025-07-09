@@ -1,5 +1,7 @@
-import { type Column, DataTable } from '@/components/ui/data-table';
-import { DataTableSkeleton } from '@/components/ui/data-table/data-table-skeleton';
+import type { ColumnDef } from '@tanstack/react-table';
+
+import { DataTable } from '@/components/ui/data-table';
+import { DataTableSkeleton } from '@/components/ui/data-table-skeleton';
 import { Icon } from '@/components/ui/icon';
 import { UserRequestStatus } from '@/components/ui/status/user-requests-status';
 import type { USER_REQUEST_STATUS } from '@/types/_enums/user-request-status';
@@ -48,13 +50,13 @@ export const TableRequests = () => {
     },
   ];
 
-  const colunas: Column<Usuario>[] = [
-    { header: 'Nome', accessor: 'nome' },
-    { header: 'Email', accessor: 'email' },
+  const colunas: ColumnDef<Usuario>[] = [
+    { header: 'Nome', accessorKey: 'nome' },
+    { header: 'Email', accessorKey: 'email' },
     {
       header: 'Status MRS',
-      accessor: 'statusMRS',
-      render: () => (
+      accessorKey: 'statusMRS',
+      cell: () => (
         <UserRequestStatus variant="neutral">
           <Icon name="checkCircle" />
           Negar
@@ -63,13 +65,18 @@ export const TableRequests = () => {
     },
     {
       header: 'Status FIPS',
-      accessor: 'statusFIPS',
-      render: valor => (
-        <UserRequestStatus status={valor as keyof typeof USER_REQUEST_STATUS}>
+      accessorKey: 'statusFIPS',
+      cell: ({ row }) => (
+        <UserRequestStatus
+          status={row.original.statusFIPS as keyof typeof USER_REQUEST_STATUS}
+        >
           <Icon name="closeCircle" />
-          {valor}
         </UserRequestStatus>
       ),
+    },
+    {
+      id: 'actions',
+      cell: ({ row }) => <p>{row.original.id}</p>,
     },
   ];
 

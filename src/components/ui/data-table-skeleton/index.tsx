@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 
-import { TableRowSpacing } from '..';
+import { TableRowSpacing } from '../data-table';
 
 interface DataTableSkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
