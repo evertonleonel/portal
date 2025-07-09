@@ -9,7 +9,7 @@ type Usuario = {
   email: string;
   perfil: string;
   empresa: string;
-  dataHora: string;
+  dataHora: Date;
   statusMRS: keyof typeof USER_REQUEST_STATUS;
   statusFIPS: keyof typeof USER_REQUEST_STATUS;
 };
@@ -20,7 +20,7 @@ export const TableRequests = () => {
       nome: 'João',
       email: 'joao@email.com',
       perfil: '-',
-      dataHora: '10/01/2025 16:10h',
+      dataHora: new Date(2025, 6, 10, 12, 0),
       empresa: 'MRS',
       statusMRS: 'APROVADO',
       statusFIPS: 'NEGAR',
@@ -30,7 +30,7 @@ export const TableRequests = () => {
       nome: 'Maria',
       email: 'maria@email.com',
       perfil: '-',
-      dataHora: '10/01/2025 16:10h',
+      dataHora: new Date(2025, 6, 1, 12, 0),
       empresa: 'RUMO',
       statusMRS: 'NEGAR',
       statusFIPS: 'NEGAR',
@@ -40,7 +40,7 @@ export const TableRequests = () => {
       nome: 'Carlos',
       email: 'carlos@email.com',
       perfil: '-',
-      dataHora: '10/01/2025 16:10h',
+      dataHora: new Date(2025, 6, 22, 12, 0),
       empresa: 'VLI',
       statusMRS: 'APROVADO',
       statusFIPS: 'NEGAR',

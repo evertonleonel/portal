@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ArrowDownIcon } from '@/assets/icons/arrow/arrow-down';
+import { ArrowUpIcon } from '@/assets/icons/arrow/arrow-up';
 import { ChevronDownArrowIcon } from '@/assets/icons/arrow/chevron-down-arrow';
 import { ChevronLeftArrowIcon } from '@/assets/icons/arrow/chevron-left-arrow';
 import { ChevronRightArrowIcon } from '@/assets/icons/arrow/chevron-right-arrrow';
@@ -24,6 +26,8 @@ import { ProfileTwoUsersIcon } from '@/assets/icons/user/profile-two-users';
 import { ProfileUserIcon } from '@/assets/icons/user/profile-user';
 
 const icons = {
+  arrowUp: ArrowUpIcon,
+  arrowDown: ArrowDownIcon,
   bell: BellIcon,
   check: CheckIcon,
   checkCircle: CheckCircleIcon,
