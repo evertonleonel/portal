@@ -43,7 +43,7 @@ Em seguida, edite o arquivo `.env` com as configurações específicas para o am
 Para iniciar o servidor de desenvolvimento, utilize o comando abaixo:
 
 ```bash
-npm run dev
+npm run develop
 ```
 
 O projeto estará disponível no navegador no endereço `http://localhost:5173`.
@@ -58,15 +58,15 @@ Este projeto utiliza `Prettier` e `ESLint` para manter a qualidade do código. C
 
 Antes de começar a trabalhar em uma nova feature ou correção, crie um branch específico para sua tarefa.
 
-### 🔄 1. Atualizar o Branch `dev`
+### 🔄 1. Atualizar o Branch `develop`
 
-Certifique-se de que o branch `dev` esteja atualizado com as últimas mudanças, utilizando os comandos:
+Certifique-se de que o branch `develop` esteja atualizado com as últimas mudanças, utilizando os comandos:
 
 ```bash
-git checkout dev
+git checkout develop
 ```
 
-para mudar para o branch `dev` e
+para mudar para o branch `develop` e
 
 ```bash
 git pull --rebase
@@ -76,7 +76,7 @@ para puxar as últimas alterações.
 
 ### 🌱 2. Criar um Novo Branch
 
-Para criar um novo branch a partir do branch `dev`, utilize o comando:
+Para criar um novo branch a partir do branch `develop`, utilize o comando:
 
 ```bash
 git checkout -b nome-do-branch
@@ -103,13 +103,13 @@ para uma correção de bug.
 
 ### 🔄 3. Sincronizar o Branch
 
-Antes de enviar o branch para o repositório remoto, sincronize-o com o branch `dev` para evitar conflitos, utilizando os comandos:
+Antes de enviar o branch para o repositório remoto, sincronize-o com o branch `develop` para evitar conflitos, utilizando os comandos:
 
 ```bash
-git checkout dev
+git checkout develop
 ```
 
-para mudar para o branch `dev`
+para mudar para o branch `develop`
 
 ```bash
 git pull
@@ -124,10 +124,10 @@ git checkout sua-branch
 para voltar ao seu branch
 
 ```bash
-git rebase dev
+git rebase develop
 ```
 
-para sincronizar com a `dev`
+para sincronizar com a `develop`
 
 ```bash
 git push -f
