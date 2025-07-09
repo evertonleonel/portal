@@ -1,11 +1,5 @@
 import { api } from '@/lib/axios';
-
-export interface UserRequestRegisterParams {
-  nome: string;
-  email: string;
-  cargo: string;
-  empresa: { id: string };
-}
+import type { UserRequestRegisterParams } from '@/types/auth/signin/register';
 
 export async function userRequestRegister({
   nome,
