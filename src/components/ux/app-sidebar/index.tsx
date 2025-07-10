@@ -1,11 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { BackgroundImage } from '@/components/ui/background-image';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible';
+import { Button } from '@/components/ui/button';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,11 +27,8 @@ import {
   SidebarTrigger,
   useSidebar,
 } from '@/components/ui/sidebar';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useAuth } from '@/context/auth-context';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 
@@ -116,6 +111,13 @@ export function AppSidebar() {
   const isMobile = useIsMobile();
   const { state } = useSidebar();
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/signin');
+  };
 
   // Determina qual logo usar baseado no estado da sidebar
   const logoSrc =
@@ -131,13 +133,8 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon" className="shadow-baixada-popover relative">
-      <SidebarHeader
-        className={cn(
-          'flex-row gap-2 px-4 py-6',
-          state === 'collapsed' && 'pb-3'
-        )}
-      >
+    <Sidebar collapsible="icon" className="shadow-baixada-popover relative h-full">
+      <SidebarHeader className={cn('flex-row gap-2 px-4 py-6', state === 'collapsed' && 'pb-3')}>
         <BackgroundImage src={logoSrc} className="max-h-10" />
         <Tooltip>
           <TooltipTrigger asChild>
@@ -165,31 +162,19 @@ export function AppSidebar() {
                             <SidebarMenuButton asChild className="h-10">
                               <TooltipTrigger asChild>
                                 <a href={item.url}>
-                                  <Icon
-                                    name={item.icon as IconsName}
-                                    className="size-5"
-                                  />
+                                  <Icon name={item.icon as IconsName} className="size-5" />
                                 </a>
                               </TooltipTrigger>
                             </SidebarMenuButton>
                           </DropdownMenuTrigger>
-                          <TooltipContent
-                            side="right"
-                            className={cn(isMobile && 'hidden')}
-                          >
+                          <TooltipContent side="right" className={cn(isMobile && 'hidden')}>
                             <p>{item.title}</p>
                           </TooltipContent>
                         </Tooltip>
 
-                        <DropdownMenuContent
-                          className="divide divide-input divide-y px-0"
-                          align="start"
-                        >
+                        <DropdownMenuContent className="divide divide-input divide-y px-0" align="start">
                           {item.subMenus.map(sub => (
-                            <DropdownMenuItem
-                              key={sub.id}
-                              className="rounded-none px-3"
-                            >
+                            <DropdownMenuItem key={sub.id} className="rounded-none px-3">
                               <a href={sub.url}>{sub.nome}</a>
                             </DropdownMenuItem>
                           ))}
@@ -200,18 +185,12 @@ export function AppSidebar() {
                         <TooltipTrigger asChild>
                           <SidebarMenuButton asChild className="h-10 text-xs">
                             <a href={item.url}>
-                              <Icon
-                                name={item.icon as IconsName}
-                                className="size-5"
-                              />
+                              <Icon name={item.icon as IconsName} className="size-5" />
                               <span>{item.title}</span>
                             </a>
                           </SidebarMenuButton>
                         </TooltipTrigger>
-                        <TooltipContent
-                          side="right"
-                          className={cn(isMobile && 'hidden')}
-                        >
+                        <TooltipContent side="right" className={cn(isMobile && 'hidden')}>
                           <p>{item.title}</p>
                         </TooltipContent>
                       </Tooltip>
@@ -238,10 +217,7 @@ export function AppSidebar() {
                         >
                           <SidebarMenuButton asChild className="h-10">
                             <a href={item.url}>
-                              <Icon
-                                name={item.icon as IconsName}
-                                className="size-5"
-                              />
+                              <Icon name={item.icon as IconsName} className="size-5" />
                               <div className="flex w-full items-center justify-between">
                                 <span>{item.title}</span>
                                 <Icon
@@ -269,10 +245,7 @@ export function AppSidebar() {
                       // Item sem submenus - apenas link simples
                       <SidebarMenuButton asChild className="h-10">
                         <a href={item.url}>
-                          <Icon
-                            name={item.icon as IconsName}
-                            className="size-5"
-                          />
+                          <Icon name={item.icon as IconsName} className="size-5" />
                           <span>{item.title}</span>
                         </a>
                       </SidebarMenuButton>
@@ -287,7 +260,16 @@ export function AppSidebar() {
 
       <SidebarFooter className="bg-sidebar-baixada-footer gap-4 px-4 pb-6">
         <Separator className="opacity-10" />
-        aa
+        <Button
+          className={`text-background cursor-pointer gap-2.5 ${state === 'expanded' && 'w-fit'}`}
+          variant="ghost"
+          size={state !== 'expanded' ? 'icon' : 'default'}
+          onClick={handleLogout}
+        >
+          <Icon name="logoutArrow" />
+
+          {state === 'expanded' && 'Sair'}
+        </Button>
       </SidebarFooter>
     </Sidebar>
   );

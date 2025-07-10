@@ -7,6 +7,7 @@ import { ChevronLeftArrowIcon } from '@/assets/icons/arrow/chevron-left-arrow';
 import { ChevronRightArrowIcon } from '@/assets/icons/arrow/chevron-right-arrrow';
 import { ChevronUpArrowIcon } from '@/assets/icons/arrow/chevron-up-arrow';
 import { ExpandeHorizontalArrowIcon } from '@/assets/icons/arrow/expande-horizontal-arrow';
+import { LogoutArrowIcon } from '@/assets/icons/arrow/logout-arrow';
 import { MoveArrowIcon } from '@/assets/icons/arrow/move-arrow';
 import { HomeIcon } from '@/assets/icons/design/home';
 import { MicrosoftIcon } from '@/assets/icons/design/microsoft.';
@@ -44,6 +45,7 @@ const icons = {
   notificationDefault: NotificationDefaultIcon,
   expandeHorizontalArrow: ExpandeHorizontalArrowIcon,
   inputSearch: InputSearchIcon,
+  logoutArrow: LogoutArrowIcon,
   microsoft: MicrosoftIcon,
   moveArrow: MoveArrowIcon,
   profileUser: ProfileUserIcon,

@@ -1,4 +1,4 @@
-export interface GetEmpresaResponse {
+export type Empresa = {
   id: number;
   sigla: string;
   nome: string;
@@ -11,7 +11,10 @@ export interface GetEmpresaResponse {
   };
   dataAlteracao: string | null;
   usuarioAlteracao: string | null;
-}
+};
+
+//Services
+export type GetEmpresaResponse = Empresa;
 
 export interface GetEmpresaByIdParams {
   id: string;

@@ -3,26 +3,19 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import { UserRequestStatus } from '@/components/ui/status/user-requests-status';
-import type { USER_REQUEST_STATUS } from '@/types/_enums/user-request-status';
+import type { GetUserRequestsResponse } from '@/types/user/requests';
 
-type Usuario = {
-  id: number;
-  nome: string;
-  email: string;
-  perfil: string;
-  empresa: string;
-  dataHora: Date;
-  statusMRS: keyof typeof USER_REQUEST_STATUS;
-  statusFIPS: keyof typeof USER_REQUEST_STATUS;
-};
-
-export const columnsTableRequests: ColumnDef<Usuario>[] = [
+export const columnsTableRequests: ColumnDef<GetUserRequestsResponse>[] = [
   { header: 'Nome', accessorKey: 'nome' },
   { header: 'E-mail', accessorKey: 'email' },
-  { header: 'Perfil', accessorKey: 'perfil' },
-  { header: 'Empresa', accessorKey: 'empresa' },
   {
-    accessorKey: 'dataHora',
+    header: 'Perfil',
+    accessorKey: 'perfil',
+    cell: () => '-',
+  },
+  { header: 'Empresa', accessorKey: 'empresa', cell: ({ row }) => row.original.empresa?.nome },
+  {
+    accessorKey: 'usuarioCriacao.dataCriacao',
     header: ({ column }) => {
       return (
         <Button
@@ -32,10 +25,7 @@ export const columnsTableRequests: ColumnDef<Usuario>[] = [
         >
           Data e hora da solicitação
           <div className="ml-2 h-4 w-4 rounded">
-            <Icon
-              name={column.getIsSorted() === 'asc' ? 'arrowDown' : 'arrowUp'}
-              className="text-primary"
-            />
+            <Icon name={column.getIsSorted() === 'asc' ? 'arrowDown' : 'arrowUp'} className="text-primary" />
           </div>
         </Button>
       );
@@ -43,27 +33,27 @@ export const columnsTableRequests: ColumnDef<Usuario>[] = [
   },
   {
     header: 'Status MRS',
-    accessorKey: 'statusMRS',
-    cell: () => (
-      <UserRequestStatus variant="neutral">
-        <Icon name="checkCircle" />
-        Negar
-      </UserRequestStatus>
-    ),
+    accessorKey: 'statusAprovacaoMrs',
+    cell: ({ row }) => <UserRequestStatus variant="neutral" status={row.original.statusAprovacaoFips} />,
   },
   {
     header: 'Status FIPS',
-    accessorKey: 'statusFIPS',
-    cell: ({ row }) => (
-      <UserRequestStatus
-        status={row.original.statusFIPS as keyof typeof USER_REQUEST_STATUS}
-      >
-        <Icon name="closeCircle" />
-      </UserRequestStatus>
-    ),
+    accessorKey: 'statusAprovacaoFips',
+    cell: ({ row }) => <UserRequestStatus status={row.original.statusAprovacaoFips} />,
   },
   {
     id: 'actions',
-    cell: ({ row }) => <p>{row.original.id}</p>,
+    cell: ({ row }) => (
+      <div className="flex gap-2 lg:gap-4">
+        <UserRequestStatus className="cursor-pointer" variant="approve" onClick={() => console.log(row)}>
+          <Icon name="checkCircle" />
+          Permitir
+        </UserRequestStatus>
+        <UserRequestStatus className="cursor-pointer" variant="notApprove" onClick={() => console.log(row)}>
+          <Icon name="closeCircle" />
+          Negar
+        </UserRequestStatus>
+      </div>
+    ),
   },
 ];
