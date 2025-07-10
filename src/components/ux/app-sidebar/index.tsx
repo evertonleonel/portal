@@ -198,7 +198,7 @@ export function AppSidebar() {
                     ) : (
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <SidebarMenuButton asChild className="h-10">
+                          <SidebarMenuButton asChild className="h-10 text-xs">
                             <a href={item.url}>
                               <Icon
                                 name={item.icon as IconsName}
@@ -257,7 +257,7 @@ export function AppSidebar() {
                             {item.subMenus.map(sub => (
                               <SidebarMenuSubItem
                                 key={sub.id}
-                                className="hover:bg-primary cursor-pointer rounded-lg px-3 py-2"
+                                className="hover:bg-primary cursor-pointer rounded-lg px-3 py-2 text-xs"
                               >
                                 <a href={sub.url}>{sub.nome}</a>
                               </SidebarMenuSubItem>

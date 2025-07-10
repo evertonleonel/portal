@@ -40,7 +40,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <Table>
+      <Table className="font-manrope">
         <TableHeader className="bg-table border-b-0">
           {table.getHeaderGroups().map(headerGroup => (
             <TableRow key={headerGroup.id}>
