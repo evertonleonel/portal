@@ -4,8 +4,8 @@ export const CheckIcon = (props: Props) => {
   return (
     <svg
       {...props}
-      width={props.width ?? '24'}
-      height={props.height ?? '18'}
+      width="24"
+      height="18"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 18"
       fill="none"

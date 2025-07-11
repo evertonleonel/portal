@@ -1,16 +1,25 @@
 type Props = React.SVGProps<SVGSVGElement>;
+
 export const NotificationErrorIcon = (props: Props) => {
   return (
     <svg
       {...props}
-      width={props.width ?? '40'}
-      height={props.height ?? '41'}
+      width="40"
+      height="41"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 40 41"
       fill="none"
     >
       <rect x="3" y="3.5" width="34" height="34" rx="17" fill="#F9BFBC" />
-      <rect x="3" y="3.5" width="34" height="34" rx="17" stroke="#FFE9E8" stroke-width="6" />
+      <rect
+        x="3"
+        y="3.5"
+        width="34"
+        height="34"
+        rx="17"
+        stroke="#FFE9E8"
+        stroke-width="6"
+      />
       <path
         d="M25.3335 14.5H14.6668C13.9315 14.5 13.3335 15.098 13.3335 15.8333V25.1667C13.3335 25.902 13.9315 26.5 14.6668 26.5H25.3335C26.0688 26.5 26.6668 25.902 26.6668 25.1667V15.8333C26.6668 15.098 26.0688 14.5 25.3335 14.5ZM14.6668 25.1667V17.1667H25.3335L25.3342 25.1667H14.6668Z"
         fill="#B5251A"

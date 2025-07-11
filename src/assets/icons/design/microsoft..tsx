@@ -1,10 +1,11 @@
 type Props = React.SVGProps<SVGSVGElement>;
+
 export const MicrosoftIcon = (props: Props) => {
   return (
     <svg
       {...props}
-      width={props.width ?? '17'}
-      height={props.height ?? '18'}
+      width="17"
+      height="18"
       viewBox="0 0 17 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

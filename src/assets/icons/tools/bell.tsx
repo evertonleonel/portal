@@ -1,10 +1,11 @@
 type Props = React.SVGProps<SVGSVGElement> & { animate?: string };
+
 export const BellIcon = (props: Props) => {
   return (
     <svg
       {...props}
-      width={props.width ?? '17'}
-      height={props.height ?? '19'}
+      width="17"
+      height="19"
       viewBox="0 0 17 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +17,13 @@ export const BellIcon = (props: Props) => {
         fill="white"
       />
 
-      <circle cx="12.1667" cy="4.99992" r="2.16667" fill="currentColor" className={`${props?.animate ?? ''}`} />
+      <circle
+        cx="12.1667"
+        cy="4.99992"
+        r="2.16667"
+        fill="currentColor"
+        className={`${props?.animate ?? ''}`}
+      />
     </svg>
   );
 };

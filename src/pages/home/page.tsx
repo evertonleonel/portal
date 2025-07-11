@@ -20,13 +20,8 @@ import {
 import { useAuth } from '@/context/auth-context';
 
 export default function Home() {
-  const { user, logout, hasPermission } = useAuth();
+  const { user, hasPermission } = useAuth();
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/signin');
-  };
 
   return (
     <div className="grid h-full items-center justify-center gap-4">
@@ -91,12 +86,6 @@ export default function Home() {
             <DropdownMenuItem>Subscription</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
-        <div className="mx-auto mt-8">
-          <Button variant={'destructive'} onClick={handleLogout}>
-            Sair
-          </Button>
-        </div>
       </Card>
     </div>
   );
