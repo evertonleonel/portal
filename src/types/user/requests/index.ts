@@ -31,3 +31,8 @@ export interface GetUserRequestsResponse {
     usuarioAlteracao: string;
   };
 }
+
+export interface GetAllUserRequestsParams {
+  nome?: string;
+  idEmpresa?: number;
+}

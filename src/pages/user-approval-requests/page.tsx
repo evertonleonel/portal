@@ -1,21 +1,10 @@
 import { Icon } from '@/components/ui/icon';
-import { InputIcon } from '@/components/ui/input-icon';
-import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
+import { SearchFilters } from './_components/search-filters';
 import { TableApprovals } from './_components/table-approvals';
 import { TableRequests } from './_components/table-requests';
-import {
-  UserApprovalRequestsProvider,
-  useUserApprovalRequestsContext,
-} from './context';
+import { UserApprovalRequestsProvider } from './context';
 
 export default function UserApprovalRequests() {
   return (
@@ -26,8 +15,6 @@ export default function UserApprovalRequests() {
 }
 
 const UserApprovalRequestsContent = () => {
-  const { empresas, isLoadingEmpresas } = useUserApprovalRequestsContext();
-
   return (
     <div className="flex h-full flex-col gap-8">
       <section className="flex gap-3">
@@ -58,59 +45,7 @@ const UserApprovalRequestsContent = () => {
                 Aprovações
               </TabsTrigger>
             </TabsList>
-            <div className="flex w-full items-center gap-4 px-5 py-1.5 lg:px-0">
-              <div className="ml-auto flex w-full max-w-40 flex-col gap-2">
-                <Label className="font-manrope text-xs font-normal">
-                  Pesquisa por usuário
-                </Label>
-                <InputIcon
-                  icon={
-                    <Icon
-                      name="inputSearch"
-                      className="text-muted-foreground size-4"
-                    />
-                  }
-                  placeholder="Pesquisar"
-                  className="h-10"
-                />
-              </div>
-              <div className="flex min-w-40 flex-col gap-2 self-end">
-                <Label className="font-manrope text-xs font-normal">
-                  <Icon name="filter" />
-                  Filtrar por empresa
-                </Label>
-                <Select
-                  onValueChange={value => {
-                    console.log(value);
-                  }}
-                >
-                  <SelectTrigger size={'sm'} className="!h-10 w-full min-w-40">
-                    <SelectValue placeholder="Selecione" />
-                  </SelectTrigger>
-
-                  <SelectContent>
-                    {isLoadingEmpresas ? (
-                      <SelectItem value="empty" disabled>
-                        Carregando...
-                      </SelectItem>
-                    ) : empresas.length === 0 ? (
-                      <SelectItem value="empty" disabled>
-                        Nenhuma empresa encontrada
-                      </SelectItem>
-                    ) : (
-                      empresas.map(empresa => (
-                        <SelectItem
-                          key={empresa.id}
-                          value={empresa.id.toString()}
-                        >
-                          {empresa.nome}
-                        </SelectItem>
-                      ))
-                    )}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
+            <SearchFilters />
           </div>
 
           <TabsContent value="solicitacoes" className="pt-4.5">

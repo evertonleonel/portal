@@ -1,22 +1,73 @@
 import type { ColumnDef } from '@tanstack/react-table';
 
-import type { USER_APPROVAL_STATUS } from '@/types/_enums/user-approval-status';
+import { Button } from '@/components/ui/button';
+import { Icon } from '@/components/ui/icon';
+import { UserRequestStatus } from '@/components/ui/status/user-requests-status';
+import type { GetUserRequestsResponse } from '@/types/user/requests';
+import { formatDateWithHour } from '@/utils/format-date-with-hour';
 
-type Usuario = {
-  id: number;
-  nome: string;
-  email: string;
-  perfil: string;
-  empresa: string;
-  status: keyof typeof USER_APPROVAL_STATUS;
-  dataHora: string;
-};
-
-export const columnsTableApprovals: ColumnDef<Usuario>[] = [
+export const columnsTableApprovals: ColumnDef<GetUserRequestsResponse>[] = [
   { header: 'Nome', accessorKey: 'nome' },
   { header: 'E-mail', accessorKey: 'email' },
-  { header: 'Perfil', accessorKey: 'perfil' },
-  { header: 'Empresa', accessorKey: 'empresa' },
-  { header: 'Status', accessorKey: 'status' },
-  { header: 'Data e hora da aprovação', accessorKey: 'dataHora' },
+  {
+    header: 'Perfil',
+    accessorKey: 'perfil',
+    cell: () => '-',
+  },
+  {
+    header: 'Empresa',
+    accessorKey: 'empresa',
+    cell: ({ row }) => row.original.empresa?.nome,
+  },
+  {
+    header: 'Status',
+    accessorKey: 'statusAprovacaoMrs',
+    cell: ({ row }) => {
+      const status = row.original.statusAprovacaoMrs;
+      return <UserRequestStatus status={status} />;
+    },
+  },
+  {
+    accessorKey: 'usuarioCriacao.dataAlteracao',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="text-foreground hover:text-foreground cursor-pointer"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Data e hora da aprovação
+          <div className="ml-2 h-4 w-4 rounded">
+            <Icon
+              name={column.getIsSorted() === 'asc' ? 'arrowDown' : 'arrowUp'}
+              className="text-primary"
+            />
+          </div>
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <span>
+          {row.original.dataAlteracao
+            ? formatDateWithHour(row.original.dataAlteracao)
+            : '-'}
+        </span>
+      );
+    },
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      return (
+        <Button
+          variant={'ghost'}
+          size={'icon'}
+          onClick={() => console.log(row)}
+        >
+          <Icon name="closeCircle" />
+        </Button>
+      );
+    },
+  },
 ];

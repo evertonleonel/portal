@@ -1,4 +1,10 @@
-import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 import { getAllEmpresa } from '@/services/empresa';
 import type { GetEmpresaResponse } from '@/types/empresa';
@@ -6,16 +12,29 @@ import type { GetEmpresaResponse } from '@/types/empresa';
 interface UserApprovalRequestsType {
   empresas: GetEmpresaResponse[];
   isLoadingEmpresas: boolean;
+
+  filterEmpresaId: string;
+  handleFilterEmpresa: ({ id }: { id: string }) => void;
+
+  filterNome: string;
+  handleFilterNome: (nome: string) => void;
 }
 
-const UserApprovalRequestsContext = createContext<UserApprovalRequestsType | undefined>(undefined);
+const UserApprovalRequestsContext = createContext<
+  UserApprovalRequestsType | undefined
+>(undefined);
 
 interface UserApprovalRequestsProviderProps {
   children: ReactNode;
 }
-export const UserApprovalRequestsProvider = ({ children }: UserApprovalRequestsProviderProps) => {
-  const [empresas, setEmpresas] = useState<GetEmpresaResponse[]>([]);
+export const UserApprovalRequestsProvider = ({
+  children,
+}: UserApprovalRequestsProviderProps) => {
   const [isLoadingEmpresas, setIsLoadingEmpresas] = useState(false);
+  const [empresas, setEmpresas] = useState<GetEmpresaResponse[]>([]);
+
+  const [filterEmpresaId, setFilterEmpresaId] = useState('');
+  const [filterNome, setFilterNome] = useState('');
 
   useEffect(() => {
     async function fetchEmpresas() {
@@ -33,8 +52,25 @@ export const UserApprovalRequestsProvider = ({ children }: UserApprovalRequestsP
     fetchEmpresas();
   }, []);
 
+  const handleFilterEmpresa = ({ id }: { id: string }) => {
+    setFilterEmpresaId(id);
+  };
+
+  const handleFilterNome = (nome: string) => {
+    setFilterNome(nome);
+  };
+
   return (
-    <UserApprovalRequestsContext.Provider value={{ empresas, isLoadingEmpresas }}>
+    <UserApprovalRequestsContext.Provider
+      value={{
+        empresas,
+        isLoadingEmpresas,
+        filterEmpresaId,
+        handleFilterEmpresa,
+        filterNome,
+        handleFilterNome,
+      }}
+    >
       {children}
     </UserApprovalRequestsContext.Provider>
   );
@@ -43,7 +79,9 @@ export const UserApprovalRequestsProvider = ({ children }: UserApprovalRequestsP
 export const useUserApprovalRequestsContext = (): UserApprovalRequestsType => {
   const context = useContext(UserApprovalRequestsContext);
   if (context === undefined) {
-    throw new Error('useUserApprovalRequestsContext deve ser usado dentro de um UserApprovalRequestsProvider');
+    throw new Error(
+      'useUserApprovalRequestsContext deve ser usado dentro de um UserApprovalRequestsProvider'
+    );
   }
   return context;
 };

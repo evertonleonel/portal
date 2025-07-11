@@ -1,11 +1,11 @@
 import { DataTable } from '@/components/ui/data-table';
 import { DataTableSkeleton } from '@/components/ui/data-table-skeleton';
 
+import { useTableApprovalRequests } from '../hook/use-table-approval-requests';
 import { columnsTableRequests } from './columns';
-import { useTableRequests } from './hook/use-table-requests';
 
 export const TableRequests = () => {
-  const { dataRequests, isLoading } = useTableRequests();
+  const { dataRequests, isLoading } = useTableApprovalRequests();
 
   if (isLoading)
     return (
@@ -15,5 +15,6 @@ export const TableRequests = () => {
         cellWidths={['10%', '10%', '5%', '5%', '15%', '10%', '10%', '5%', '5%']}
       />
     );
+
   return <DataTable columns={columnsTableRequests} data={dataRequests} />;
 };
