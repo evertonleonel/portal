@@ -21,7 +21,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { useIsDesktop } from '@/hooks/use-desktop';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useIsTablet } from '@/hooks/use-tablet';
 import { cn } from '@/lib/utils';
@@ -71,14 +70,25 @@ function SidebarProvider({
 }) {
   const isMobile = useIsMobile();
   const isTablet = useIsTablet();
-  const isDesktop = useIsDesktop();
   const [openMobile, setOpenMobile] = React.useState(false);
-  const [hasEnteredDesktop, setHasEnteredDesktop] = React.useState(false);
   const [hasEnteredTablet, setHasEnteredTablet] = React.useState(false);
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
-  const [_open, _setOpen] = React.useState(defaultOpen);
+  const [_open, _setOpen] = React.useState(() => {
+    // Primeiro verifica se existe um cookie com a preferência do usuário
+    const cookie = document.cookie
+      .split(';')
+      .find(c => c.trim().startsWith(SIDEBAR_COOKIE_NAME + '='));
+
+    if (cookie) {
+      return cookie.split('=')[1] === 'true';
+    }
+
+    // Se não houver cookie, usa o defaultOpen
+    return defaultOpen;
+  });
+
   const open = openProp ?? _open;
   const setOpen = React.useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
@@ -125,16 +135,6 @@ function SidebarProvider({
       setHasEnteredTablet(false);
     }
   }, [isTablet, hasEnteredTablet, setOpen]);
-
-  // Force expanded state only when first entering desktop mode (1024px+)
-  React.useEffect(() => {
-    if (isDesktop && !hasEnteredDesktop) {
-      setOpen(true);
-      setHasEnteredDesktop(true);
-    } else if (!isDesktop) {
-      setHasEnteredDesktop(false);
-    }
-  }, [isDesktop, hasEnteredDesktop, setOpen]);
 
   // We add a state so that we can do data-state="expanded" or "collapsed".
   // This makes it easier to style the sidebar with Tailwind classes.
