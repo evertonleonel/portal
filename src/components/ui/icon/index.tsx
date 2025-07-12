@@ -18,6 +18,7 @@ import { xIcon } from '@/assets/icons/design/x';
 import { CheckIcon } from '@/assets/icons/essentional/check';
 import { CheckCircleIcon } from '@/assets/icons/essentional/check-circle';
 import { CloseCircleIcon } from '@/assets/icons/essentional/close-circle';
+import { NoteIcon } from '@/assets/icons/essentional/note';
 import { DocumentCopyIcon } from '@/assets/icons/files/document-copy';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
 import { BellIcon } from '@/assets/icons/tools/bell';
@@ -46,6 +47,7 @@ const icons = {
   expandeHorizontalArrow: ExpandeHorizontalArrowIcon,
   inputSearch: InputSearchIcon,
   logoutArrow: LogoutArrowIcon,
+  note: NoteIcon,
   microsoft: MicrosoftIcon,
   moveArrow: MoveArrowIcon,
   profileUser: ProfileUserIcon,

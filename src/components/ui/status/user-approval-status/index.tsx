@@ -1,30 +1,76 @@
-import { cn } from '@/lib/utils';
-import { USER_APPROVAL_STATUS } from '@/types/_enums/user-approval-status';
+import { cva, type VariantProps } from 'class-variance-authority';
+import type { PropsWithChildren } from 'react';
 
-type APPROVAL_STATUS = keyof typeof USER_APPROVAL_STATUS;
+// import { cn } from '@/lib/utils';
+import {
+  USER_REQUEST_STATUS,
+  type USER_REQUEST_STATUS_TYPE,
+} from '@/types/_enums/user-request-status';
 
-const LABEL: Record<APPROVAL_STATUS, string> = {
-  A: 'text-baixada-success-lime-400',
-  E: 'text-baixada-error-700',
-};
-
-const BG: Record<APPROVAL_STATUS, string> = {
-  A: 'bg-baixada-success-lime-900/10',
-  E: 'bg-baixada-error-100',
-};
-
-interface StatusProps {
-  status?: APPROVAL_STATUS;
-  children?: React.ReactNode;
+interface StatusProps
+  extends PropsWithChildren,
+    React.ComponentProps<'button'> {
+  status?: USER_REQUEST_STATUS_TYPE;
   className?: string;
 }
 
-export const UserApprovalStatus = ({ status, className, children }: StatusProps) => {
-  if (!status) return null;
+const approvalVariants = cva(
+  'font-manrope w-fit rounded-xl px-3 py-1 flex gap-1 items-center font-semibold disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none',
+  {
+    variants: {
+      variant: {
+        default: '',
+        disable: 'bg-muted-foreground/8 text-muted-foreground',
+        approve:
+          'text-baixada-success-lime-400 bg-baixada-success-lime-900 hover:bg-baixada-success-lime-900/60 transition-colors',
+        notApprove:
+          'text-baixada-error-700 bg-baixada-error-50 hover:bg-baixada-error-100/60 transition-colors',
+      },
+      status: {
+        P: '',
+        A: '',
+        N: '',
+      },
+    },
+    compoundVariants: [
+      {
+        status: 'P',
+        class: 'text-baixada-warning-500 bg-baixada-warning-50',
+      },
+      {
+        status: 'A',
+        class: 'text-baixada-success-lime-400 bg-baixada-success-lime-900',
+      },
+      {
+        status: 'N',
+        class: 'text-baixada-error-700 bg-baixada-error-50',
+      },
+    ],
+
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
+
+export const UserApprovalStatus = ({
+  status,
+  className,
+  variant,
+  children,
+  ...props
+}: StatusProps & VariantProps<typeof approvalVariants>) => {
   return (
-    <p className={cn(`px-3 py-1 font-semibold ${LABEL[status]} ${BG[status]}`, className)}>
-      {USER_APPROVAL_STATUS[status]}
+    <button
+      {...props}
+      className={approvalVariants({
+        variant,
+        status,
+        className,
+      })}
+    >
       {children}
-    </p>
+      {status && <span>{USER_REQUEST_STATUS[status]}</span>}
+    </button>
   );
 };

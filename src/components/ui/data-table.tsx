@@ -8,14 +8,24 @@ import {
 } from '@tanstack/react-table';
 import * as React from 'react';
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({
+  columns,
+  data,
+}: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const table = useReactTable({
     data,
@@ -29,15 +39,20 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
   });
 
   return (
-    <div>
+    <div className="[&>div]:max-h-[50vh]">
       <Table className="font-manrope">
-        <TableHeader className="bg-table border-b-0">
+        <TableHeader className="bg-table backdrop-blur-xs sticky top-0 z-10">
           {table.getHeaderGroups().map(headerGroup => (
-            <TableRow key={headerGroup.id}>
+            <TableRow key={headerGroup.id} className="border-t-0">
               {headerGroup.headers.map(header => {
                 return (
                   <TableHead className="md:px-4 lg:px-6" key={header.id}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </TableHead>
                 );
               })}
@@ -48,10 +63,19 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map(row => (
               <>
-                <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && 'selected'}
+                >
                   {row.getVisibleCells().map(cell => (
-                    <TableCell className="text-surface md:px-4 lg:px-6" key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    <TableCell
+                      className="text-surface md:px-4 lg:px-6"
+                      key={cell.id}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -59,7 +83,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
               </>
             ))
           ) : (
-            <TableRow>
+            <TableRow className="hover:bg-transparent">
               <TableCell colSpan={columns.length} className="h-24 text-center">
                 Sem resultados.
               </TableCell>

@@ -2,7 +2,12 @@ import type { ColumnDef } from '@tanstack/react-table';
 
 import { Button } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
-import { UserRequestStatus } from '@/components/ui/status/user-requests-status';
+import { UserApprovalStatus } from '@/components/ui/status/user-approval-status';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import type { GetUserRequestsResponse } from '@/types/user/requests';
 import { formatDateWithHour } from '@/utils/format-date-with-hour';
 
@@ -24,7 +29,7 @@ export const columnsTableApprovals: ColumnDef<GetUserRequestsResponse>[] = [
     accessorKey: 'statusAprovacaoMrs',
     cell: ({ row }) => {
       const status = row.original.statusAprovacaoMrs;
-      return <UserRequestStatus status={status} />;
+      return <UserApprovalStatus status={status} />;
     },
   },
   {
@@ -58,15 +63,24 @@ export const columnsTableApprovals: ColumnDef<GetUserRequestsResponse>[] = [
   },
   {
     id: 'actions',
+
     cell: ({ row }) => {
       return (
-        <Button
-          variant={'ghost'}
-          size={'icon'}
-          onClick={() => console.log(row)}
-        >
-          <Icon name="closeCircle" />
-        </Button>
+        <div className="text-right">
+          <Tooltip>
+            <TooltipTrigger>
+              <Button
+                variant={'ghost'}
+                size={'icon'}
+                className="cursor-pointer"
+                onClick={() => console.log(row)}
+              >
+                <Icon name="note" className="size-6" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Justificativa</TooltipContent>
+          </Tooltip>
+        </div>
       );
     },
   },

@@ -6,21 +6,15 @@ import { getAllUserRequests } from '@/services/user/requests';
 import type { GetUserRequestsResponse } from '@/types/user/requests';
 
 export const useTableApprovalRequests = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [dataRequests, setDataRequests] = useState<GetUserRequestsResponse[]>(
     []
   );
-  const [isLoading, setIsLoading] = useState(false);
-
   const { filterEmpresaId, filterNome } = useUserApprovalRequestsContext();
-  const debounceName = useDebounce(filterNome, 600);
+
+  const debounceNome = useDebounce(filterNome, 600);
 
   const dataApprovals = dataRequests.filter(el => el.dataAlteracao !== null);
-
-  const parsedataRequests = dataRequests.map(item => ({
-    ...item,
-    dataCriacao: new Date(item.dataCriacao),
-    dataAlteracao: item.dataAlteracao ? new Date(item.dataAlteracao) : null,
-  }));
 
   useEffect(() => {
     async function fetchUserRequests() {
@@ -50,7 +44,7 @@ export const useTableApprovalRequests = () => {
       try {
         setIsLoading(true);
         const data = await getAllUserRequests({
-          nome: debounceName,
+          nome: debounceNome,
           idEmpresa: Number(filterEmpresaId),
         });
         setDataRequests(data);
@@ -65,7 +59,7 @@ export const useTableApprovalRequests = () => {
     }
 
     fetchUserRequests();
-  }, [debounceName, filterEmpresaId]);
+  }, [debounceNome, filterEmpresaId]);
 
-  return { dataRequests, dataApprovals, isLoading, parsedataRequests };
+  return { dataApprovals, dataRequests, isLoading };
 };
