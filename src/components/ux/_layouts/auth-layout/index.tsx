@@ -1,4 +1,8 @@
-import { SidebarProvider, SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
+import {
+  SidebarProvider,
+  SidebarTrigger,
+  useSidebar,
+} from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/ux/app-sidebar';
 import { cn } from '@/lib/utils';
 
@@ -7,15 +11,17 @@ import { Header } from '../header';
 
 export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex min-h-screen flex-col">
-      <SidebarProvider>
-        <AuthLayoutContent children={children} />
-      </SidebarProvider>
-    </div>
+    <SidebarProvider>
+      <AuthLayoutContent children={children} />
+    </SidebarProvider>
   );
 };
 
-export const AuthLayoutContent = ({ children }: { children: React.ReactNode }) => {
+export const AuthLayoutContent = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const { state, isMobile } = useSidebar();
   const sideBarIsExpanded = state === 'expanded';
   const sideBarIsCollapsed = state === 'collapsed';
