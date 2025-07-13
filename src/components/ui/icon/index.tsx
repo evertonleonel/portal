@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { ArrowDownIcon } from '@/assets/icons/arrow/arrow-down';
-import { ArrowUpIcon } from '@/assets/icons/arrow/arrow-up';
 import { ChevronDownArrowIcon } from '@/assets/icons/arrow/chevron-down-arrow';
 import { ChevronLeftArrowIcon } from '@/assets/icons/arrow/chevron-left-arrow';
 import { ChevronRightArrowIcon } from '@/assets/icons/arrow/chevron-right-arrrow';
 import { ChevronUpArrowIcon } from '@/assets/icons/arrow/chevron-up-arrow';
+import { DownArrowIcon } from '@/assets/icons/arrow/down-arrow';
 import { ExpandeHorizontalArrowIcon } from '@/assets/icons/arrow/expande-horizontal-arrow';
 import { LogoutArrowIcon } from '@/assets/icons/arrow/logout-arrow';
 import { MoveArrowIcon } from '@/assets/icons/arrow/move-arrow';
+import { UpArrowIcon } from '@/assets/icons/arrow/up-arrow';
+import { UpDownArrowIcon } from '@/assets/icons/arrow/up-down-arrow';
 import { HomeIcon } from '@/assets/icons/design/home';
 import { MicrosoftIcon } from '@/assets/icons/design/microsoft.';
 import { NotificationDefaultIcon } from '@/assets/icons/design/nofitication-default';
@@ -28,8 +29,6 @@ import { ProfileTwoUsersIcon } from '@/assets/icons/user/profile-two-users';
 import { ProfileUserIcon } from '@/assets/icons/user/profile-user';
 
 const icons = {
-  arrowUp: ArrowUpIcon,
-  arrowDown: ArrowDownIcon,
   bell: BellIcon,
   check: CheckIcon,
   checkCircle: CheckCircleIcon,
@@ -39,6 +38,7 @@ const icons = {
   chevronDownArrow: ChevronDownArrowIcon,
   chevronRightArrow: ChevronRightArrowIcon,
   documentCopy: DocumentCopyIcon,
+  downArrow: DownArrowIcon,
   filter: FilterIcon,
   home: HomeIcon,
   notificationError: NotificationErrorIcon,
@@ -53,6 +53,8 @@ const icons = {
   profileUser: ProfileUserIcon,
   profileTwoUsers: ProfileTwoUsersIcon,
   profileTickUser: ProfileTickUserIcon,
+  upArrow: UpArrowIcon,
+  upDownArrow: UpDownArrowIcon,
   x: xIcon,
 };
 

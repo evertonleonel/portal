@@ -33,18 +33,24 @@ export const columnsTableApprovals: ColumnDef<GetUserRequestsResponse>[] = [
     },
   },
   {
-    accessorKey: 'usuarioCriacao.dataAlteracao',
+    accessorKey: 'dataAlteracao',
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           className="text-foreground hover:text-foreground cursor-pointer"
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          onClick={() => column.toggleSorting()}
         >
           Data e hora da aprovação
           <div className="ml-2 h-4 w-4 rounded">
             <Icon
-              name={column.getIsSorted() === 'asc' ? 'arrowDown' : 'arrowUp'}
+              name={
+                column.getIsSorted() === 'asc'
+                  ? 'downArrow'
+                  : column.getIsSorted() === 'desc'
+                    ? 'upArrow'
+                    : 'upDownArrow'
+              }
               className="text-primary"
             />
           </div>

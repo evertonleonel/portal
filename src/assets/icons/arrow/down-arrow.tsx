@@ -1,6 +1,6 @@
 type Props = React.SVGProps<SVGSVGElement>;
 
-export const ArrowDownIcon = (props: Props) => {
+export const DownArrowIcon = (props: Props) => {
   return (
     <svg
       {...props}
