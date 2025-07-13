@@ -16,6 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { cn } from '@/lib/utils';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -35,6 +36,9 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     state: {
       sorting,
+      columnPinning: {
+        right: ['actions'],
+      },
     },
   });
 
@@ -46,7 +50,14 @@ export function DataTable<TData, TValue>({
             <TableRow key={headerGroup.id} className="border-t-0">
               {headerGroup.headers.map(header => {
                 return (
-                  <TableHead className="md:px-4 lg:px-6" key={header.id}>
+                  <TableHead
+                    className={cn(
+                      'first:md:pl-4 last:md:pr-4 first:lg:pl-6 last:lg:pr-6',
+                      header.column.getIsPinned() &&
+                        'backdrop-blur-xs sticky right-0'
+                    )}
+                    key={header.id}
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -66,10 +77,15 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && 'selected'}
+                  className="text-surface first:md:pl-4 last:md:pr-4 first:lg:pl-6 last:lg:pr-6"
                 >
                   {row.getVisibleCells().map(cell => (
                     <TableCell
-                      className="text-surface md:px-4 lg:px-6"
+                      className={cn(
+                        'text-surface first:md:pl-4 last:md:pr-4 first:lg:pl-6 last:lg:pr-6',
+                        cell.column.getIsPinned() &&
+                          'sticky right-0 backdrop-blur-sm'
+                      )}
                       key={cell.id}
                     >
                       {flexRender(
