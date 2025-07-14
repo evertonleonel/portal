@@ -6,8 +6,18 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { RegisterForm } from '@/pages/auth/signin/_components/forms/register';
 import { SigninProvider } from '@/pages/auth/signin/context';
 
+// Mock do serviço de empresas
+vi.mock('@/services/empresa', () => ({
+  getAllEmpresa: vi.fn().mockResolvedValue([
+    { id: 1, nome: 'Empresa 1' },
+    { id: 2, nome: 'Empresa 2' },
+  ]),
+}));
+
 // Wrapper com provider
-const TestWrapper = ({ children }: { children: ReactNode }) => <SigninProvider>{children}</SigninProvider>;
+const TestWrapper = ({ children }: { children: ReactNode }) => (
+  <SigninProvider>{children}</SigninProvider>
+);
 
 describe('RegisterForm - Teste dos Inputs', () => {
   beforeEach(() => {
@@ -17,9 +27,17 @@ describe('RegisterForm - Teste dos Inputs', () => {
   it('deve renderizar todos os campos de input obrigatórios', () => {
     render(<RegisterForm />, { wrapper: TestWrapper });
 
+    // Verifica os campos de texto
     expect(screen.getByPlaceholderText('Seu nome aqui')).toBeInTheDocument();
-    expect(screen.getAllByPlaceholderText('Digite seu e-mail corporativo')).toHaveLength(2);
-    expect(screen.getByText('Selecione')).toBeInTheDocument(); // Campo empresa
+    expect(
+      screen.getByPlaceholderText('Digite seu e-mail corporativo')
+    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Digite seu cargo')).toBeInTheDocument();
+
+    // Verifica o campo de empresa (que inicialmente está desabilitado e mostrando "Carregando...")
+    const empresaSelect = screen.getByRole('combobox', { name: /empresa/i });
+    expect(empresaSelect).toBeInTheDocument();
+    expect(empresaSelect).toBeDisabled();
   });
 
   it('deve limpar o campo quando o usuário apagar o conteúdo', async () => {
@@ -39,8 +57,9 @@ describe('RegisterForm - Teste dos Inputs', () => {
     render(<RegisterForm />, { wrapper: TestWrapper });
     const user = userEvent.setup();
 
-    const emailInputs = screen.getAllByPlaceholderText('Digite seu e-mail corporativo');
-    const emailInput = emailInputs[0];
+    const emailInput = screen.getByPlaceholderText(
+      'Digite seu e-mail corporativo'
+    );
 
     await user.type(emailInput, 'joao@teste.com');
     expect(emailInput).toHaveValue('joao@teste.com');
@@ -49,5 +68,17 @@ describe('RegisterForm - Teste dos Inputs', () => {
     await user.type(emailInput, 'novoemail@empresa.com');
 
     expect(emailInput).toHaveValue('novoemail@empresa.com');
+  });
+
+  it('deve mostrar as empresas após carregar', async () => {
+    render(<RegisterForm />, { wrapper: TestWrapper });
+
+    const empresaSelect = screen.getByRole('combobox', { name: /empresa/i });
+    expect(empresaSelect).toBeDisabled();
+
+    const selectHabilitado = await screen.findByRole('combobox', {
+      name: /empresa/i,
+    });
+    expect(selectHabilitado).not.toBeDisabled();
   });
 });

@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
+import { AuthProvider } from '@/context/auth-context';
+import { SigninProvider } from '@/pages/auth/signin/context';
 import SignIn from '@/pages/auth/signin/page';
 
 // Mock dos formulários
@@ -11,7 +13,9 @@ vi.mock('@/pages/auth/signin/_components/forms/login', () => ({
 }));
 
 vi.mock('@/pages/auth/signin/_components/forms/register', () => ({
-  RegisterForm: () => <div data-testid="register-form">Register Form Content</div>,
+  RegisterForm: () => (
+    <div data-testid="register-form">Register Form Content</div>
+  ),
 }));
 
 vi.mock('@/pages/auth/signin/_components/forms/return', () => ({
@@ -20,7 +24,13 @@ vi.mock('@/pages/auth/signin/_components/forms/return', () => ({
 
 // Wrapper para o Router
 const renderWithRouter = (component: React.ReactElement) => {
-  return render(<BrowserRouter>{component}</BrowserRouter>);
+  return render(
+    <BrowserRouter>
+      <AuthProvider>
+        <SigninProvider>{component}</SigninProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  );
 };
 
 describe('SignIn Page - Tabs', () => {
@@ -49,7 +59,9 @@ describe('SignIn Page - Tabs', () => {
     renderWithRouter(<SignIn />);
 
     expect(screen.getByText('Bem vindo(a)!')).toBeInTheDocument();
-    expect(screen.getByText('Faça login ou solicite seu cadastro')).toBeInTheDocument();
+    expect(
+      screen.getByText('Faça login ou solicite seu cadastro')
+    ).toBeInTheDocument();
   });
 
   it('deve alternar para a tab Cadastro e mostrar o RegisterForm', async () => {
@@ -77,7 +89,9 @@ describe('SignIn Page - Tabs', () => {
 
     expect(screen.getByText('Solicite seu cadastro')).toBeInTheDocument();
     expect(
-      screen.getByText('Preencha as informações abaixo para solicitar seu cadastro no Portal')
+      screen.getByText(
+        'Preencha as informações abaixo para solicitar seu cadastro no Portal'
+      )
     ).toBeInTheDocument();
   });
 
