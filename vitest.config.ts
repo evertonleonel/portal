@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -5,6 +6,11 @@ export default defineConfig({
     globals: true,
     setupFiles: './test/_setup/index.ts',
     environment: 'jsdom',
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   server: {
     port: 5000,

@@ -44,6 +44,7 @@ export const useTableApprovalRequests = () => {
   }, [fetchUserRequests]);
 
   const dataApprovals = dataRequests.filter(el => el.dataAlteracao !== null);
+  // A tabela de aprovações esta sendo filtrada no front-end
 
   return { dataApprovals, dataRequests, isLoading };
 };
