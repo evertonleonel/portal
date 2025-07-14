@@ -7,7 +7,7 @@ import { useSigninContext } from '@/pages/auth/signin/context';
 import { userRequestRegister } from '@/services/auth/signin/register';
 import { getAllEmpresa } from '@/services/empresa';
 
-import { empresaMock } from '../../../../../../_setup/mocks/empresa';
+import { empresasMock } from '../../../../../../_setup/mocks/empresa';
 
 vi.mock('@/pages/auth/signin/context', () => ({
   useSigninContext: vi.fn(),
@@ -21,7 +21,7 @@ vi.mock('@/services/empresa', () => ({
   getAllEmpresa: vi.fn(),
 }));
 
-const mockEmpresas = empresaMock;
+const mockEmpresas = empresasMock;
 
 viDescribe('useFormRegister', () => {
   const mockHandleUpdateViewForm = vi.fn();

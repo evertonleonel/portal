@@ -8,8 +8,8 @@ export const requestMock: GetUserRequestsResponse[] = [
     cargo: 'CEO',
     empresa: {
       id: 1,
-      sigla: 'EMP1',
-      nome: 'Empresa 1',
+      sigla: 'MRS',
+      nome: 'MRS',
       ativo: true,
       dataCriacao: '2025-07-08T14:43:16.78',
       usuarioCriacao: {
@@ -36,8 +36,8 @@ export const requestMock: GetUserRequestsResponse[] = [
       cargo: 'Aprovador',
       empresa: {
         id: 1,
-        sigla: 'EMP1',
-        nome: 'Empresa 1',
+        sigla: 'MRS',
+        nome: 'MRS',
         ativo: true,
         dataCriacao: '2025-07-08T14:43:16.78',
         usuarioCriacao: {

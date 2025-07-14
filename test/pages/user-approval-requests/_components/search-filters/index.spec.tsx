@@ -5,7 +5,7 @@ import { SearchFilters } from '@/pages/user-approval-requests/_components/search
 import { useUserApprovalRequestsContext } from '@/pages/user-approval-requests/context';
 import type { Empresa } from '@/types/empresa';
 
-import { empresaMock } from '../../../../_setup/mocks/empresa';
+import { empresasMock } from '../../../../_setup/mocks/empresa';
 
 interface UserApprovalRequestsType {
   empresas: Empresa[];
@@ -23,7 +23,7 @@ vi.mock('@/pages/user-approval-requests/context', () => ({
 
 const mockHandleFilterNome = vi.fn();
 const mockHandleFilterEmpresa = vi.fn();
-const mockEmpresas = empresaMock;
+const mockEmpresas = empresasMock;
 
 describe('SearchFilters', () => {
   beforeEach(() => {
@@ -59,7 +59,7 @@ describe('SearchFilters', () => {
     const select = screen.getByRole('combobox');
     fireEvent.click(select);
 
-    const option = screen.getByText('Empresa 1');
+    const option = screen.getByText('MRS');
     fireEvent.click(option);
 
     expect(mockHandleFilterEmpresa).toHaveBeenCalledWith({ id: '1' });
