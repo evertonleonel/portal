@@ -13,7 +13,7 @@ export const useFormRegister = () => {
   const [isPending] = useTransition();
   const { handleUpdateViewForm } = useSigninContext();
   const [empresas, setEmpresas] = useState<GetEmpresaResponse[]>([]);
-  const [isLoadingEmpresas, setIsLoadingEmpresas] = useState(true);
+  const [isLoadingEmpresas, setIsLoadingEmpresas] = useState(false);
 
   const formRegister = useForm<RegisterInputs>({
     resolver: zodResolver(registerSchema),
