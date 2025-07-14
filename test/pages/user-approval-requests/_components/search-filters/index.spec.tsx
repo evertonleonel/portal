@@ -5,6 +5,8 @@ import { SearchFilters } from '@/pages/user-approval-requests/_components/search
 import { useUserApprovalRequestsContext } from '@/pages/user-approval-requests/context';
 import type { Empresa } from '@/types/empresa';
 
+import { empresaMock } from '../../../../_setup/mocks/empresa';
+
 interface UserApprovalRequestsType {
   empresas: Empresa[];
   isLoadingEmpresas: boolean;
@@ -21,36 +23,7 @@ vi.mock('@/pages/user-approval-requests/context', () => ({
 
 const mockHandleFilterNome = vi.fn();
 const mockHandleFilterEmpresa = vi.fn();
-const mockEmpresas: Empresa[] = [
-  {
-    id: 1,
-    sigla: 'EMP1',
-    nome: 'Empresa 1',
-    ativo: true,
-    dataCriacao: '2024-01-01',
-    usuarioCriacao: {
-      id: 1,
-      nome: 'Admin',
-      dataCriacao: '2024-01-01',
-    },
-    dataAlteracao: null,
-    usuarioAlteracao: null,
-  },
-  {
-    id: 2,
-    sigla: 'EMP2',
-    nome: 'Empresa 2',
-    ativo: true,
-    dataCriacao: '2024-01-01',
-    usuarioCriacao: {
-      id: 1,
-      nome: 'Admin',
-      dataCriacao: '2024-01-01',
-    },
-    dataAlteracao: null,
-    usuarioAlteracao: null,
-  },
-];
+const mockEmpresas = empresaMock;
 
 describe('SearchFilters', () => {
   beforeEach(() => {

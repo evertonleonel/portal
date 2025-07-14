@@ -3,7 +3,8 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { useTableApprovalRequests } from '@/pages/user-approval-requests/_components/hook/use-table-approval-requests';
 import { TableApprovals } from '@/pages/user-approval-requests/_components/table-approvals';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+
+import { userMock } from '../../../../_setup/mocks/user';
 
 // Mock do hook
 vi.mock(
@@ -23,61 +24,7 @@ vi.mock('@/components/ui/data-table-skeleton', () => ({
   )),
 }));
 
-const mockApprovalRequest: GetUserRequestsResponse = {
-  id: 1,
-  nome: 'João Silva',
-  email: 'joao@example.com',
-  cargo: 'Desenvolvedor',
-  empresa: {
-    id: 1,
-    sigla: 'EMP1',
-    nome: 'Empresa 1',
-    ativo: true,
-    dataCriacao: '2024-01-01',
-    usuarioCriacao: {
-      id: 1,
-      nome: 'Admin',
-      dataCriacao: '2024-01-01',
-    },
-    dataAlteracao: null,
-    usuarioAlteracao: null,
-  },
-  statusAprovacaoMrs: 'A',
-  statusAprovacaoFips: 'A',
-  dataCriacao: '2024-01-01',
-  usuarioCriacao: {
-    id: 1,
-    nome: 'Admin',
-    dataCriacao: '2024-01-01',
-  },
-  dataAlteracao: '2024-01-02',
-  usuarioAlteracao: {
-    id: 2,
-    nome: 'Aprovador',
-    email: 'aprovador@example.com',
-    cargo: 'Aprovador',
-    empresa: {
-      id: 1,
-      sigla: 'EMP1',
-      nome: 'Empresa 1',
-      ativo: true,
-      dataCriacao: '2024-01-01',
-      usuarioCriacao: {
-        id: 1,
-        nome: 'Admin',
-        dataCriacao: '2024-01-01',
-      },
-      dataAlteracao: null,
-      usuarioAlteracao: null,
-    },
-    chaveAd: 'aprovador',
-    ativo: true,
-    dataCriacao: '2024-01-01',
-    usuarioCriacao: 'Admin',
-    dataAlteracao: '2024-01-02',
-    usuarioAlteracao: 'Admin',
-  },
-};
+const mockApprovalRequest = userMock.requests;
 
 describe('TableApprovals', () => {
   it('deve renderizar o skeleton loader durante o carregamento', () => {
@@ -94,8 +41,8 @@ describe('TableApprovals', () => {
 
   it('deve renderizar a tabela com os dados quando o carregamento for concluído', () => {
     vi.mocked(useTableApprovalRequests).mockReturnValue({
-      dataApprovals: [mockApprovalRequest],
-      dataRequests: [mockApprovalRequest],
+      dataApprovals: mockApprovalRequest,
+      dataRequests: mockApprovalRequest,
       isLoading: false,
     });
 
