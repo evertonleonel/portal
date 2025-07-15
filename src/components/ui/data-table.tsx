@@ -54,6 +54,7 @@ export function DataTable<TData, TValue>({
                     className={cn(
                       'first:md:pl-4 last:md:pr-4 first:lg:pl-6 last:lg:pr-6',
                       header.column.getIsPinned() &&
+                        data.length &&
                         'backdrop-blur-xs sticky right-0'
                     )}
                     key={header.id}
