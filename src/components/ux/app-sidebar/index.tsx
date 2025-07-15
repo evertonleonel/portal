@@ -4,17 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { BackgroundImage } from '@/components/ui/background-image';
 import { Button } from '@/components/ui/button';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Icon, type IconsName } from '@/components/ui/icon';
 import { Separator } from '@/components/ui/separator';
 import { ShowContent } from '@/components/ui/show-content';
@@ -22,14 +11,7 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
   SidebarTrigger,
   useSidebar,
 } from '@/components/ui/sidebar';
@@ -42,8 +24,20 @@ import { useAuth } from '@/context/auth-context';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 
+import { CollapsedSidebarMenu } from './collapsed-sidebar-menu';
+import { ExpandedSidebarMenu } from './expanded-sidebar-menu';
+type MenuItem = {
+  title: string;
+  url: string;
+  icon: IconsName;
+  subMenus?: {
+    id: number;
+    nome: string;
+    url: string;
+  }[];
+};
 // Menu items.
-const items = [
+const items: MenuItem[] = [
   {
     title: 'Página inicial',
     url: '/home',
@@ -168,137 +162,15 @@ export function AppSidebar() {
 
       <SidebarTrigger className={cn('z-100', isMobile && 'hidden')} />
       <SidebarContent className="bg-sidebar-baixada px-4">
-        <SidebarGroup>
-          <SidebarGroupContent>
-            {hasCollapsedState && (
-              <SidebarMenu>
-                {items.map(item => (
-                  <SidebarMenuItem key={item.title}>
-                    {item.subMenus ? (
-                      <DropdownMenu>
-                        <Tooltip>
-                          <DropdownMenuTrigger asChild>
-                            <SidebarMenuButton asChild className="h-10">
-                              <TooltipTrigger asChild>
-                                <a href={item.url}>
-                                  <Icon
-                                    name={item.icon as IconsName}
-                                    className="size-5"
-                                  />
-                                </a>
-                              </TooltipTrigger>
-                            </SidebarMenuButton>
-                          </DropdownMenuTrigger>
-                          <TooltipContent
-                            side="right"
-                            className={cn(isMobile && 'hidden')}
-                          >
-                            <p>{item.title}</p>
-                          </TooltipContent>
-                        </Tooltip>
-
-                        <DropdownMenuContent
-                          className="divide divide-input divide-y px-0"
-                          align="start"
-                        >
-                          {item.subMenus.map(sub => (
-                            <DropdownMenuItem
-                              key={sub.id}
-                              className="rounded-none px-3"
-                            >
-                              <a href={sub.url}>{sub.nome}</a>
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    ) : (
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <SidebarMenuButton asChild className="h-10 text-xs">
-                            <a href={item.url}>
-                              <Icon
-                                name={item.icon as IconsName}
-                                className="size-5"
-                              />
-                              <span>{item.title}</span>
-                            </a>
-                          </SidebarMenuButton>
-                        </TooltipTrigger>
-                        <TooltipContent
-                          side="right"
-                          className={cn(isMobile && 'hidden')}
-                        >
-                          <p>{item.title}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    )}
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            )}
-            {hasExpandedState && (
-              <SidebarMenu>
-                {items.map(item => (
-                  <SidebarMenuItem key={item.title}>
-                    {item.subMenus ? (
-                      // Item com submenus - usa Collapsible
-
-                      <Collapsible
-                        open={openItems[item.title]}
-                        onOpenChange={() => toggleItem(item.title)}
-                        className="group/collapsible"
-                      >
-                        <CollapsibleTrigger
-                          asChild
-                          className="group-data-[state=open]/collapsible:text-sidebar-accent-foreground group-data-[state=open]/collapsible:bg-background"
-                        >
-                          <SidebarMenuButton asChild className="h-10">
-                            <a href={item.url}>
-                              <Icon
-                                name={item.icon as IconsName}
-                                className="size-5"
-                              />
-                              <div className="flex w-full items-center justify-between">
-                                <span>{item.title}</span>
-                                <Icon
-                                  name="chevronDownArrow"
-                                  className="size-4 transition-transform duration-300 group-data-[state=open]/collapsible:rotate-180"
-                                />
-                              </div>
-                            </a>
-                          </SidebarMenuButton>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="py-3">
-                          <SidebarMenuSub className="border-primary-foreground space-y-3 border-l-2">
-                            {item.subMenus.map(sub => (
-                              <SidebarMenuSubItem
-                                key={sub.id}
-                                className="hover:bg-primary cursor-pointer rounded-lg px-3 py-2 text-xs"
-                              >
-                                <a href={sub.url}>{sub.nome}</a>
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
-                      </Collapsible>
-                    ) : (
-                      // Item sem submenus - apenas link simples
-                      <SidebarMenuButton asChild className="h-10">
-                        <a href={item.url}>
-                          <Icon
-                            name={item.icon as IconsName}
-                            className="size-5"
-                          />
-                          <span>{item.title}</span>
-                        </a>
-                      </SidebarMenuButton>
-                    )}
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            )}
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {hasCollapsedState ? (
+          <CollapsedSidebarMenu items={items} isMobile={isMobile} />
+        ) : (
+          <ExpandedSidebarMenu
+            items={items}
+            openItems={openItems}
+            toggleItem={toggleItem}
+          />
+        )}
       </SidebarContent>
 
       <SidebarFooter className="bg-sidebar-baixada-footer gap-4 px-4 pb-6">
