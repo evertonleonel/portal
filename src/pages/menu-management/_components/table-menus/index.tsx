@@ -1,0 +1,138 @@
+import { DataTable } from '@/components/ui/data-table';
+import { DataTableSkeleton } from '@/components/ui/data-table-skeleton';
+import type { Menu } from '@/types/menu';
+
+import { columnsTableMenus } from './columns';
+
+export const TableMenus = () => {
+  const isLoading = false;
+
+  const menus: Menu[] = [
+    {
+      id: 1,
+      desc: 'Cadastro de Usuários',
+      caminho: '/usuarios',
+      menuPrincipal: 'Administração',
+      ordemExibicao: 1,
+      sistema: {
+        id: 0,
+        sigla: 'string',
+        nome: 'string',
+        empresa: {
+          id: 0,
+          sigla: 'string',
+          nome: 'string',
+          ativo: true,
+          dataCriacao: '2025-07-16T18:10:42.635Z',
+          usuarioCriacao: { id: 1, nome: '', dataCriacao: '' },
+          dataAlteracao: '2025-07-16T18:10:42.635Z',
+          usuarioAlteracao: 'string',
+        },
+        ativo: true,
+        dataCriacao: '2025-07-16T18:10:42.635Z',
+        usuarioCriacao: {
+          id: 0,
+          nome: 'string',
+          email: 'string',
+          cargo: 'string',
+          empresa: {
+            id: 0,
+            sigla: 'string',
+            nome: 'string',
+            ativo: true,
+            dataCriacao: '2025-07-16T18:10:42.635Z',
+            usuarioCriacao: { id: 1, nome: '', dataCriacao: '' },
+            dataAlteracao: '2025-07-16T18:10:42.635Z',
+            usuarioAlteracao: 'string',
+          },
+          chaveAd: 'string',
+          ativo: true,
+          dataCriacao: '2025-07-16T18:10:42.635Z',
+          usuarioCriacao: 'string',
+          dataAlteracao: '2025-07-16T18:10:42.635Z',
+          usuarioAlteracao: 'string',
+        },
+        dataAlteracao: '2025-07-16T18:10:42.635Z',
+        usuarioAlteracao: {
+          id: 0,
+          nome: 'string',
+          email: 'string',
+          cargo: 'string',
+          empresa: {
+            id: 0,
+            sigla: 'string',
+            nome: 'string',
+            ativo: true,
+            dataCriacao: '2025-07-16T18:10:42.635Z',
+            usuarioCriacao: { id: 1, nome: '', dataCriacao: '' },
+            dataAlteracao: '2025-07-16T18:10:42.635Z',
+            usuarioAlteracao: 'string',
+          },
+          chaveAd: 'string',
+          ativo: true,
+          dataCriacao: '2025-07-16T18:10:42.635Z',
+          usuarioCriacao: 'string',
+          dataAlteracao: '2025-07-16T18:10:42.635Z',
+          usuarioAlteracao: 'string',
+        },
+      },
+      dataCriacao: '2025-07-16T18:10:42.635Z',
+      usuarioCriacao: {
+        id: 0,
+        nome: 'string',
+        email: 'string',
+        cargo: 'string',
+        empresa: {
+          id: 0,
+          sigla: 'string',
+          nome: 'string',
+          ativo: true,
+          dataCriacao: '2025-07-16T18:10:42.635Z',
+          usuarioCriacao: { id: 1, nome: '', dataCriacao: '' },
+          dataAlteracao: '2025-07-16T18:10:42.635Z',
+          usuarioAlteracao: 'string',
+        },
+        chaveAd: 'string',
+        ativo: true,
+        dataCriacao: '2025-07-16T18:10:42.635Z',
+        usuarioCriacao: 'string',
+        dataAlteracao: '2025-07-16T18:10:42.635Z',
+        usuarioAlteracao: 'string',
+      },
+      dataAlteracao: '2025-07-16T18:10:42.635Z',
+      usuarioAlteracao: {
+        id: 0,
+        nome: 'string',
+        email: 'string',
+        cargo: 'string',
+        empresa: {
+          id: 0,
+          sigla: 'string',
+          nome: 'string',
+          ativo: true,
+          dataCriacao: '2025-07-16T18:10:42.635Z',
+          usuarioCriacao: { id: 1, nome: '', dataCriacao: '' },
+          dataAlteracao: '2025-07-16T18:10:42.635Z',
+          usuarioAlteracao: 'string',
+        },
+        chaveAd: 'string',
+        ativo: true,
+        dataCriacao: '2025-07-16T18:10:42.635Z',
+        usuarioCriacao: 'string',
+        dataAlteracao: '2025-07-16T18:10:42.635Z',
+        usuarioAlteracao: 'string',
+      },
+    },
+  ];
+
+  if (isLoading)
+    return (
+      <DataTableSkeleton
+        columnCount={9}
+        rowCount={6}
+        cellWidths={['10%', '10%', '5%', '5%', '15%', '10%', '10%', '5%', '5%']}
+      />
+    );
+
+  return <DataTable columns={columnsTableMenus} data={menus} />;
+};

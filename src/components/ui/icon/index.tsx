@@ -24,6 +24,7 @@ import { DocumentCopyIcon } from '@/assets/icons/files/document-copy';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
 import { BellIcon } from '@/assets/icons/tools/bell';
 import { FilterIcon } from '@/assets/icons/tools/filter';
+import { TrashIcon } from '@/assets/icons/tools/trash';
 import { ProfileTickUserIcon } from '@/assets/icons/user/profile-tick-user';
 import { ProfileTwoUsersIcon } from '@/assets/icons/user/profile-two-users';
 import { ProfileUserIcon } from '@/assets/icons/user/profile-user';
@@ -53,6 +54,7 @@ const icons = {
   profileUser: ProfileUserIcon,
   profileTwoUsers: ProfileTwoUsersIcon,
   profileTickUser: ProfileTickUserIcon,
+  trash: TrashIcon,
   upArrow: UpArrowIcon,
   upDownArrow: UpDownArrowIcon,
   x: xIcon,

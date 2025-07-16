@@ -1,6 +1,7 @@
 import type { Empresa } from '@/types/empresa';
 
 import type { USER_REQUEST_STATUS } from '../../_enums/user-request-status';
+import type { Usuario } from '..';
 
 export interface GetUserRequestsResponse {
   id: number;
@@ -17,19 +18,7 @@ export interface GetUserRequestsResponse {
     dataCriacao: string;
   };
   dataAlteracao: string | null;
-  usuarioAlteracao: {
-    id: number;
-    nome: string;
-    email: string;
-    cargo: string;
-    empresa: Empresa;
-    chaveAd: string;
-    ativo: boolean;
-    dataCriacao: string;
-    usuarioCriacao: string;
-    dataAlteracao: string;
-    usuarioAlteracao: string;
-  };
+  usuarioAlteracao: Usuario;
 }
 
 export interface GetAllUserRequestsParams {

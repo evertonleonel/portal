@@ -1,14 +1,15 @@
 import type { Empresa } from '../empresa';
-import type { Usuario } from '../user';
 
-export interface Sistema {
+export interface Usuario {
   id: number;
-  sigla: string;
   nome: string;
+  email: string;
+  cargo: string;
   empresa: Empresa;
+  chaveAd: string;
   ativo: boolean;
   dataCriacao: string;
-  usuarioCriacao: Usuario;
+  usuarioCriacao: string;
   dataAlteracao: string;
-  usuarioAlteracao: Usuario;
+  usuarioAlteracao: string;
 }

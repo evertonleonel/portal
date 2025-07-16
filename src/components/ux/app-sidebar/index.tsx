@@ -49,6 +49,11 @@ const items: MenuItem[] = [
     icon: 'profileTwoUsers',
   },
   {
+    title: 'Gerenciamento de Menus',
+    url: '/cadastro-menu',
+    icon: 'documentCopy',
+  },
+  {
     title: 'Admin',
     url: '/admin',
     icon: 'profileTwoUsers',
