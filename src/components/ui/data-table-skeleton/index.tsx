@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Skeleton } from '@/components/ui/skeleton';
 import {
   Table,
@@ -127,7 +129,7 @@ export function DataTableSkeleton(props: DataTableSkeletonProps) {
           </TableHeader>
           <TableBody>
             {Array.from({ length: rowCount }).map((_, i) => (
-              <>
+              <React.Fragment key={i}>
                 <TableRow key={i} className="hover:bg-transparent">
                   {Array.from({ length: columnCount }).map((_, j) => (
                     <TableCell
@@ -142,7 +144,7 @@ export function DataTableSkeleton(props: DataTableSkeletonProps) {
                   ))}
                 </TableRow>
                 <TableRowSpacing colSpan={columnCount} />
-              </>
+              </React.Fragment>
             ))}
           </TableBody>
         </Table>
