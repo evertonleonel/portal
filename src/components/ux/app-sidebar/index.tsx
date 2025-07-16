@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { BackgroundImage } from '@/components/ui/background-image';
@@ -99,13 +99,13 @@ const items: MenuItem[] = [
     subMenus: [
       {
         id: 1,
-        nome: 'Carga',
-        url: '/carga',
+        nome: 'Client 1',
+        url: '/client',
       },
       {
         id: 2,
         nome: 'Descarga',
-        url: '/descarga',
+        url: '/home',
       },
     ],
   },
@@ -116,11 +116,27 @@ export function AppSidebar() {
   const { state } = useSidebar();
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
 
   const hasExpandedState = state === 'expanded';
   const hasCollapsedState = state === 'collapsed';
+
+  const isItemActive = (item: MenuItem) => {
+    const currentPath = location.pathname;
+
+    if (item.url === currentPath) {
+      return true;
+    }
+
+    // Verifica se algum submenu está ativo
+    if (item.subMenus) {
+      return item.subMenus.some(subMenu => subMenu.url === currentPath);
+    }
+
+    return false;
+  };
 
   // Determina qual logo usar baseado no estado da sidebar
   const logoSrc =
@@ -163,12 +179,17 @@ export function AppSidebar() {
       <SidebarTrigger className={cn('z-100', isMobile && 'hidden')} />
       <SidebarContent className="bg-sidebar-baixada px-4">
         {hasCollapsedState ? (
-          <CollapsedSidebarMenu items={items} isMobile={isMobile} />
+          <CollapsedSidebarMenu
+            items={items}
+            isMobile={isMobile}
+            isItemActive={isItemActive}
+          />
         ) : (
           <ExpandedSidebarMenu
             items={items}
             openItems={openItems}
             toggleItem={toggleItem}
+            isItemActive={isItemActive}
           />
         )}
       </SidebarContent>

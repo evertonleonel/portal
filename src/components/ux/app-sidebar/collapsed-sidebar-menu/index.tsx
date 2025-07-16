@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import {
   DropdownMenu,
@@ -35,11 +35,22 @@ type MenuItem = {
 interface CollapsedSidebarMenuProps {
   items: MenuItem[];
   isMobile: boolean;
+  isItemActive: (item: MenuItem) => boolean;
 }
+
 export const CollapsedSidebarMenu = ({
   items,
   isMobile,
+  isItemActive,
 }: CollapsedSidebarMenuProps) => {
+  const location = useLocation();
+
+  const isSubMenuActive = (url: string) => {
+    return location.pathname === url;
+  };
+
+  //Versão mobile (Sheet)
+
   return (
     <SidebarGroup>
       <SidebarGroupContent>
@@ -50,13 +61,18 @@ export const CollapsedSidebarMenu = ({
                 <DropdownMenu>
                   <Tooltip>
                     <DropdownMenuTrigger asChild>
-                      <SidebarMenuButton asChild className="h-10">
+                      <SidebarMenuButton
+                        asChild
+                        className="data-[active=true]:hover:bg-sidebar-accent/90 h-10"
+                        isActive={isItemActive(item)}
+                      >
                         <TooltipTrigger asChild>
                           <Link to={item.url}>
                             <Icon
                               name={item.icon as IconsName}
                               className="size-5"
                             />
+                            {item.title}
                           </Link>
                         </TooltipTrigger>
                       </SidebarMenuButton>
@@ -76,7 +92,11 @@ export const CollapsedSidebarMenu = ({
                     {item.subMenus.map(sub => (
                       <DropdownMenuItem
                         key={sub.id}
-                        className="rounded-none px-3"
+                        className={cn(
+                          'rounded-none px-3',
+                          isSubMenuActive(sub.url) && 'bg-accent',
+                          isSubMenuActive(sub.url) && 'hover:bg-accent/90'
+                        )}
                       >
                         <Link to={sub.url}>{sub.nome}</Link>
                       </DropdownMenuItem>
@@ -86,7 +106,11 @@ export const CollapsedSidebarMenu = ({
               ) : (
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <SidebarMenuButton asChild className="h-10 text-xs">
+                    <SidebarMenuButton
+                      asChild
+                      className="data-[active=true]:hover:bg-accent/90 h-10 text-xs"
+                      isActive={isItemActive(item)}
+                    >
                       <Link to={item.url}>
                         <Icon
                           name={item.icon as IconsName}
