@@ -51,7 +51,7 @@ const items: MenuItem[] = [
   {
     title: 'Gerenciamento de Menus',
     url: '/cadastro-menu',
-    icon: 'documentCopy',
+    icon: 'cube3D',
   },
   {
     title: 'Admin',

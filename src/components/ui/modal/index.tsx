@@ -103,9 +103,7 @@ export const ModalTitle = ({
   const effectiveVariant = variant ?? contextVariant;
   return (
     <DialogHeader
-      className={cn(
-        modalHeaderVariants({ variant: effectiveVariant, className })
-      )}
+      className={cn(modalHeaderVariants({ variant: effectiveVariant }))}
       {...props}
     >
       <DialogTitle

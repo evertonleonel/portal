@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Icon } from '@/components/ui/icon';
 import {
   Modal,
   ModalContent,
@@ -15,7 +16,10 @@ interface MenuModalProps {
 export const MenuModal = ({ isOpen, loading, onClose }: MenuModalProps) => {
   return (
     <Modal variant={'baixada'} isOpen={isOpen} onClose={onClose}>
-      <ModalTitle>titulo</ModalTitle>
+      <ModalTitle className="flex items-center gap-2">
+        <Icon name="addSquare" />
+        Cadastrar novo menu
+      </ModalTitle>
       <ModalContent>aaaa</ModalContent>
       <ModalFooter>
         <Button

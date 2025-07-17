@@ -16,21 +16,26 @@ import { NotificationDefaultIcon } from '@/assets/icons/design/nofitication-defa
 import { NotificationErrorIcon } from '@/assets/icons/design/notification-error';
 import { NotificationSucessIcon } from '@/assets/icons/design/notification-sucess';
 import { xIcon } from '@/assets/icons/design/x';
+import { AddSquareIcon } from '@/assets/icons/essentional/add-square';
 import { CheckIcon } from '@/assets/icons/essentional/check';
 import { CheckCircleIcon } from '@/assets/icons/essentional/check-circle';
 import { CloseCircleIcon } from '@/assets/icons/essentional/close-circle';
+import { Cube3DIcon } from '@/assets/icons/essentional/cube-3d-';
 import { NoteIcon } from '@/assets/icons/essentional/note';
 import { DocumentCopyIcon } from '@/assets/icons/files/document-copy';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
 import { BellIcon } from '@/assets/icons/tools/bell';
 import { FilterIcon } from '@/assets/icons/tools/filter';
+import { StackIcon } from '@/assets/icons/tools/stack';
 import { TrashIcon } from '@/assets/icons/tools/trash';
 import { ProfileTickUserIcon } from '@/assets/icons/user/profile-tick-user';
 import { ProfileTwoUsersIcon } from '@/assets/icons/user/profile-two-users';
 import { ProfileUserIcon } from '@/assets/icons/user/profile-user';
 
 const icons = {
+  addSquare: AddSquareIcon,
   bell: BellIcon,
+  cube3D: Cube3DIcon,
   check: CheckIcon,
   checkCircle: CheckCircleIcon,
   closeCircle: CloseCircleIcon,
@@ -54,6 +59,7 @@ const icons = {
   profileUser: ProfileUserIcon,
   profileTwoUsers: ProfileTwoUsersIcon,
   profileTickUser: ProfileTickUserIcon,
+  stack: StackIcon,
   trash: TrashIcon,
   upArrow: UpArrowIcon,
   upDownArrow: UpDownArrowIcon,
