@@ -4,10 +4,16 @@ import { Button } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 
 import { MenuModal } from './_components/menu-modal';
+import {
+  MenuModalProvider,
+  usePreviewMenuModal,
+} from './_components/menu-modal/context';
 import { SubMenuModal } from './_components/submenu-modal';
+import {
+  SubMenuModalProvider,
+  usePreviewSubMenuModal,
+} from './_components/submenu-modal/context';
 import { TableMenus } from './_components/table-menus';
-import { MenuModalProvider, usePreviewMenuModal } from './context/menu-modal';
-import { SubMenuModalProvider } from './context/submenu-modal';
 
 export default function UserMenuManagement() {
   return (
@@ -21,6 +27,7 @@ export default function UserMenuManagement() {
 
 const UserMenuManagementContent = () => {
   const previewMenuModal = usePreviewMenuModal();
+  const previewSubMenuModal = usePreviewSubMenuModal();
 
   return (
     <div className="flex h-full flex-col gap-8">
@@ -39,7 +46,7 @@ const UserMenuManagementContent = () => {
               <Icon name="addSquare" className="size-5" />
               Novo Menu
             </Button>
-            <Button>
+            <Button onClick={() => previewSubMenuModal.onOpen()}>
               <Icon name="addSquare" className="size-5" />
               Novo Submenu
             </Button>

@@ -2,8 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { usePreviewMenuModal } from '@/pages/menu-management/context/menu-modal';
-
+import { usePreviewMenuModal } from '../context';
 import {
   defaultValuesModalForm,
   type MenuModalFormInputs,

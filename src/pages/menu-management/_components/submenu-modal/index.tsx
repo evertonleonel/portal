@@ -1,7 +1,7 @@
-import { Form, useForm } from 'react-hook-form';
-
 import { Button } from '@/components/ui/button';
+import { DialogDescription } from '@/components/ui/dialog';
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -17,21 +17,22 @@ import {
   ModalTitle,
 } from '@/components/ui/modal';
 
-import { usePreviewSubMenuModal } from '../../context/submenu-modal';
+import { useSubMenuFormModal } from './hook/use-submenu-form-modal';
 
 export const SubMenuModal = () => {
-  const { onClose, isOpen } = usePreviewSubMenuModal();
-
-  const form = useForm();
+  const { onClose, isOpen, menuData, form, onSubmit } = useSubMenuFormModal();
 
   return (
     <Modal variant={'baixada'} isOpen={isOpen} onClose={onClose}>
       <ModalTitle className="flex items-center gap-2">
         <Icon name="editPencil" />
-        Cadastrar novo submenu
+        {menuData ? 'Editar submenu' : '  Cadastrar novo submenu'}
       </ModalTitle>
+      <DialogDescription className="sr-only">
+        Modal para cadastrar novos submenus no sistema
+      </DialogDescription>
       <Form {...form}>
-        <form>
+        <form onClick={form.handleSubmit(onSubmit)}>
           <ModalContent className="space-y-5">
             <FormField
               control={form.control}

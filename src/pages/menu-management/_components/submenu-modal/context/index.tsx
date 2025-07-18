@@ -4,7 +4,7 @@ import type { Menu } from '@/types/menu';
 
 interface SubMenuModalContextType {
   isOpen: boolean;
-  onOpen: (data: Menu) => void;
+  onOpen: (data?: Menu) => void;
   onClose: () => void;
   data?: Menu;
 }
@@ -21,7 +21,7 @@ export const SubMenuModalProvider = ({
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<Menu | undefined>(undefined);
 
-  const onOpen = useCallback((menu: Menu) => {
+  const onOpen = useCallback((menu?: Menu) => {
     setData(menu);
     setIsOpen(true);
   }, []);

@@ -1,6 +1,6 @@
 import z from 'zod';
 
-export const menuSubModalFormSchema = z.object({
+export const subMenuModalFormSchema = z.object({
   desc: z
     .string({ message: 'O campo Descrição é obrigatório' })
     .nonempty('O campo Descrição é obrigatório'),
@@ -14,4 +14,9 @@ export const menuSubModalFormSchema = z.object({
     }),
 });
 
-export type MenuSubModalFormInputs = z.infer<typeof menuSubModalFormSchema>;
+export type SubMenuSubModalFormInputs = z.infer<typeof subMenuModalFormSchema>;
+
+export const defaultValuesSubMenuModalForm: SubMenuSubModalFormInputs = {
+  desc: '',
+  caminho: '',
+};

@@ -21,7 +21,6 @@ import { useMenuFormModal } from './hook/use-menu-form-modal';
 
 export const MenuModal = () => {
   const { form, onSubmit, onClose, isOpen, menuData } = useMenuFormModal();
-  const { handleSubmit } = form;
 
   return (
     <Modal variant={'baixada'} isOpen={isOpen} onClose={onClose}>
@@ -33,7 +32,7 @@ export const MenuModal = () => {
         Modal para cadastrar novos menus no sistema
       </DialogDescription>
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <ModalContent className="space-y-5">
             <FormField
               control={form.control}

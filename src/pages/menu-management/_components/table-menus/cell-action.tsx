@@ -13,7 +13,7 @@ import {
 } from '@/components/ux/responsive-actions';
 import type { Menu } from '@/types/menu';
 
-import { usePreviewMenuModal } from '../../context/menu-modal';
+import { usePreviewMenuModal } from '../menu-modal/context';
 
 interface CellActionTableMenuProps {
   data: Menu;
