@@ -1,10 +1,15 @@
 import { Icon } from '@/components/ui/icon';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
+import { AprovacaoModal } from './_components/modals/aprovacao-modal';
+import { JustificarSolicitacaoModal } from './_components/modals/justificar-solicitacao-modal';
 import { SearchFilters } from './_components/search-filters';
 import { TableApprovals } from './_components/table-approvals';
 import { TableRequests } from './_components/table-requests';
-import { UserApprovalRequestsProvider } from './context';
+import {
+  UserApprovalRequestsProvider,
+  useUserApprovalRequestsContext,
+} from './context';
 
 export default function UserApprovalRequests() {
   return (
@@ -15,6 +20,13 @@ export default function UserApprovalRequests() {
 }
 
 const UserApprovalRequestsContent = () => {
+  const {
+    approveModal,
+    handleOpenApproveModal,
+    usuarioApprove,
+    handleOpenJustificationModal,
+    justificationModal,
+  } = useUserApprovalRequestsContext();
   return (
     <div className="flex h-full flex-col gap-8">
       <section className="flex gap-3">
@@ -56,6 +68,18 @@ const UserApprovalRequestsContent = () => {
           </TabsContent>
         </Tabs>
       </section>
+
+      <AprovacaoModal
+        isOpen={approveModal}
+        usuario={usuarioApprove}
+        onOpenChange={handleOpenApproveModal}
+      />
+
+      <JustificarSolicitacaoModal
+        isOpen={justificationModal}
+        usuario={usuarioApprove}
+        onOpenChange={handleOpenJustificationModal}
+      />
     </div>
   );
 };

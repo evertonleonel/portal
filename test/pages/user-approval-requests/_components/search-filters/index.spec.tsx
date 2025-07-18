@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { SearchFilters } from '@/pages/user-approval-requests/_components/search-filters';
 import { useUserApprovalRequestsContext } from '@/pages/user-approval-requests/context';
 import type { Empresa } from '@/types/empresa';
+import type { GetUserRequestsResponse } from '@/types/user/requests';
 
 import { empresasMock } from '../../../../_setup/mocks/empresa';
 
@@ -14,6 +15,13 @@ interface UserApprovalRequestsType {
   handleFilterEmpresa: ({ id }: { id: string }) => void;
   filterNome: string;
   handleFilterNome: (nome: string) => void;
+
+  approveModal: boolean;
+  usuarioApprove: GetUserRequestsResponse | undefined;
+  handleSetUsuarioApprove: (usuario: GetUserRequestsResponse) => void;
+  handleOpenApproveModal: () => void;
+  justificationModal: boolean;
+  handleOpenJustificationModal: () => void;
 }
 
 // Mock do contexto
@@ -34,6 +42,12 @@ describe('SearchFilters', () => {
       handleFilterEmpresa: mockHandleFilterEmpresa,
       filterNome: '',
       handleFilterNome: mockHandleFilterNome,
+      approveModal: false,
+      usuarioApprove: undefined,
+      handleSetUsuarioApprove: vi.fn(),
+      handleOpenApproveModal: vi.fn(),
+      justificationModal: false,
+      handleOpenJustificationModal: vi.fn(),
     } as UserApprovalRequestsType);
   });
 
@@ -73,6 +87,12 @@ describe('SearchFilters', () => {
       handleFilterEmpresa: mockHandleFilterEmpresa,
       filterNome: '',
       handleFilterNome: mockHandleFilterNome,
+      approveModal: false,
+      usuarioApprove: undefined,
+      handleSetUsuarioApprove: vi.fn(),
+      handleOpenApproveModal: vi.fn(),
+      justificationModal: false,
+      handleOpenJustificationModal: vi.fn(),
     } as UserApprovalRequestsType);
 
     render(<SearchFilters />);
