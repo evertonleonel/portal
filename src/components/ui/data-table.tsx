@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map(row => (
-              <>
+              <React.Fragment key={row.id}>
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && 'selected'}
@@ -97,7 +97,7 @@ export function DataTable<TData, TValue>({
                   ))}
                 </TableRow>
                 <TableRowSpacing colSpan={columns.length} />
-              </>
+              </React.Fragment>
             ))
           ) : (
             <TableRow className="hover:bg-transparent">
