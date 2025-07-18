@@ -21,6 +21,8 @@ import { CheckIcon } from '@/assets/icons/essentional/check';
 import { CheckCircleIcon } from '@/assets/icons/essentional/check-circle';
 import { CloseCircleIcon } from '@/assets/icons/essentional/close-circle';
 import { Cube3DIcon } from '@/assets/icons/essentional/cube-3d-';
+import { EditPencilIcon } from '@/assets/icons/essentional/edit-pencil';
+import { EditPencilWriteIcon } from '@/assets/icons/essentional/edit-pencil-write';
 import { NoteIcon } from '@/assets/icons/essentional/note';
 import { DocumentCopyIcon } from '@/assets/icons/files/document-copy';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
@@ -45,6 +47,8 @@ const icons = {
   chevronRightArrow: ChevronRightArrowIcon,
   documentCopy: DocumentCopyIcon,
   downArrow: DownArrowIcon,
+  editPencil: EditPencilIcon,
+  editPencilWrite: EditPencilWriteIcon,
   filter: FilterIcon,
   home: HomeIcon,
   notificationError: NotificationErrorIcon,

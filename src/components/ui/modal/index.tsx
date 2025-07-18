@@ -20,7 +20,7 @@ const modalVariants = cva('', {
   variants: {
     variant: {
       default: '',
-      baixada: 'border-0 p-0',
+      baixada: 'border-0 p-0 font-manrope',
     },
   },
   defaultVariants: {
@@ -65,11 +65,12 @@ export const Modal = ({
   );
 };
 
-const modalTitleVariants = cva('', {
+const modalHeaderVariants = cva('', {
   variants: {
     variant: {
       default: '',
-      baixada: 'text-base md:text-lg lg:text-xl',
+      baixada:
+        'pr-4.5 rounded-t-md py-3 pl-4 sm:pl-6 sm:pr-7 md:pl-8 md:pr-9 bg-sidebar-border text-background',
     },
   },
   defaultVariants: {
@@ -77,12 +78,11 @@ const modalTitleVariants = cva('', {
   },
 });
 
-const modalHeaderVariants = cva('', {
+const modalTitleVariants = cva('', {
   variants: {
     variant: {
       default: '',
-      baixada:
-        'pr-4.5 rounded-t-md py-3 pl-4 sm:pl-6 sm:pr-7 md:pl-8 md:pr-9 bg-sidebar-border text-background',
+      baixada: 'text-base md:text-lg lg:text-xl ',
     },
   },
   defaultVariants: {

@@ -8,8 +8,8 @@ import { formatDateWithHour } from '@/utils/format-date-with-hour';
 import { CellActionTableMenu } from './cell-action';
 
 export const columnsTableMenus: ColumnDef<Menu>[] = [
-  { header: 'Nome', accessorKey: 'menuPrincipal' },
-  { header: 'Menu Principal', accessorKey: 'caminho' },
+  { header: 'Nome', accessorKey: 'desc' },
+  { header: 'Caminho', accessorKey: 'caminho' },
   {
     header: 'Submenu',
     cell: ({ row }) => {
@@ -18,7 +18,7 @@ export const columnsTableMenus: ColumnDef<Menu>[] = [
       );
     },
   },
-  { header: 'Ordem Exibição', accessorKey: 'ordemExibicao' },
+  { header: 'Ordem exibição', accessorKey: 'ordemExibicao' },
   {
     accessorKey: 'dataCriacao',
     header: ({ column }) => {
