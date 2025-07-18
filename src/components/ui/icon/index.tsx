@@ -10,6 +10,8 @@ import { LogoutArrowIcon } from '@/assets/icons/arrow/logout-arrow';
 import { MoveArrowIcon } from '@/assets/icons/arrow/move-arrow';
 import { UpArrowIcon } from '@/assets/icons/arrow/up-arrow';
 import { UpDownArrowIcon } from '@/assets/icons/arrow/up-down-arrow';
+import { EditIcon } from '@/assets/icons/design/edit';
+import { Edit2Icon } from '@/assets/icons/design/edit2';
 import { HomeIcon } from '@/assets/icons/design/home';
 import { MicrosoftIcon } from '@/assets/icons/design/microsoft.';
 import { NotificationDefaultIcon } from '@/assets/icons/design/nofitication-default';
@@ -39,6 +41,8 @@ const icons = {
   chevronRightArrow: ChevronRightArrowIcon,
   documentCopy: DocumentCopyIcon,
   downArrow: DownArrowIcon,
+  edit: EditIcon,
+  edit2: Edit2Icon,
   filter: FilterIcon,
   home: HomeIcon,
   notificationError: NotificationErrorIcon,

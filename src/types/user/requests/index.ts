@@ -7,7 +7,7 @@ export interface GetUserRequestsResponse {
   nome: string;
   email: string;
   cargo: string;
-  empresa: Empresa | null;
+  empresa: Empresa;
   statusAprovacaoMrs: keyof typeof USER_REQUEST_STATUS;
   statusAprovacaoFips: keyof typeof USER_REQUEST_STATUS;
   dataCriacao: string;
@@ -35,4 +35,10 @@ export interface GetUserRequestsResponse {
 export interface GetAllUserRequestsParams {
   nome?: string;
   idEmpresa?: number;
+}
+
+export interface UserResponse {
+  id: number;
+  nome: string;
+  dataCriacao: string;
 }
