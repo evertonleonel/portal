@@ -11,22 +11,32 @@ import {
   ResponsiveActionButton,
   ResponsiveActions,
 } from '@/components/ux/responsive-actions';
-import type { Menu } from '@/types/menu';
+import type { Menu, SubMenu } from '@/types/menu';
 
 import { usePreviewMenuModal } from '../menu-modal/context';
+import { usePreviewSubMenuModal } from '../submenu-modal/context';
 
-interface CellActionTableMenuProps {
-  data: Menu;
-}
+type CellActionTableMenuProps =
+  | { dataMenu: Menu; dataSubMenu?: never }
+  | { dataMenu?: never; dataSubMenu: SubMenu };
 
-export const CellActionTableMenu = ({ data }: CellActionTableMenuProps) => {
+export const CellActionTableMenu = ({
+  dataMenu,
+  dataSubMenu,
+}: CellActionTableMenuProps) => {
   const previewMenuModal = usePreviewMenuModal();
+  const previewSubMenuModal = usePreviewSubMenuModal();
 
   const onPreview: MouseEventHandler<
     HTMLButtonElement | HTMLDivElement
   > = event => {
     event.stopPropagation();
-    previewMenuModal.onOpen(data);
+    if (dataMenu) {
+      previewMenuModal.onOpen(dataMenu);
+    }
+    if (dataSubMenu) {
+      previewSubMenuModal.onOpen(dataSubMenu);
+    }
   };
 
   return (
@@ -49,7 +59,7 @@ export const CellActionTableMenu = ({ data }: CellActionTableMenuProps) => {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              onClick={() => console.log(data)}
+              onClick={() => console.log('data')}
               className="cursor-pointer"
               size={'icon'}
               variant={'ghost'}

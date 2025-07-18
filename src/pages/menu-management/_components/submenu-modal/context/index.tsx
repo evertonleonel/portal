@@ -1,12 +1,12 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 
-import type { Menu } from '@/types/menu';
+import type { SubMenu } from '@/types/menu';
 
 interface SubMenuModalContextType {
   isOpen: boolean;
-  onOpen: (data?: Menu) => void;
+  onOpen: (data?: SubMenu) => void;
   onClose: () => void;
-  data?: Menu;
+  data?: SubMenu;
 }
 
 const SubMenuModalContext = createContext<SubMenuModalContextType | undefined>(
@@ -19,9 +19,9 @@ export const SubMenuModalProvider = ({
   children: React.ReactNode;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState<Menu | undefined>(undefined);
+  const [data, setData] = useState<SubMenu | undefined>(undefined);
 
-  const onOpen = useCallback((menu?: Menu) => {
+  const onOpen = useCallback((menu?: SubMenu) => {
     setData(menu);
     setIsOpen(true);
   }, []);

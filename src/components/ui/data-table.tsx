@@ -1,8 +1,11 @@
 import {
   type ColumnDef,
+  type ExpandedState,
   flexRender,
   getCoreRowModel,
+  getExpandedRowModel,
   getSortedRowModel,
+  type Row,
   type SortingState,
   useReactTable,
 } from '@tanstack/react-table';
@@ -21,21 +24,31 @@ import { cn } from '@/lib/utils';
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  getRowCanExpand?: (row: Row<TData>) => boolean;
+  renderSubComponent?: (props: { row: Row<TData> }) => React.ReactElement;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  getRowCanExpand,
+  renderSubComponent,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [expanded, setExpanded] = React.useState<ExpandedState>({});
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
+    onExpandedChange: setExpanded,
+    getRowCanExpand,
     state: {
       sorting,
+      expanded,
       columnPinning: {
         right: ['actions'],
       },
@@ -76,9 +89,11 @@ export function DataTable<TData, TValue>({
             table.getRowModel().rows.map(row => (
               <React.Fragment key={row.id}>
                 <TableRow
-                  key={row.id}
                   data-state={row.getIsSelected() && 'selected'}
-                  className="text-surface first:md:pl-4 last:md:pr-4 first:lg:pl-6 last:lg:pr-6"
+                  className={cn(
+                    'text-surface first:md:pl-4 last:md:pr-4 first:lg:pl-6 last:lg:pr-6',
+                    row.getIsExpanded() && 'bg-muted/50'
+                  )}
                 >
                   {row.getVisibleCells().map(cell => (
                     <TableCell
@@ -96,6 +111,13 @@ export function DataTable<TData, TValue>({
                     </TableCell>
                   ))}
                 </TableRow>
+                {row.getIsExpanded() && renderSubComponent && (
+                  <TableRow>
+                    <TableCell colSpan={row.getVisibleCells().length}>
+                      {renderSubComponent({ row })}
+                    </TableCell>
+                  </TableRow>
+                )}
                 <TableRowSpacing colSpan={columns.length} />
               </React.Fragment>
             ))
