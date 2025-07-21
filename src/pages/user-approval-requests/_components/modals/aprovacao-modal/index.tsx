@@ -116,7 +116,7 @@ export const AprovacaoModal = ({
       <DialogContent className="modal-content-baixada border-none">
         <DialogHeader className="modal-header-baixada text-left">
           <DialogTitle className="text-background flex gap-1">
-            <Icon name="edit2" />
+            <Icon name="editPencilWrite" />
             Cadastrar Usuário
           </DialogTitle>
         </DialogHeader>

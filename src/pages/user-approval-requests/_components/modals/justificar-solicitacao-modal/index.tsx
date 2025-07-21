@@ -72,7 +72,7 @@ export const JustificarSolicitacaoModal: React.FC<
       <DialogContent className="modal-content-baixada border-none">
         <DialogHeader className="modal-header-baixada text-left">
           <DialogTitle className="text-background flex gap-1">
-            <Icon name="edit" />
+            <Icon name="editPencil" />
             Justificar Solicitação
           </DialogTitle>
         </DialogHeader>
@@ -100,7 +100,7 @@ export const JustificarSolicitacaoModal: React.FC<
 
           <DialogFooter className="modal-footer-baixada">
             <Button type="submit" className="h-10" disabled={isSubmitting}>
-              <Icon name="edit2" />
+              <Icon name="editPencilWrite" />
               {isSubmitting ? 'Enviando...' : 'Justificar'}
             </Button>
           </DialogFooter>
