@@ -1,7 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 
+import { mockMenu } from '../../table-menus';
 import { usePreviewSubMenuModal } from '../context';
 import {
   defaultValuesSubMenuModalForm,
@@ -16,6 +17,13 @@ export const useSubMenuFormModal = () => {
     resolver: zodResolver(subMenuModalFormSchema),
     defaultValues: defaultValuesSubMenuModalForm,
   });
+
+  const caminho = useWatch({ control: form.control, name: 'caminho' });
+  const menu = useWatch({ control: form.control, name: 'menu' });
+
+  const findMenu = mockMenu.find(el => el.id.toString() === menu?.id);
+  const menuPath = findMenu?.caminho ?? '/';
+  const inputFullPathValue = menuPath.concat(caminho);
 
   const onSubmit = async (inputs: SubMenuSubModalFormInputs) => {
     try {
@@ -33,9 +41,12 @@ export const useSubMenuFormModal = () => {
       form.reset({
         desc: menuData.desc,
         caminho: menuData.caminho,
+        menu: {
+          id: menuData.id.toString(),
+        },
       });
     }
   }, [form, isOpen, menuData]);
 
-  return { form, onSubmit, menuData, onClose, isOpen };
+  return { form, onSubmit, menuData, onClose, isOpen, inputFullPathValue };
 };

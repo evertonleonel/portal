@@ -14,14 +14,17 @@ import {
   usePreviewSubMenuModal,
 } from './_components/submenu-modal/context';
 import { TableMenus } from './_components/table-menus';
+import { MenuManagementProvider } from './context';
 
 export default function UserMenuManagement() {
   return (
-    <SubMenuModalProvider>
-      <MenuModalProvider>
-        <UserMenuManagementContent />
-      </MenuModalProvider>
-    </SubMenuModalProvider>
+    <MenuManagementProvider>
+      <SubMenuModalProvider>
+        <MenuModalProvider>
+          <UserMenuManagementContent />
+        </MenuModalProvider>
+      </SubMenuModalProvider>
+    </MenuManagementProvider>
   );
 }
 

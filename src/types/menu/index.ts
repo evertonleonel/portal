@@ -1,10 +1,5 @@
 import type { Sistema } from '../sistema';
-import type { Usuario } from '../user';
-
-type UsuarioCriacaoMenu = Omit<
-  Usuario,
-  'empresa' | 'usuarioCriacao' | 'dataAlteracao' | 'usuarioAlteracao'
->;
+import type { UsuarioCriacaoMenu } from '../user';
 
 export interface Menu {
   id: number;
@@ -23,3 +18,5 @@ export interface SubMenu {
   ordemExibicao: number;
   dataCriacao: string;
 }
+
+export type GetMenuResponse = Menu;
