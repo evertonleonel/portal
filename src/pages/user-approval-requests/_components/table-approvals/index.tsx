@@ -1,11 +1,11 @@
 import { DataTable } from '@/components/ui/data-table';
 import { DataTableSkeleton } from '@/components/ui/data-table-skeleton';
 
-import { useTableApprovalRequests } from '../hook/use-table-approval-requests';
+import { useTableApprovals } from '../hook/use-table-approvals';
 import { columnsTableApprovals } from './columns';
 
 export const TableApprovals = () => {
-  const { dataApprovals, isLoading } = useTableApprovalRequests();
+  const { dataApprovals, isLoading } = useTableApprovals();
 
   if (isLoading)
     return (

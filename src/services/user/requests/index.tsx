@@ -4,10 +4,10 @@ import type {
   GetUserRequestsResponse,
 } from '@/types/user/requests';
 
-export async function getAllUserRequests({
-  nome,
-  idEmpresa,
-}: GetAllUserRequestsParams) {
+export async function getAllUserRequests(
+  { nome, idEmpresa }: GetAllUserRequestsParams,
+  signal?: AbortSignal
+) {
   //Remove param sem valor
   const params = {
     ...(nome && { nome }),
@@ -20,6 +20,7 @@ export async function getAllUserRequests({
     `/v1/usuario-solicitacao`,
     {
       params,
+      signal,
     }
   );
   return response.data;
