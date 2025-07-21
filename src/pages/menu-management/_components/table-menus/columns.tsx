@@ -25,7 +25,7 @@ export const columnsTableMenus: ColumnDef<Menu>[] = [
     },
   },
   {
-    header: 'Descrição',
+    header: 'Menu',
     accessorKey: 'desc',
     cell: ({ row, getValue }) => {
       return (
@@ -83,23 +83,12 @@ export const columnsTableMenus: ColumnDef<Menu>[] = [
 export const columnsTableSubMenus: ColumnDef<SubMenu>[] = [
   {
     id: 'expand',
-    cell: ({ row }) => {
-      return row.getCanExpand() ? (
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={row.getToggleExpandedHandler()}
-          className="hidden"
-        >
-          <Icon
-            name={row.getIsExpanded() ? 'chevronUpArrow' : 'chevronDownArrow'}
-          />
-        </Button>
-      ) : null;
+    cell: () => {
+      return <Button variant="ghost" size="icon" className="sr-only hidden" />;
     },
   },
   {
-    header: 'Descrição',
+    header: 'Submenu',
     accessorKey: 'desc',
     cell: ({ getValue }) => {
       return (

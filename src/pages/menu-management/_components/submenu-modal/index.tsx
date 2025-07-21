@@ -32,7 +32,7 @@ export const SubMenuModal = () => {
         Modal para cadastrar novos submenus no sistema
       </DialogDescription>
       <Form {...form}>
-        <form onClick={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <ModalContent className="space-y-5">
             <FormField
               control={form.control}
@@ -70,6 +70,7 @@ export const SubMenuModal = () => {
               className="cursor-pointer"
               variant="outline"
               onClick={onClose}
+              type="button"
             >
               Cancel
             </Button>

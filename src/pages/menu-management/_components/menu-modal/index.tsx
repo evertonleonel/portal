@@ -70,6 +70,7 @@ export const MenuModal = () => {
               className="cursor-pointer"
               variant="outline"
               onClick={onClose}
+              type="button"
             >
               Cancel
             </Button>

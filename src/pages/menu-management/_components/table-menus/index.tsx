@@ -9,7 +9,11 @@ import { columnsTableMenus, columnsTableSubMenus } from './columns';
 const SubMenuComponent = ({ row }: { row: Row<Menu> }) => {
   return (
     <div className="hover:bg-background py-2">
-      <DataTable columns={columnsTableSubMenus} data={row.original.subMenus} />
+      <DataTable
+        variant={'submenu'}
+        columns={columnsTableSubMenus}
+        data={row.original.subMenus}
+      />
     </div>
   );
 };

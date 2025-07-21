@@ -9,6 +9,7 @@ import {
   type SortingState,
   useReactTable,
 } from '@tanstack/react-table';
+import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
 import {
@@ -21,7 +22,32 @@ import {
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 
-interface DataTableProps<TData, TValue> {
+const tableWrapperVariants = cva('', {
+  variants: {
+    variant: {
+      default: '[&>div]:max-h-[50vh]',
+      submenu: '',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+const tableVariants = cva('', {
+  variants: {
+    variant: {
+      default: 'bg-table backdrop-blur-xs sticky top-0 z-10',
+      submenu: 'bg-secondary/50',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+type TableVariants = VariantProps<typeof tableVariants>;
+interface DataTableProps<TData, TValue> extends TableVariants {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   getRowCanExpand?: (row: Row<TData>) => boolean;
@@ -33,6 +59,7 @@ export function DataTable<TData, TValue>({
   data,
   getRowCanExpand,
   renderSubComponent,
+  variant,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [expanded, setExpanded] = React.useState<ExpandedState>({});
@@ -56,9 +83,9 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="[&>div]:max-h-[50vh]">
+    <div className={tableWrapperVariants({ variant })}>
       <Table className="font-manrope">
-        <TableHeader className="bg-table backdrop-blur-xs sticky top-0 z-10">
+        <TableHeader className={tableVariants({ variant })}>
           {table.getHeaderGroups().map(headerGroup => (
             <TableRow key={headerGroup.id} className="border-t-0">
               {headerGroup.headers.map(header => {
@@ -112,8 +139,11 @@ export function DataTable<TData, TValue>({
                   ))}
                 </TableRow>
                 {row.getIsExpanded() && renderSubComponent && (
-                  <TableRow>
-                    <TableCell colSpan={row.getVisibleCells().length}>
+                  <TableRow className="hover:bg-transparent">
+                    <TableCell
+                      className="py-0"
+                      colSpan={row.getVisibleCells().length}
+                    >
                       {renderSubComponent({ row })}
                     </TableCell>
                   </TableRow>
