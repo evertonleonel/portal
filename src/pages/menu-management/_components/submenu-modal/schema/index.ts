@@ -12,13 +12,14 @@ export const subMenuModalFormSchema = z.object({
     .refine(value => !value.endsWith('/'), {
       message: 'O caminho da rota não deve terminar com "/"',
     }),
-  menu: z
+  menuPrincipal: z
     .object({
       id: z.string(),
     })
     .refine(value => value.id !== '', {
       message: 'O campo Menu é obrigatório',
     }),
+  ordemExibicao: z.string().nonempty('Campo obrigatório'),
 });
 
 export type SubMenuSubModalFormInputs = z.infer<typeof subMenuModalFormSchema>;
@@ -26,7 +27,8 @@ export type SubMenuSubModalFormInputs = z.infer<typeof subMenuModalFormSchema>;
 export const defaultValuesSubMenuModalForm: SubMenuSubModalFormInputs = {
   desc: '',
   caminho: '',
-  menu: {
+  menuPrincipal: {
     id: '',
   },
+  ordemExibicao: '',
 };

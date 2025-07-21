@@ -20,7 +20,7 @@ const modalVariants = cva('', {
   variants: {
     variant: {
       default: '',
-      baixada: 'border-0 p-0 font-manrope',
+      baixada: 'border-0 p-0 font-manrope overflow-hidden',
     },
   },
   defaultVariants: {

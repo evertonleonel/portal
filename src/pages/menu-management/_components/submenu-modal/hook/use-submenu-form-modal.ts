@@ -19,7 +19,7 @@ export const useSubMenuFormModal = () => {
   });
 
   const caminho = useWatch({ control: form.control, name: 'caminho' });
-  const menu = useWatch({ control: form.control, name: 'menu' });
+  const menu = useWatch({ control: form.control, name: 'menuPrincipal' });
 
   const findMenu = mockMenu.find(el => el.id.toString() === menu?.id);
   const menuPath = findMenu?.caminho ?? '/';
@@ -38,12 +38,17 @@ export const useSubMenuFormModal = () => {
     form.reset(defaultValuesSubMenuModalForm);
 
     if (menuData) {
+      const parentMenu = mockMenu.find(menu =>
+        menu.subMenus.some(sub => sub.id === menuData.id)
+      );
+
       form.reset({
         desc: menuData.desc,
         caminho: menuData.caminho,
-        menu: {
-          id: menuData.id.toString(),
+        menuPrincipal: {
+          id: parentMenu?.id.toString(),
         },
+        ordemExibicao: menuData.ordemExibicao?.toString(),
       });
     }
   }, [form, isOpen, menuData]);

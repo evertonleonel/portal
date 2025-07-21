@@ -68,11 +68,11 @@ export const MenuModal = () => {
           <ModalFooter>
             <Button
               className="cursor-pointer"
-              variant="outline"
+              variant="ghost"
               onClick={onClose}
               type="button"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button variant={'baixada'} className="cursor-pointer">
               {menuData ? 'Editar' : 'Cadastrar'}

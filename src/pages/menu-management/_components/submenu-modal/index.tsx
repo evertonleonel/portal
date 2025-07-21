@@ -47,7 +47,7 @@ export const SubMenuModal = () => {
           <ModalContent className="space-y-5">
             <FormField
               control={form.control}
-              name="menu"
+              name="menuPrincipal"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormLabel className="flex gap-0">
@@ -57,7 +57,7 @@ export const SubMenuModal = () => {
                     onValueChange={value => {
                       field.onChange({ id: value });
                     }}
-                    value={field.value.id}
+                    value={field.value?.id}
                     disabled={isLoading}
                   >
                     <FormControl>
@@ -92,22 +92,40 @@ export const SubMenuModal = () => {
               )}
             />
 
-            <FormField
-              control={form.control}
-              name="desc"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex gap-0">
-                    Descrição <span className="text-destructive">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="Sua descrição aqui" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="itens-center grid gap-2 sm:flex">
+            <div className="grid gap-4 sm:grid-cols-[1fr_0.5fr] sm:gap-2">
+              <FormField
+                control={form.control}
+                name="desc"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel className="flex gap-0">
+                      Descrição <span className="text-destructive">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input placeholder="Sua descrição aqui" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="ordemExibicao"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="flex gap-0">
+                      Ordem de Exibição
+                      <span className="text-destructive">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input placeholder="Ex: 0" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="itens-center grid sm:flex sm:gap-2">
               <FormField
                 control={form.control}
                 name="caminho"
@@ -149,11 +167,11 @@ export const SubMenuModal = () => {
           <ModalFooter>
             <Button
               className="cursor-pointer"
-              variant="outline"
+              variant="ghost"
               onClick={onClose}
               type="button"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button variant={'baixada'} className="cursor-pointer">
               Cadastrar
