@@ -29,15 +29,22 @@ import { mockMenu } from '../table-menus';
 import { useSubMenuFormModal } from './hook/use-submenu-form-modal';
 
 export const SubMenuModal = () => {
-  const { onClose, isOpen, menuData, form, onSubmit, inputFullPathValue } =
-    useSubMenuFormModal();
+  const {
+    onClose,
+    isOpen,
+    subMenuData,
+    form,
+    onSubmit,
+    inputFullPathValue,
+    isPending,
+  } = useSubMenuFormModal();
   const { isLoading } = useMenuManagementContext();
 
   return (
     <Modal variant={'baixada'} isOpen={isOpen} onClose={onClose}>
       <ModalTitle className="flex items-center gap-2">
         <Icon name="editPencil" />
-        {menuData ? 'Editar submenu' : '  Cadastrar novo submenu'}
+        {subMenuData ? 'Editar submenu' : '  Cadastrar novo submenu'}
       </ModalTitle>
       <DialogDescription className="sr-only">
         Modal para cadastrar novos submenus no sistema
@@ -55,9 +62,9 @@ export const SubMenuModal = () => {
                   </FormLabel>
                   <Select
                     onValueChange={value => {
-                      field.onChange({ id: value });
+                      field.onChange(value);
                     }}
-                    value={field.value?.id}
+                    value={field.value}
                     disabled={isLoading}
                   >
                     <FormControl>
@@ -173,7 +180,11 @@ export const SubMenuModal = () => {
             >
               Cancelar
             </Button>
-            <Button variant={'baixada'} className="cursor-pointer">
+            <Button
+              variant={'baixada'}
+              disabled={isPending}
+              className="cursor-pointer"
+            >
               Cadastrar
             </Button>
           </ModalFooter>

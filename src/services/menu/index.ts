@@ -5,6 +5,7 @@ import type {
   GetMenuResponse,
   PatchMenuParams,
   PostMenuBody,
+  PostSubMenuBody,
 } from '@/types/menu';
 
 export async function getAllMenu() {
@@ -27,4 +28,28 @@ export async function deleteMenu({ id }: DeleteMenuParams) {
 
 export async function patchMenu({ id, desc, caminho }: PatchMenuParams) {
   await api.patch(`/v1/menu/${id}`, { desc, caminho });
+}
+
+export async function postSubMenu({
+  desc,
+  caminho,
+  menuPrincipal,
+  ordemExibicao,
+}: PostSubMenuBody) {
+  await api.post(`/v1/menu`, { desc, caminho, menuPrincipal, ordemExibicao });
+}
+
+export async function patchSubMenu({
+  id,
+  desc,
+  caminho,
+  menuPrincipal,
+  ordemExibicao,
+}: PatchMenuParams) {
+  await api.patch(`/v1/menu/${id}`, {
+    desc,
+    caminho,
+    menuPrincipal,
+    ordemExibicao,
+  });
 }

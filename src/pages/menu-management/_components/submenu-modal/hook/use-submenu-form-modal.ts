@@ -1,6 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
+import { useEffect, useTransition } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
+import { toast } from 'sonner';
+
+import { patchSubMenu, postSubMenu } from '@/services/menu';
+import { catchError } from '@/utils/catch-error';
 
 import { mockMenu } from '../../table-menus';
 import { usePreviewSubMenuModal } from '../context';
@@ -11,7 +15,8 @@ import {
 } from '../schema';
 
 export const useSubMenuFormModal = () => {
-  const { data: menuData, isOpen, onClose } = usePreviewSubMenuModal();
+  const [isPending, starTransition] = useTransition();
+  const { data: subMenuData, isOpen, onClose } = usePreviewSubMenuModal();
 
   const form = useForm<SubMenuSubModalFormInputs>({
     resolver: zodResolver(subMenuModalFormSchema),
@@ -19,39 +24,55 @@ export const useSubMenuFormModal = () => {
   });
 
   const caminho = useWatch({ control: form.control, name: 'caminho' });
-  const menu = useWatch({ control: form.control, name: 'menuPrincipal' });
+  const menuId = useWatch({ control: form.control, name: 'menuPrincipal' });
 
-  const findMenu = mockMenu.find(el => el.id.toString() === menu?.id);
+  const findMenu = mockMenu.find(el => el.id.toString() === menuId);
   const menuPath = findMenu?.caminho ?? '/';
   const inputFullPathValue = menuPath.concat(caminho);
 
   const onSubmit = async (inputs: SubMenuSubModalFormInputs) => {
-    try {
-      console.log('inputs', inputs);
-    } catch (error) {
-      console.error('Erro ao:', error);
-    }
+    const isUpdate = !!subMenuData;
+
+    starTransition(async () => {
+      try {
+        if (isUpdate) {
+          await patchSubMenu({ ...inputs, id: subMenuData.id.toString() });
+          toast.success('Sub-menu editado com sucesso!');
+        } else {
+          await postSubMenu(inputs);
+          toast.success('Sub-menu criado com sucesso!');
+        }
+      } catch (error) {
+        catchError(error);
+      }
+    });
   };
 
   useEffect(() => {
     if (!isOpen) return;
     form.reset(defaultValuesSubMenuModalForm);
 
-    if (menuData) {
+    if (subMenuData) {
       const parentMenu = mockMenu.find(menu =>
-        menu.subMenus.some(sub => sub.id === menuData.id)
+        menu.subMenus.some(sub => sub.id === subMenuData.id)
       );
 
       form.reset({
-        desc: menuData.desc,
-        caminho: menuData.caminho,
-        menuPrincipal: {
-          id: parentMenu?.id.toString(),
-        },
-        ordemExibicao: menuData.ordemExibicao?.toString(),
+        desc: subMenuData.desc,
+        caminho: subMenuData.caminho,
+        menuPrincipal: parentMenu?.id.toString(),
+        ordemExibicao: subMenuData.ordemExibicao?.toString(),
       });
     }
-  }, [form, isOpen, menuData]);
+  }, [form, isOpen, subMenuData]);
 
-  return { form, onSubmit, menuData, onClose, isOpen, inputFullPathValue };
+  return {
+    form,
+    onSubmit,
+    subMenuData,
+    onClose,
+    isOpen,
+    inputFullPathValue,
+    isPending,
+  };
 };
