@@ -4,6 +4,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { enableMSW } from './_msw';
+import { Toaster } from './components/ui/sonner.tsx';
 import { AuthProvider } from './context/auth-context';
 import { MainRoutes } from './routes/main';
 
@@ -14,6 +15,7 @@ enableMSW().then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <AuthProvider>
+        <Toaster richColors position={'top-right'} />
         <MainRoutes />
       </AuthProvider>
     </StrictMode>

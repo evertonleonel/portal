@@ -25,9 +25,9 @@ export const TableMenus = () => {
   if (isLoading)
     return (
       <DataTableSkeleton
-        columnCount={9}
-        rowCount={6}
-        cellWidths={['10%', '10%', '5%', '5%', '15%', '10%', '10%', '5%', '5%']}
+        columnCount={5}
+        rowCount={5}
+        cellWidths={['20%', '10%', '10%', '10%', '10%']}
       />
     );
 

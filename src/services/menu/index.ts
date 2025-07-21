@@ -1,7 +1,30 @@
 import { api } from '@/lib/axios';
-import type { GetMenuResponse } from '@/types/menu';
+import type {
+  DeleteMenuParams,
+  GetMenuByIdParams,
+  GetMenuResponse,
+  PatchMenuParams,
+  PostMenuBody,
+} from '@/types/menu';
 
 export async function getAllMenu() {
   const response = await api.get<GetMenuResponse[]>(`/v1/menu`);
   return response.data;
+}
+
+export async function getMenuById({ id }: GetMenuByIdParams) {
+  const response = await api.get<GetMenuResponse>(`/v1/menu/${id}`);
+  return response.data;
+}
+
+export async function postMenu({ desc, caminho }: PostMenuBody) {
+  await api.post(`/v1/menu`, { desc, caminho });
+}
+
+export async function deleteMenu({ id }: DeleteMenuParams) {
+  await api.delete(`/v1/menu/${id}`);
+}
+
+export async function patchMenu({ id, desc, caminho }: PatchMenuParams) {
+  await api.patch(`/v1/menu/${id}`, { desc, caminho });
 }

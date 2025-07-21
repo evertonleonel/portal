@@ -19,4 +19,25 @@ export interface SubMenu {
   dataCriacao: string;
 }
 
+//HTTP
+
 export type GetMenuResponse = Menu;
+
+export interface GetMenuByIdParams {
+  id: string;
+}
+
+export interface PostMenuBody {
+  desc: string;
+  caminho: string;
+}
+
+export interface DeleteMenuParams {
+  id: string;
+}
+
+export interface PatchMenuParams {
+  id: string;
+  desc?: string;
+  caminho?: string;
+}

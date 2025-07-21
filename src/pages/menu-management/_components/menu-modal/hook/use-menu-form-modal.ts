@@ -1,6 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+
+import { patchMenu, postMenu } from '@/services/menu';
+import { catchError } from '@/utils/catch-error';
 
 import { usePreviewMenuModal } from '../context';
 import {
@@ -18,10 +22,18 @@ export const useMenuFormModal = () => {
   });
 
   const onSubmit = async (inputs: MenuModalFormInputs) => {
+    const isUpdate = !!menuData;
+
     try {
-      console.log('inputs', inputs);
+      if (isUpdate) {
+        await patchMenu({ ...inputs, id: menuData.id.toString() });
+        toast.success('Menu editado com sucesso!');
+      } else {
+        await postMenu(inputs);
+        toast.success('Menu criado com sucesso!');
+      }
     } catch (error) {
-      console.error('Erro ao registrar usuário:', error);
+      catchError(error);
     }
   };
 
