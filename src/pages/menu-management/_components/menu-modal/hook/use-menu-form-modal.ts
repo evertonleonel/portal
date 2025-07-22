@@ -39,13 +39,14 @@ export const useMenuFormModal = () => {
 
   useEffect(() => {
     if (!isOpen) return;
-    form.reset(defaultValuesModalForm);
 
     if (menuData) {
       form.reset({
         desc: menuData.desc,
         caminho: menuData.caminho,
       });
+    } else {
+      form.reset(defaultValuesModalForm);
     }
   }, [form, isOpen, menuData]);
 
