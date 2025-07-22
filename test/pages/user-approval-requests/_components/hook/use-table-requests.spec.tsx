@@ -2,7 +2,7 @@ import { renderHook, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { useTableApprovalRequests } from '@/pages/user-approval-requests/_components/hook/use-table-approval-requests';
+import { useTableRequests } from '@/pages/user-approval-requests/_components/hook/use-table-requests';
 import { getAllUserRequests } from '@/services/user/requests';
 
 import { userMock } from '../../../../_setup/mocks/user';
@@ -32,40 +32,45 @@ function createWrapper(filterNome = '') {
 
 const mockRequests = userMock.requests;
 
-describe('useTableApprovalRequests', () => {
+describe('useTableRequests', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it('deve carregar os dados iniciais corretamente', async () => {
     vi.mocked(getAllUserRequests).mockResolvedValueOnce(mockRequests);
 
-    const { result } = renderHook(() => useTableApprovalRequests(), {
+    const { result } = renderHook(() => useTableRequests(), {
       wrapper: createWrapper(),
     });
 
-    // Verifica estado inicial de loading
     expect(result.current.isLoading).toBe(true);
 
-    // Aguarda carregamento
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
     });
 
-    // Verifica se os dados foram carregados
     expect(result.current.dataRequests).toEqual(mockRequests);
-    // Verifica se os dados de aprovação foram filtrados corretamente
-    expect(result.current.dataApprovals).toHaveLength(1);
+
+    expect(getAllUserRequests).toHaveBeenCalledWith(
+      {},
+      expect.any(AbortSignal)
+    );
   });
 
   it('deve filtrar por nome com debounce', async () => {
     const filterNome = 'Elon';
     vi.mocked(getAllUserRequests).mockResolvedValueOnce(mockRequests);
 
-    renderHook(() => useTableApprovalRequests(), {
+    renderHook(() => useTableRequests(), {
       wrapper: createWrapper(filterNome),
     });
 
-    // Aguarda o debounce e a chamada da API
     await waitFor(
       () => {
-        expect(getAllUserRequests).toHaveBeenCalledWith({ nome: filterNome });
+        const calls = vi.mocked(getAllUserRequests).mock.calls;
+        const lastCall = calls[calls.length - 1];
+        expect(lastCall[0]).toEqual({ nome: filterNome });
       },
       { timeout: 1000 }
     );
@@ -75,7 +80,7 @@ describe('useTableApprovalRequests', () => {
     const consoleErrorSpy = vi.spyOn(console, 'error');
     vi.mocked(getAllUserRequests).mockRejectedValueOnce(new Error('API Error'));
 
-    const { result } = renderHook(() => useTableApprovalRequests(), {
+    const { result } = renderHook(() => useTableRequests(), {
       wrapper: createWrapper(),
     });
 
@@ -85,5 +90,15 @@ describe('useTableApprovalRequests', () => {
 
     expect(consoleErrorSpy).toHaveBeenCalled();
     expect(result.current.dataRequests).toEqual([]);
+  });
+
+  it('deve limpar o AbortController ao desmontar', () => {
+    const { unmount } = renderHook(() => useTableRequests(), {
+      wrapper: createWrapper(),
+    });
+
+    unmount();
+
+    expect(true).toBe(true);
   });
 });

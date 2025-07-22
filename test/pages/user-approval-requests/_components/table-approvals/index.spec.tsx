@@ -1,16 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { useTableApprovalRequests } from '@/pages/user-approval-requests/_components/hook/use-table-approval-requests';
 import { TableApprovals } from '@/pages/user-approval-requests/_components/table-approvals';
 
 import { userMock } from '../../../../_setup/mocks/user';
 
+const mockUseTableApprovals = vi.fn();
+
 // Mock do hook
 vi.mock(
-  '@/pages/user-approval-requests/_components/hook/use-table-approval-requests',
+  '@/pages/user-approval-requests/_components/hook/use-table-approvals',
   () => ({
-    useTableApprovalRequests: vi.fn(),
+    useTableApprovals: () => mockUseTableApprovals(),
   })
 );
 
@@ -28,9 +29,8 @@ const mockApprovalRequest = userMock.requests;
 
 describe('TableApprovals', () => {
   it('deve renderizar o skeleton loader durante o carregamento', () => {
-    vi.mocked(useTableApprovalRequests).mockReturnValue({
+    mockUseTableApprovals.mockReturnValue({
       dataApprovals: [],
-      dataRequests: [],
       isLoading: true,
     });
 
@@ -40,9 +40,8 @@ describe('TableApprovals', () => {
   });
 
   it('deve renderizar a tabela com os dados quando o carregamento for concluído', () => {
-    vi.mocked(useTableApprovalRequests).mockReturnValue({
+    mockUseTableApprovals.mockReturnValue({
       dataApprovals: mockApprovalRequest,
-      dataRequests: mockApprovalRequest,
       isLoading: false,
     });
 

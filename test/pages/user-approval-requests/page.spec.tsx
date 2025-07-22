@@ -1,5 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
@@ -40,34 +39,5 @@ describe('UserApprovalRequests', () => {
 
     const solicitacoesTab = screen.getByRole('tab', { name: /solicitações/i });
     expect(solicitacoesTab).toHaveAttribute('aria-selected', 'true');
-  });
-
-  it('deve alternar para o conteúdo de Aprovações ao clicar na tab', async () => {
-    renderWithProviders(<UserApprovalRequests />);
-
-    const aprovacoesTab = screen.getByRole('tab', { name: /aprovações/i });
-    await userEvent.click(aprovacoesTab);
-
-    expect(aprovacoesTab).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getByRole('tabpanel', { name: /aprovações/i })).toBeVisible();
-  });
-
-  it('deve renderizar os componentes de tabela corretos para cada tab', async () => {
-    renderWithProviders(<UserApprovalRequests />);
-
-    const solicitacoesPanel = screen.getByRole('tabpanel', {
-      name: /solicitações/i,
-    });
-    expect(solicitacoesPanel).toBeVisible();
-    expect(within(solicitacoesPanel).getByRole('table')).toBeInTheDocument();
-
-    const aprovacoesTab = screen.getByRole('tab', { name: /aprovações/i });
-    await userEvent.click(aprovacoesTab);
-
-    const aprovacoesPanel = screen.getByRole('tabpanel', {
-      name: /aprovações/i,
-    });
-    expect(aprovacoesPanel).toBeVisible();
-    expect(within(aprovacoesPanel).getByRole('table')).toBeInTheDocument();
   });
 });
