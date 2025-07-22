@@ -74,6 +74,7 @@ export const CellActionTableMenu = ({
               className="cursor-pointer"
               size="icon"
               variant="ghost"
+              data-testid="edit-button"
             >
               <Icon name="editPencil" className="text-foreground" />
             </Button>
@@ -89,6 +90,7 @@ export const CellActionTableMenu = ({
               size={'icon'}
               variant={'ghost'}
               disabled={isPending}
+              data-testid="delete-button"
             >
               <Icon name="trash" className="text-foreground" />
             </Button>
@@ -98,10 +100,17 @@ export const CellActionTableMenu = ({
       </div>
       <div className="lg:hidden">
         <ResponsiveActions>
-          <ResponsiveActionButton onClick={onPreview}>
+          <ResponsiveActionButton
+            onClick={onPreview}
+            data-testid="edit-button-mobile"
+          >
             Editar
           </ResponsiveActionButton>
-          <ResponsiveActionButton disabled={isPending}>
+          <ResponsiveActionButton
+            onClick={handleDeleteMenuAndSubmenu}
+            disabled={isPending}
+            data-testid="delete-button-mobile"
+          >
             Excluir
           </ResponsiveActionButton>
         </ResponsiveActions>
