@@ -9,7 +9,7 @@ import { useSubMenuFormModal } from '@/pages/menu-management/_components/submenu
 import type { SubMenuSubModalFormInputs } from '@/pages/menu-management/_components/submenu-modal/schema';
 import { MenuManagementProvider } from '@/pages/menu-management/context';
 
-import { mockMenu1, mockSubMenu1 } from '../../../../_setup/mocks/menu';
+import { mockMenus, mockSubMenu1 } from '../../../../_setup/mocks/menu';
 
 // Mock dos hooks
 vi.mock(
@@ -17,11 +17,9 @@ vi.mock(
 );
 
 // Mock do usePreviewSubMenuModal
-vi.mock('@/pages/menu-management/_components/menu-modal/context', () => {
-  return {
-    usePreviewMenuModal: vi.fn(),
-  };
-});
+vi.mock('@/pages/menu-management/_components/submenu-modal/context', () => ({
+  usePreviewSubMenuModal: vi.fn(),
+}));
 
 // Mock do MenuManagementContext
 vi.mock('@/pages/menu-management/context', () => ({
@@ -29,6 +27,7 @@ vi.mock('@/pages/menu-management/context', () => ({
     children,
   useMenuManagementContext: () => ({
     isLoading: false,
+    menus: mockMenus,
   }),
 }));
 
@@ -74,9 +73,7 @@ describe('SubMenuModal', () => {
     const mockOnClose = vi.fn();
     const mockOnSubmit = vi.fn();
 
-    (
-      usePreviewSubMenuModal as unknown as ReturnType<typeof vi.fn>
-    ).mockReturnValue({
+    vi.mocked(usePreviewSubMenuModal).mockReturnValue({
       isOpen: true,
       onOpen: vi.fn(),
       onClose: mockOnClose,
@@ -107,13 +104,11 @@ describe('SubMenuModal', () => {
     const mockOnClose = vi.fn();
     const mockOnSubmit = vi.fn();
 
-    (
-      usePreviewSubMenuModal as unknown as ReturnType<typeof vi.fn>
-    ).mockReturnValue({
+    vi.mocked(usePreviewSubMenuModal).mockReturnValue({
       isOpen: true,
       onOpen: vi.fn(),
       onClose: mockOnClose,
-      data: mockMenu1,
+      data: mockSubMenu1,
     });
 
     vi.mocked(useSubMenuFormModal).mockReturnValue({
@@ -138,9 +133,7 @@ describe('SubMenuModal', () => {
     const mockOnClose = vi.fn();
     const mockOnSubmit = vi.fn();
 
-    (
-      usePreviewSubMenuModal as unknown as ReturnType<typeof vi.fn>
-    ).mockReturnValue({
+    vi.mocked(usePreviewSubMenuModal).mockReturnValue({
       isOpen: true,
       onOpen: vi.fn(),
       onClose: mockOnClose,
@@ -169,9 +162,7 @@ describe('SubMenuModal', () => {
     const mockOnClose = vi.fn();
     const mockOnSubmit = vi.fn();
 
-    (
-      usePreviewSubMenuModal as unknown as ReturnType<typeof vi.fn>
-    ).mockReturnValue({
+    vi.mocked(usePreviewSubMenuModal).mockReturnValue({
       isOpen: false,
       onOpen: vi.fn(),
       onClose: mockOnClose,

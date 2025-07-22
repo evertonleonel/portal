@@ -1,28 +1,39 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
+import { type ReactNode } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { usePreviewSubMenuModal } from '@/pages/menu-management/_components/submenu-modal/context';
 import { useSubMenuFormModal } from '@/pages/menu-management/_components/submenu-modal/hook/use-submenu-form-modal';
+import { MenuManagementProvider } from '@/pages/menu-management/context';
 import { patchSubMenu, postSubMenu } from '@/services/menu';
 
 import { mockMenus, mockSubMenu1 } from '../../../../_setup/mocks/menu';
 
 // Mock dos módulos externos
-vi.mock('@/services/menu');
+vi.mock('@/services/menu', () => ({
+  patchSubMenu: vi.fn(),
+  postSubMenu: vi.fn(),
+  getAllMenu: vi.fn(),
+}));
+
 vi.mock('@/pages/menu-management/_components/submenu-modal/context', () => ({
   usePreviewSubMenuModal: vi.fn(),
 }));
 
-// Mock do table-menus
-vi.mock('@/pages/menu-management/_components/table-menus', () => {
-  return {
-    get mockMenu() {
-      return mockMenus;
-    },
-  };
-});
+// Mock do MenuManagementProvider
+vi.mock('@/pages/menu-management/context', () => ({
+  MenuManagementProvider: ({ children }: { children: ReactNode }) => children,
+  useMenuManagementContext: () => ({
+    menus: mockMenus,
+    isLoading: false,
+  }),
+}));
 
 describe('useSubMenuFormModal', () => {
+  const wrapper = ({ children }: { children: ReactNode }) => (
+    <MenuManagementProvider>{children}</MenuManagementProvider>
+  );
+
   beforeEach(() => {
     vi.mocked(usePreviewSubMenuModal).mockImplementation(() => ({
       data: undefined,
@@ -33,7 +44,7 @@ describe('useSubMenuFormModal', () => {
   });
 
   it('deve inicializar o formulário com valores padrão', () => {
-    const { result } = renderHook(() => useSubMenuFormModal());
+    const { result } = renderHook(() => useSubMenuFormModal(), { wrapper });
 
     expect(result.current.form.getValues()).toEqual({
       desc: '',
@@ -45,7 +56,7 @@ describe('useSubMenuFormModal', () => {
 
   it('deve criar um novo sub-menu com sucesso', async () => {
     const mockPostSubMenu = vi.mocked(postSubMenu);
-    const { result } = renderHook(() => useSubMenuFormModal());
+    const { result } = renderHook(() => useSubMenuFormModal(), { wrapper });
 
     const formData = {
       desc: 'Novo Sub Menu',
@@ -82,7 +93,7 @@ describe('useSubMenuFormModal', () => {
     }));
 
     const mockPatchSubMenu = vi.mocked(patchSubMenu);
-    const { result } = renderHook(() => useSubMenuFormModal());
+    const { result } = renderHook(() => useSubMenuFormModal(), { wrapper });
 
     const formData = {
       desc: 'Sub Menu Atualizado',
@@ -104,7 +115,7 @@ describe('useSubMenuFormModal', () => {
   });
 
   it('deve construir o caminho completo corretamente', async () => {
-    const { result } = renderHook(() => useSubMenuFormModal());
+    const { result } = renderHook(() => useSubMenuFormModal(), { wrapper });
 
     await act(async () => {
       await result.current.form.setValue('menuPrincipal', '1');

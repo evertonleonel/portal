@@ -25,7 +25,6 @@ import {
 } from '@/components/ui/select';
 
 import { useMenuManagementContext } from '../../context';
-import { mockMenu } from '../table-menus';
 import { useSubMenuFormModal } from './hook/use-submenu-form-modal';
 
 export const SubMenuModal = () => {
@@ -38,7 +37,7 @@ export const SubMenuModal = () => {
     inputFullPathValue,
     isPending,
   } = useSubMenuFormModal();
-  const { isLoading } = useMenuManagementContext();
+  const { isLoading, menus } = useMenuManagementContext();
 
   return (
     <Modal variant={'baixada'} isOpen={isOpen} onClose={onClose}>
@@ -81,12 +80,12 @@ export const SubMenuModal = () => {
                         <SelectItem value="empty" disabled>
                           Carregando...
                         </SelectItem>
-                      ) : mockMenu.length === 0 ? (
+                      ) : menus.length === 0 ? (
                         <SelectItem value="empty" disabled>
                           Nenhuma menu encontrado
                         </SelectItem>
                       ) : (
-                        mockMenu.map(m => (
+                        menus.map(m => (
                           <SelectItem key={m.id} value={m.id.toString()}>
                             {m.desc}
                           </SelectItem>

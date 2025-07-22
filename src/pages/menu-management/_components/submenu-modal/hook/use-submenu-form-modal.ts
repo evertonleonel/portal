@@ -3,10 +3,10 @@ import { useEffect, useTransition } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { toast } from 'sonner';
 
+import { useMenuManagementContext } from '@/pages/menu-management/context';
 import { patchSubMenu, postSubMenu } from '@/services/menu';
 import { catchError } from '@/utils/catch-error';
 
-import { mockMenu } from '../../table-menus';
 import { usePreviewSubMenuModal } from '../context';
 import {
   defaultValuesSubMenuModalForm,
@@ -17,6 +17,7 @@ import {
 export const useSubMenuFormModal = () => {
   const [isPending, starTransition] = useTransition();
   const { data: subMenuData, isOpen, onClose } = usePreviewSubMenuModal();
+  const { menus } = useMenuManagementContext();
 
   const form = useForm<SubMenuSubModalFormInputs>({
     resolver: zodResolver(subMenuModalFormSchema),
@@ -26,7 +27,7 @@ export const useSubMenuFormModal = () => {
   const caminho = useWatch({ control: form.control, name: 'caminho' });
   const menuId = useWatch({ control: form.control, name: 'menuPrincipal' });
 
-  const findMenu = mockMenu.find(el => el.id.toString() === menuId);
+  const findMenu = menus.find(el => el.id.toString() === menuId);
   const menuPath = findMenu?.caminho ?? '/';
   const inputFullPathValue = menuPath.concat(caminho);
 
@@ -53,7 +54,7 @@ export const useSubMenuFormModal = () => {
     form.reset(defaultValuesSubMenuModalForm);
 
     if (subMenuData) {
-      const parentMenu = mockMenu.find(menu =>
+      const parentMenu = menus.find(menu =>
         menu.subMenus.some(sub => sub.id === subMenuData.id)
       );
 
