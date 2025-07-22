@@ -1,4 +1,4 @@
-import type { Menu } from '@/types/menu';
+import type { Menu, SubMenu } from '@/types/menu';
 
 const mockMenu1 = {
   id: 1,
@@ -121,4 +121,12 @@ const mockMenu2 = {
 
 const mockMenus: Menu[] = [mockMenu1, mockMenu2];
 
-export { mockMenus, mockMenu1, mockMenu2 };
+const mockSubMenu1: SubMenu = {
+  id: 2,
+  desc: 'SUB_MENU_1',
+  caminho: '/aprovar/sub-menu1',
+  ordemExibicao: 1,
+  dataCriacao: '2025-07-07T19:29:11.433',
+};
+
+export { mockMenus, mockMenu1, mockMenu2, mockSubMenu1 };

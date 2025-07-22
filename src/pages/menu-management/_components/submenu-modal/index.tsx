@@ -185,7 +185,7 @@ export const SubMenuModal = () => {
               disabled={isPending}
               className="cursor-pointer"
             >
-              Cadastrar
+              {subMenuData ? 'Editar' : 'Cadastrar'}
             </Button>
           </ModalFooter>
         </form>
