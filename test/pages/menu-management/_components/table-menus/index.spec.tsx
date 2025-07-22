@@ -6,6 +6,7 @@ import * as MenuContext from '@/pages/menu-management/context';
 import type { Menu } from '@/types/menu';
 
 import { mockMenus } from '../../../../_setup/mocks/menu';
+
 // Mock do contexto
 vi.mock('@/pages/menu-management/context', () => ({
   useMenuManagementContext: vi.fn(),

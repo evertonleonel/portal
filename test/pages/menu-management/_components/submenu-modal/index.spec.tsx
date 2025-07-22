@@ -1,4 +1,3 @@
-// tests/components/MenuModal.spec.tsx
 import { fireEvent, render, renderHook, screen } from '@testing-library/react';
 import { FormProvider, useForm, type UseFormReturn } from 'react-hook-form';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
