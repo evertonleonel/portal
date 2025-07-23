@@ -49,7 +49,7 @@ export const NotificationPanel = ({
           <section className="w-full">
             <li className="bg-accent flex items-center gap-3 p-3 pb-6">
               <div className="">
-                <Icon name="profileTickUser" />
+                <Icon name="notificationPanelOn" />
               </div>
               <p className="w-full space-y-0.5">
                 <span className="flex w-full items-center justify-between gap-1">

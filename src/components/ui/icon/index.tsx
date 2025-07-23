@@ -14,6 +14,8 @@ import { HomeIcon } from '@/assets/icons/design/home';
 import { MicrosoftIcon } from '@/assets/icons/design/microsoft.';
 import { NotificationDefaultIcon } from '@/assets/icons/design/nofitication-default';
 import { NotificationErrorIcon } from '@/assets/icons/design/notification-error';
+import { NotificationPanelOffIcon } from '@/assets/icons/design/notification-panel-off';
+import { NotificationPanelOnIcon } from '@/assets/icons/design/notification-panel-on';
 import { NotificationSucessIcon } from '@/assets/icons/design/notification-sucess';
 import { xIcon } from '@/assets/icons/design/x';
 import { AddSquareIcon } from '@/assets/icons/essentional/add-square';
@@ -56,6 +58,8 @@ const icons = {
   notificationError: NotificationErrorIcon,
   notificationSucces: NotificationSucessIcon,
   notificationDefault: NotificationDefaultIcon,
+  notificationPanelOff: NotificationPanelOffIcon,
+  notificationPanelOn: NotificationPanelOnIcon,
   expandeHorizontalArrow: ExpandeHorizontalArrowIcon,
   inputSearch: InputSearchIcon,
   logoutArrow: LogoutArrowIcon,
