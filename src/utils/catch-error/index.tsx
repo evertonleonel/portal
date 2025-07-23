@@ -10,7 +10,8 @@ export function catchError(err: unknown) {
     return toast(errors.join('\n'));
   } else if (isAxiosError(err)) {
     const message =
-      err.response?.data?.detail || 'Erro inesperado do servidor.';
+      err.response?.data?.detail ||
+      'Erro inesperado do servidor, tente novamente mais tarde.';
     return toast.error(message);
   } else if (err instanceof Error) {
     return toast.error(err.message);

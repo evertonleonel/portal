@@ -151,22 +151,15 @@ export const SubMenuModal = () => {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="caminho"
-                render={() => (
-                  <FormItem className="w-full self-start">
-                    <div className="h-3" />
-                    <FormControl>
-                      <Input
-                        disabled
-                        value={inputFullPathValue}
-                        className="bg-muted"
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+
+              <div className="flex w-full flex-col">
+                <span className="h-3" />
+                <Input
+                  disabled
+                  value={inputFullPathValue}
+                  className="bg-muted mt-auto"
+                />
+              </div>
             </div>
           </ModalContent>
 
