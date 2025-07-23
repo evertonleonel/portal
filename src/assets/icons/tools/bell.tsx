@@ -23,6 +23,10 @@ export const BellIcon = (props: Props) => {
         r="2.16667"
         fill="currentColor"
         className={`${props?.animate ?? ''}`}
+        style={{
+          transformBox: 'fill-box',
+          transformOrigin: 'center',
+        }}
       />
     </svg>
   );
