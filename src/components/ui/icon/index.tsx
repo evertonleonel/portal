@@ -27,6 +27,7 @@ import { NoteIcon } from '@/assets/icons/essentional/note';
 import { DocumentCopyIcon } from '@/assets/icons/files/document-copy';
 import { InputSearchIcon } from '@/assets/icons/search/input-search';
 import { BellIcon } from '@/assets/icons/tools/bell';
+import { ConfigIcon } from '@/assets/icons/tools/config';
 import { FilterIcon } from '@/assets/icons/tools/filter';
 import { StackIcon } from '@/assets/icons/tools/stack';
 import { TrashIcon } from '@/assets/icons/tools/trash';
@@ -45,6 +46,7 @@ const icons = {
   chevronUpArrow: ChevronUpArrowIcon,
   chevronDownArrow: ChevronDownArrowIcon,
   chevronRightArrow: ChevronRightArrowIcon,
+  config: ConfigIcon,
   documentCopy: DocumentCopyIcon,
   downArrow: DownArrowIcon,
   editPencil: EditPencilIcon,

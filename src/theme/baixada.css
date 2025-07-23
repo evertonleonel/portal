@@ -127,11 +127,6 @@
   /*Switch*/
   --color-baixada-switch: #1570ef;
 
-  /* Shadows */
-  --shadow-baixada-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
-  --shadow-baixada-card: 0 82px 40px -14px rgba(100, 100, 100, 0.08);
-  --shadow-baixada-popover: 4px 4px 12px 0 rgba(4, 29, 84, 0.3);
-
   /* Gradients */
   --gradient-blue-to-dark-blue: linear-gradient(
     to bottom,
