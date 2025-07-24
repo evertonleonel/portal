@@ -7,12 +7,13 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import type { Notification } from '@/types/notification';
 import { formatElapsedTime } from '@/utils/format-elapsed-time';
 
+import { NotificationPanelEmptyState } from './_components/notification-panel-empty';
 import { NotificationPanelProvider, useNotificationPanel } from './context';
-import { mockNotification, type Notification } from './mock';
+import { mockNotification } from './mock';
 
 export const NotificationPanel = ({
   children,
@@ -153,53 +154,5 @@ export const NotificationItem = ({
         </div>
       </button>
     </li>
-  );
-};
-
-const NotificationPanelEmptyState = () => {
-  return (
-    <div className="gap-1 space-y-1 py-44 text-center">
-      <Icon name="notificationDefault" className="mx-auto" />
-      <p className="text-foreground pt-5 font-semibold">Sem notificações</p>
-      <p className="text-muted-foreground text-sm">
-        Não existem notificações para serem
-      </p>
-      <p className="text-muted-foreground text-sm">exibidas no momento.</p>
-    </div>
-  );
-};
-
-const NotificationPanelErrorState = () => {
-  return (
-    <div className="gap-1 space-y-6 py-44 text-center">
-      <Icon name="notificationError" className="mx-auto" />
-      <div className="space-y-1">
-        <p className="text-foreground font-semibold">Erro ao carregar</p>
-        <p className="text-muted-foreground text-sm">
-          Não conseguimos carregar as notificações.
-        </p>
-      </div>
-      <Button className="cursor-pointer">Tentar novamente</Button>
-    </div>
-  );
-};
-
-const NofiticationPanelSkeleton = () => {
-  const opacities = [1, 0.8, 0.7, 0.6, 0.4, 0.3, 0.2];
-  return (
-    <ul className="flex flex-col gap-6 p-3 pb-8">
-      {opacities.map((opacity, index) => (
-        <li key={index} className="flex items-center" style={{ opacity }}>
-          <div>
-            <Skeleton className="size-10 rounded-full" />
-          </div>
-          <div className="flex w-full flex-col gap-1">
-            <Skeleton className="h-3 w-[40%] rounded-sm" />
-            <Skeleton className="h-3 w-[30%] rounded-sm" />
-          </div>
-          <Skeleton className="size-6 rounded-sm" />
-        </li>
-      ))}
-    </ul>
   );
 };

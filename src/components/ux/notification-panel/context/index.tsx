@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from 'react';
 
-import { mockNotification, type Notification } from '../mock';
+import type { Notification } from '@/types/notification';
+
+import { mockNotification } from '../mock';
 
 type NotificationPanelContextType = {
   notifications: Notification[];
