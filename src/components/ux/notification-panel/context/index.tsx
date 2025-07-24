@@ -1,12 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-type Notification = {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  isRead: boolean;
-};
+import { mockNotification, type Notification } from '../mock';
 
 type NotificationPanelContextType = {
   notifications: Notification[];
@@ -28,7 +22,7 @@ export const NotificationPanelProvider = ({
   children: React.ReactNode;
 }) => {
   const [notifications, setNotifications] =
-    useState<Notification[]>(mockNotifications);
+    useState<Notification[]>(mockNotification);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   const toggleSelect = (id: string) => {
@@ -46,7 +40,7 @@ export const NotificationPanelProvider = ({
     if (isAllSelected) {
       setSelectedIds([]);
     } else {
-      setSelectedIds(notifications.map(n => n.id));
+      setSelectedIds(notifications.map(n => n.id.toString()));
     }
   };
 
@@ -56,6 +50,8 @@ export const NotificationPanelProvider = ({
   //   await api.markAsRead(selectedIds);
   //   clearSelected();
   // };
+
+  console.log(notifications, 'notifications');
 
   return (
     <NotificationPanelContext.Provider
@@ -83,69 +79,3 @@ export const useNotificationPanel = () => {
     );
   return context;
 };
-
-export const mockNotifications = [
-  {
-    id: '1',
-    title: 'Solicitação de acesso',
-    description: 'Clara Antunes solicitou acesso ao Portal',
-    createdAt: '2 horas atrás',
-    isRead: false,
-  },
-  {
-    id: '2',
-    title: 'Nova mensagem',
-    description: 'Você recebeu uma nova mensagem de suporte',
-    createdAt: '1 hora atrás',
-    isRead: false,
-  },
-  {
-    id: '3',
-    title: 'Atualização no sistema',
-    description: 'O sistema foi atualizado com melhorias de performance',
-    createdAt: 'Ontem',
-    isRead: true,
-  },
-  {
-    id: '4',
-    title: 'Convite para reunião',
-    description: 'Você foi adicionado à reunião de alinhamento',
-    createdAt: '3 dias atrás',
-    isRead: false,
-  },
-  {
-    id: '5',
-    title: 'Mudança de senha',
-    description: 'Sua senha foi alterada com sucesso',
-    createdAt: '5 dias atrás',
-    isRead: true,
-  },
-  {
-    id: '6',
-    title: 'Mudança de senha',
-    description: 'Sua senha foi alterada com sucesso',
-    createdAt: '5 dias atrás',
-    isRead: true,
-  },
-  {
-    id: '7',
-    title: 'Mudança de senha',
-    description: 'Sua senha foi alterada com sucesso',
-    createdAt: '5 dias atrás',
-    isRead: true,
-  },
-  {
-    id: '8',
-    title: 'Mudança de senha',
-    description: 'Sua senha foi alterada com sucesso',
-    createdAt: '5 dias atrás',
-    isRead: true,
-  },
-  {
-    id: '9',
-    title: 'Mudança de senha',
-    description: 'Sua senha foi alterada com sucesso',
-    createdAt: '5 dias atrás',
-    isRead: true,
-  },
-];
