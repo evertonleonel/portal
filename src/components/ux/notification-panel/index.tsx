@@ -7,6 +7,11 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import type { Notification } from '@/types/notification';
 import { formatElapsedTime } from '@/utils/format-elapsed-time';
@@ -38,7 +43,7 @@ const NotificationPanelWrapper = ({
       <PopoverTrigger asChild>{children}</PopoverTrigger>
       <PopoverContent
         align={'end'}
-        className="shadow-popover border-none p-0 md:w-[380px]"
+        className="shadow-popover border-none p-0 sm:w-[380px]"
       >
         {notifications.length > 0 && <NotificationPanelContent />}
         {notifications.length === 0 && <NotificationPanelEmptyState />}
@@ -126,11 +131,11 @@ export const NotificationItem = ({
       <button
         onClick={onToggle}
         className={cn(
-          'flex w-full items-center gap-3 p-3 pb-6 transition-all',
+          'flex w-full cursor-pointer items-center gap-3 p-3 pb-6 transition-all',
           isSelected ? 'bg-accent hover:bg-accent/50' : 'hover:bg-accent'
         )}
       >
-        <picture>
+        <picture className="hidden md:block">
           {notification.lido ? (
             <Icon name="notificationPanelOff" />
           ) : (
@@ -139,12 +144,24 @@ export const NotificationItem = ({
         </picture>
 
         <div className="w-full text-left">
-          <div className="flex justify-between text-sm font-semibold">
-            <span>{notification.descricao}</span>
-            <span className="text-muted-foreground flex items-center gap-2 text-[10px]">
-              {formatElapsedTime(notification.dataCriacao)}
+          <div className="grid grid-cols-[1fr_0.5fr] items-center justify-between gap-0.5 text-sm font-semibold">
+            <Tooltip>
+              <TooltipTrigger>
+                <span className="line-clamp-2">{notification.descricao}</span>
+              </TooltipTrigger>
+              <TooltipContent
+                className={cn(
+                  'hidden',
+                  notification.descricao.length > 39 && 'block'
+                )}
+              >
+                {notification.descricao}
+              </TooltipContent>
+            </Tooltip>
+            <span className="text-muted-foreground ml-auto flex items-center gap-2 text-[10px]">
+              <p>{formatElapsedTime(notification.dataCriacao)}</p>
               {!notification.lido && (
-                <div className="bg-badge size-2 rounded-full data-[state=active]:block" />
+                <div className="bg-badge size-2 min-w-2 rounded-full data-[state=active]:block" />
               )}
             </span>
           </div>

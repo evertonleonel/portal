@@ -27,7 +27,8 @@ const usuarioBase = {
 export const mockNotification = [
   {
     id: 1,
-    descricao: 'Notificação de teste',
+    descricao:
+      'Usuário com uma descrição gigantesta do que deve ser feito aqui kkkkk',
     lido: false,
     dataCriacao: '2025-07-24T14:20:52.632Z',
     dataAlteracao: '2025-07-24T14:20:52.632Z',
@@ -179,7 +180,7 @@ export const mockNotification = [
     id: 3,
     descricao: 'Notificação de teste',
     lido: false,
-    dataCriacao: '2025-08-30T14:20:52.632Z',
+    dataCriacao: '2025-07-22T14:20:52.632Z',
     dataAlteracao: '2025-07-24T14:20:52.632Z',
     usuario: {
       ...usuarioBase,
@@ -329,8 +330,8 @@ export const mockNotification = [
     id: 5,
     descricao: 'Notificação de teste',
     lido: false,
-    dataCriacao: '2025-07-24T18:09:25.000Z',
-    dataAlteracao: '2025-07-24T14:20:52.632Z',
+    dataCriacao: '2025-07-24T20:09:25.000Z',
+    dataAlteracao: '2025-07-24T19:20:52.632Z',
     usuario: {
       ...usuarioBase,
       usuarioPerfis: [
