@@ -1,4 +1,5 @@
 import type { Empresa } from '@/types/empresa';
+import type { PerfilRequestParams } from '@/types/perfil/http';
 
 import type { USER_REQUEST_STATUS } from '../../_enums/user-request-status';
 import type { Usuario } from '..';
@@ -26,8 +27,9 @@ export interface GetAllUserRequestsParams {
   idEmpresa?: number;
 }
 
-export interface UserResponse {
-  id: number;
-  nome: string;
-  dataCriacao: string;
+export interface ApproveRequestParams {
+  perfis: PerfilRequestParams[];
+}
+export interface NegarRequestParams {
+  justificativa: string;
 }

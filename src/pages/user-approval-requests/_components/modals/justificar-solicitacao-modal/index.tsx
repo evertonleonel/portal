@@ -18,8 +18,8 @@ import {
 } from '@/components/ui/form';
 import { Icon } from '@/components/ui/icon';
 import { Textarea } from '@/components/ui/textarea';
-import { negarRequestRegister } from '@/services/user/requests/to-deny';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import { negarRequestRegister } from '@/services/user/table-requests';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 
 import {
   defaultValuesJustificativa,

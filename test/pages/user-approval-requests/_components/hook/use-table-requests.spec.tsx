@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
 import { useTableRequests } from '@/pages/user-approval-requests/_components/hook/use-table-requests';
-import { getAllUserRequests } from '@/services/user/requests';
+import { getAllUserRequests } from '@/services/user/table-requests';
 
 import { userMock } from '../../../../_setup/mocks/user';
 

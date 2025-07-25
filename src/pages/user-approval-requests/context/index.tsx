@@ -7,8 +7,8 @@ import {
 } from 'react';
 
 import { getAllEmpresa } from '@/services/empresa';
-import type { GetEmpresaResponse } from '@/types/empresa';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import type { GetEmpresaResponse } from '@/types/empresa/http';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 
 interface UserApprovalRequestsType {
   empresas: GetEmpresaResponse[];

@@ -6,9 +6,9 @@ import type {
   PatchMenuParams,
   PostMenuBody,
   PostSubMenuBody,
-} from '@/types/menu';
+} from '@/types/menu/http';
 
-export async function getAllMenu() {
+export async function getAllMenus() {
   const response = await api.get<GetMenuResponse[]>(`/v1/menu`);
   return response.data;
 }

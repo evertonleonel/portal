@@ -6,8 +6,8 @@ import {
   useState,
 } from 'react';
 
-import { getAllMenu } from '@/services/menu';
-import type { GetMenuResponse } from '@/types/menu';
+import { getAllMenus } from '@/services/menu';
+import type { GetMenuResponse } from '@/types/menu/http';
 
 interface MenuManagementType {
   menus: GetMenuResponse[];
@@ -31,7 +31,7 @@ export const MenuManagementProvider = ({
     async function fetchMenus() {
       try {
         setIsLoading(true);
-        const data = await getAllMenu();
+        const data = await getAllMenus();
         setMenus(data);
       } catch (error) {
         console.error('Erro ao buscar menus:', error);

@@ -1,4 +1,4 @@
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 
 export const requestMock: GetUserRequestsResponse[] = [
   {

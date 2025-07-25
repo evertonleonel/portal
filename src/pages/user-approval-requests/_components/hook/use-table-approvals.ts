@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useDebounce } from '@/hooks/use-debounce';
 import { useUserApprovalRequestsContext } from '@/pages/user-approval-requests/context';
-import { getAllUserRequests } from '@/services/user/requests';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import { getAllUserRequests } from '@/services/user/table-requests';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 
 export const useTableApprovals = () => {
   const [isLoading, setIsLoading] = useState(false);

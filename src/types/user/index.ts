@@ -23,3 +23,9 @@ export interface UsuarioCriacaoMenu {
   ativo: boolean;
   dataCriacao: string;
 }
+
+export interface UserPerfilCriacao {
+  id: number;
+  nome: string;
+  dataCriacao: string;
+}

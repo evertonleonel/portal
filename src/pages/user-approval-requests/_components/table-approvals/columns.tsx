@@ -8,7 +8,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 import { formatDateWithHour } from '@/utils/format-date-with-hour';
 
 export const columnsTableApprovals: ColumnDef<GetUserRequestsResponse>[] = [

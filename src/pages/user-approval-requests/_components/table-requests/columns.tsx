@@ -3,7 +3,7 @@ import type { ColumnDef } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import { UserRequestStatus } from '@/components/ui/status/user-requests-status';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 import { formatDateWithHour } from '@/utils/format-date-with-hour';
 
 import { CellAction } from './cell-action';

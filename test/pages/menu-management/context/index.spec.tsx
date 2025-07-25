@@ -5,10 +5,10 @@ import {
   MenuManagementProvider,
   useMenuManagementContext,
 } from '@/pages/menu-management/context';
-import { getAllMenu } from '@/services/menu';
+import { getAllMenus } from '@/services/menu';
 
 vi.mock('@/services/menu', () => ({
-  getAllMenu: vi.fn(),
+  getAllMenus: vi.fn(),
 }));
 
 describe('MenuManagementContext', () => {
@@ -18,7 +18,7 @@ describe('MenuManagementContext', () => {
       { id: 2, name: 'Menu 2' },
     ];
 
-    (getAllMenu as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce(
+    (getAllMenus as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce(
       mockMenus
     );
 
@@ -47,7 +47,7 @@ describe('MenuManagementContext', () => {
     const mockError = new Error('Erro ao buscar menus');
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-    (getAllMenu as unknown as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+    (getAllMenus as unknown as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
       mockError
     );
 

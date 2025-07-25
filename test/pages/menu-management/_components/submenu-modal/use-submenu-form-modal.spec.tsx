@@ -13,7 +13,7 @@ import { mockMenus, mockSubMenu1 } from '../../../../_setup/mocks/menu';
 vi.mock('@/services/menu', () => ({
   patchSubMenu: vi.fn(),
   postSubMenu: vi.fn(),
-  getAllMenu: vi.fn(),
+  getAllMenus: vi.fn(),
 }));
 
 vi.mock('@/pages/menu-management/_components/submenu-modal/context', () => ({

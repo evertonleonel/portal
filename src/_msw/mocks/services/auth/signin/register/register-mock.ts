@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 
-import type { UserRequestRegisterParams } from '@/types/auth/signin/register';
+import type { UserRequestRegisterParams } from '@/types/auth/signin/register/http';
 
 export const postUsuarioSolicitacaoMock = http.post<
   never,

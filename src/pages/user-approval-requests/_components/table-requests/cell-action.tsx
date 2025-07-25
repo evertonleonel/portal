@@ -14,7 +14,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 
 import { useUserApprovalRequestsContext } from '../../context';
 

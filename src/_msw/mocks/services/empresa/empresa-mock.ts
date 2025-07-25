@@ -5,7 +5,7 @@ import type {
   GetEmpresaResponse,
   PatchEmpresaParams,
   PostEmpresaBody,
-} from '@/types/empresa';
+} from '@/types/empresa/http';
 
 export const getEmpresaMock = http.get<never, never, GetEmpresaResponse[]>(
   '/v1/empresa',

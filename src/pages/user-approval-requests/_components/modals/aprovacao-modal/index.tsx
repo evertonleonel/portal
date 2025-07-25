@@ -29,10 +29,10 @@ import {
 } from '@/components/ui/select';
 import { getAllEmpresa } from '@/services/empresa';
 import { allProfiles } from '@/services/perfil';
-import { approveRequestRegister } from '@/services/user/requests/to-approve';
-import type { GetEmpresaResponse } from '@/types/empresa';
-import type { PerfilResponseParams } from '@/types/perfil/response';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import { approveRequestRegister } from '@/services/user/table-requests';
+import type { GetEmpresaResponse } from '@/types/empresa/http';
+import type { PerfilResponseParams } from '@/types/perfil/http';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 
 import {
   type AprovacaoFormData,

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useSigninContext } from '@/pages/auth/signin/context';
 import { userRequestRegister } from '@/services/auth/signin/register';
 import { getAllEmpresa } from '@/services/empresa';
-import type { GetEmpresaResponse } from '@/types/empresa';
+import type { GetEmpresaResponse } from '@/types/empresa/http';
 
 import { defaultValues, type RegisterInputs, registerSchema } from '../schema';
 

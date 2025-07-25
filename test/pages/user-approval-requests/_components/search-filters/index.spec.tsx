@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { SearchFilters } from '@/pages/user-approval-requests/_components/search-filters';
 import { useUserApprovalRequestsContext } from '@/pages/user-approval-requests/context';
 import type { Empresa } from '@/types/empresa';
-import type { GetUserRequestsResponse } from '@/types/user/requests';
+import type { GetUserRequestsResponse } from '@/types/user/requests/http';
 
 import { empresasMock } from '../../../../_setup/mocks/empresa';
 

@@ -5,7 +5,7 @@ import type {
   GetEmpresaResponse,
   PatchEmpresaParams,
   PostEmpresaBody,
-} from '@/types/empresa';
+} from '@/types/empresa/http';
 
 export async function getAllEmpresa() {
   const response = await api.get<GetEmpresaResponse[]>(`/v1/empresa`);

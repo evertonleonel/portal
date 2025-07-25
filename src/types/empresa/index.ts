@@ -12,25 +12,3 @@ export type Empresa = {
   dataAlteracao: string | null;
   usuarioAlteracao: string | null;
 };
-
-//Services
-export type GetEmpresaResponse = Empresa;
-
-export interface GetEmpresaByIdParams {
-  id: string;
-}
-
-export interface PostEmpresaBody {
-  sigla: string;
-  nome: string;
-}
-
-export interface DeleteEmpresaParams {
-  id: string;
-}
-
-export interface PatchEmpresaParams {
-  id: string;
-  sigla?: string;
-  nome?: string;
-}
