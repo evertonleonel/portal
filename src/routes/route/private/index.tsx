@@ -3,8 +3,7 @@ import { lazy } from 'react';
 import type { RouteConfig } from '..';
 
 const InitialPage = lazy(() => import('@/pages/pagina-inicial/page'));
-const AdminPage = lazy(() => import('@/pages/admin/page'));
-const ClientPage = lazy(() => import('@/pages/client/page'));
+
 const UserApprovalRequests = lazy(
   () => import('@/pages/user-approval-requests/page')
 );
@@ -15,18 +14,6 @@ export const PrivateRoutes: RouteConfig[] = [
     path: '/pagina-inicial',
     component: InitialPage,
     acessType: [], // Acessível para todos os usuários autenticados
-    private: true,
-  },
-  {
-    path: '/admin',
-    component: AdminPage,
-    acessType: ['admin'], // Apenas administradores
-    private: true,
-  },
-  {
-    path: '/client',
-    component: ClientPage,
-    acessType: ['client', 'admin'], // Clientes e administradores
     private: true,
   },
   {

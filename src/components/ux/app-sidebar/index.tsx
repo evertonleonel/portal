@@ -54,16 +54,6 @@ const items: MenuItem[] = [
     icon: 'cube3D',
   },
   {
-    title: 'Admin',
-    url: '/admin',
-    icon: 'profileTwoUsers',
-  },
-  {
-    title: 'Client',
-    url: '/client',
-    icon: 'profileTwoUsers',
-  },
-  {
     title: 'Programacao',
     url: '#',
     icon: 'microsoft',
