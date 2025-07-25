@@ -65,7 +65,6 @@ function SignInContent() {
   const { viewTabState } = useSigninContext();
   const isSmallScreen = useIsSmallScreen();
 
-  console.log(viewTabState, 'viewTabState');
   return (
     <main className="relative grid h-full min-h-screen place-content-center p-4">
       <BackgroundWrapper className="inset-0">
@@ -77,7 +76,7 @@ function SignInContent() {
       </BackgroundWrapper>
       <ShowContent condition={!viewTabState.sucess}>
         <div className="flex-1">
-          <Card className={cn('lg:w-[572px]', isSmallScreen && 'py-8')}>
+          <Card className={cn('lg:w-[572px]', isSmallScreen && 'py-6')}>
             <CardHeader className="flex items-center justify-center px-8 lg:px-10">
               <picture className="max-w-sm[242px]">
                 <img

@@ -8,7 +8,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import {
   Form,
@@ -68,7 +67,6 @@ export const JustificarSolicitacaoModal: React.FC<
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogTrigger>Open</DialogTrigger>
       <DialogContent className="modal-content-baixada border-none">
         <DialogHeader className="modal-header-baixada text-left">
           <DialogTitle className="text-background flex gap-1">

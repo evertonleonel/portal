@@ -2,7 +2,7 @@ import { lazy } from 'react';
 
 import type { RouteConfig } from '..';
 
-const HomePage = lazy(() => import('@/pages/home/page'));
+const InitialPage = lazy(() => import('@/pages/pagina-inicial/page'));
 const AdminPage = lazy(() => import('@/pages/admin/page'));
 const ClientPage = lazy(() => import('@/pages/client/page'));
 const UserApprovalRequests = lazy(
@@ -13,7 +13,7 @@ const UserMenuManagement = lazy(() => import('@/pages/menu-management/page'));
 export const PrivateRoutes: RouteConfig[] = [
   {
     path: '/home',
-    component: HomePage,
+    component: InitialPage,
     acessType: [], // Acessível para todos os usuários autenticados
     private: true,
   },
