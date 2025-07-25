@@ -6,12 +6,12 @@ import { useAuth } from '@/context/auth-context';
 import { useIsSmallScreen } from '@/hooks/use-small-screen';
 import { cn } from '@/lib/utils';
 
-export default function Home() {
+export default function InitialPage() {
   const { user } = useAuth();
 
   const isSmallScreen = useIsSmallScreen();
   return (
-    <div className="relative grid h-full">
+    <>
       <BackgroundWrapper className="bottom-0 right-0 top-[-2.563rem] max-sm:left-0">
         <BackgroundImage
           src="images/logos/logo-portal-baixada-sigla-cinza.svg"
@@ -41,6 +41,6 @@ export default function Home() {
           </section>
         </div>
       </div>
-    </div>
+    </>
   );
 }

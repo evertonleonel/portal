@@ -77,7 +77,7 @@ const mockMenu1 = {
 const mockMenu2 = {
   id: 6,
   desc: 'HOME',
-  caminho: '/home',
+  caminho: '/pagina-inicial',
   subMenus: [],
   sistema: {
     id: 1,

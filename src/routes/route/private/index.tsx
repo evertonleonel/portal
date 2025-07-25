@@ -12,7 +12,7 @@ const UserMenuManagement = lazy(() => import('@/pages/menu-management/page'));
 
 export const PrivateRoutes: RouteConfig[] = [
   {
-    path: '/home',
+    path: '/pagina-inicial',
     component: InitialPage,
     acessType: [], // Acessível para todos os usuários autenticados
     private: true,

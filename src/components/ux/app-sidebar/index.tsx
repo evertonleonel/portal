@@ -40,7 +40,7 @@ type MenuItem = {
 const items: MenuItem[] = [
   {
     title: 'Página inicial',
-    url: '/home',
+    url: '/pagina-inicial',
     icon: 'home',
   },
   {
@@ -110,7 +110,7 @@ const items: MenuItem[] = [
       {
         id: 2,
         nome: 'Descarga',
-        url: '/home',
+        url: '/pagina-inicial',
       },
     ],
   },

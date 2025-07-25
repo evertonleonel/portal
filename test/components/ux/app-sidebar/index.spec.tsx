@@ -43,7 +43,7 @@ vi.mock('react-router-dom', async () => {
   return {
     ...actual,
     useNavigate: () => vi.fn(),
-    useLocation: () => ({ pathname: '/home' }),
+    useLocation: () => ({ pathname: '/pagina-inicial' }),
   };
 });
 

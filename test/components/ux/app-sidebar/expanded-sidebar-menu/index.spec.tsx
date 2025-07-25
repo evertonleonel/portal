@@ -21,7 +21,7 @@ const mockMatchMedia = vi.fn().mockImplementation(query => ({
 const mockMenuItems = [
   {
     title: 'Página inicial',
-    url: '/home',
+    url: '/pagina-inicial',
     icon: 'home' as IconsName,
   },
   {
@@ -48,13 +48,13 @@ vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
   return {
     ...actual,
-    useLocation: () => ({ pathname: '/home' }),
+    useLocation: () => ({ pathname: '/pagina-inicial' }),
   };
 });
 
 const renderExpandedMenu = (openItems = {}, toggleItem = vi.fn()) => {
   const isItemActive = (item: (typeof mockMenuItems)[0]) =>
-    item.url === '/home';
+    item.url === '/pagina-inicial';
 
   return render(
     <BrowserRouter>
